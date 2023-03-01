@@ -124,7 +124,7 @@
         console.table(arr) // Array(2)
         ```
         
-        ![array.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e05bb1f0-2bad-4295-a8f1-fc6438c9c56f/array.png)
+        ![array.png](../Images/array.png))
         
     3. **indexOf** : 특정 값이 배열에 포함되어 있는지 확인하고, 인덱스 값을 알아내기
         
