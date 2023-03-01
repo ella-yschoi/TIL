@@ -1,4 +1,4 @@
-# Dev.Ella TIL Treee .. 
+# Dev.Ella TIL Tree .. 
 
 > Connecting the dots.
 
@@ -14,4 +14,4 @@
 
 ### [JavaScript](JavaScript)
 - [array](JavaScript/array.md)
-- [object]
+- [object](JavaScript/object.md)
