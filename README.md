@@ -10,11 +10,11 @@
 <br/>
 
 ### Web
-- ### [HTML](HTML)
+- **[HTML](HTML)**
   - [HTML Basics](HTML/Basics.md)
 
 <br/>
 
-- ### [JavaScript](JavaScript)
+- **[JavaScript](JavaScript)**
   - [JavaScript Array](JavaScript/array.md)
   - [JavaScript Object](JavaScript/object.md)
