@@ -96,3 +96,123 @@
 <br/><p>
 
 ### **5. 기본값** <p>
+- 매개변수에 값을 전달하지 않아도 그 값이 undefined가 되지 않게 하려면 함수 선언시 = 를 사용해 기본값(default value)을 설정해 주면 된다.
+  
+  ```jsx
+  function showMessage(from, text = 'please enter your last name') {
+    console.log(from + " " + text);
+  }
+
+  showMessage("Ella"); // Ella: please enter your last name: text가 값을 전달받지 못해도 기본값이 할당
+  ```
+
+- 아래와 같이 복잡한 표현식도 기본값으로 설정 가능하다.
+  
+  ```jsx
+  function showMessage(from, text = anotherFunction()) {
+    // anotherFunction()은 text값이 없을 때만 호출됨
+    // anotherFunction()의 반환 값이 text의 값이 됨
+  }
+  ```
+
+<br/><p>
+
+### **6. 매개변수 기본값을 설정할 수 있는 또다른 방법** <p>
+- 가끔은 함수 선언 시가 아닌, **함수 선언 후**에 매개변수 기본값을 설정할 때가 있음. 이때는 함수 호출 시 **매개변수를 undefined와 비교**해 매개변수가 잘 전달되었는지를 확인
+
+  ```jsx
+  function showMessage(text) {
+      // ...
+
+      if (text === undefined) { // 매개변수 생략 시
+          text = '빈 문자열';
+      }
+      console.log(text);
+  }
+  showMessage(); // 빈 문자열
+  ```
+
+- if문 대신 논리 연산자 || 사용 가능하며, 아래 예시는 매개변수 생략 혹은 빈 문자열이 넘어오면 변수에 '빈 문자열'이 할당되도록 했다.
+  
+  ```jsx
+  function showMessage(text) {
+      text = text || '빈 문자열';
+  }
+  ```
+
+<br/><p>
+
+### **7. 반환값** <p>
+- 함수 호출 시, 함수를 호출한 자리에 특정 값을 반환하게 할 수 있다. 이때 이 특정 값을 반환 값(return value)라고 한다. 
+- 지시자 return은 함수 내 어디서든 사용 가능하며, 이 return을 만나면 함수 실행은 즉시 중단되고, 함수를 호출한 곳에 값을 반환한다. 아래 예시에서는 반환 값을 result에 할당했다.
+
+  ```jsx
+  function sum(a, b) {
+    return a + b;
+  }
+
+  let result = sum(1, 2); // return에서 반환한 값을 result에 할당
+  console.log(result); // 3
+  ```
+
+- 아래와 같이 함수 하나에 여러 개의 return문이 올 수도 있다. 
+  ```jsx
+    function checkAge(age) {
+        if (age >= 18) {
+            return true;
+        } else {
+            return confirm('보호자의 동의를 받으셨나요?');
+        }
+    }
+
+    let age = prompt('나이를 입력해 주세요', 18);
+
+    if (checkAge(age)) {
+        alert('접속 허용');
+    } else {
+        alert('접속 차단');
+    }
+    ```
+- cf) return문이 없는 함수는 undefined를 반환한다.
+    ```jsx
+    function doNothing() { /*empty */ }
+    console.log(doNothing() === undefined); // true
+    ```
+
+- cf) return 지시자만 있는 경우도 undefined를 반환한다. return은 return undefined와 동일하게 동작한다.
+    ```jsx
+    function donNothin() {
+        return;
+    }
+    console.log(doNothing() === undefined); // true
+    ```
+
+- caution) return과 값 사이에는 절대 새 줄을 넣어 코드를 작성하면 안된다. 자바스크립트는 return문 끝에 자동으로 세미콜론을 넣기 때문에 반환하고자 했던 표현식을 반환하지 못한다. 
+    ```jsx
+    // 예를 들면 이런 코드를
+    return;
+    (1 + 2 + 3 + 4 + 5 + 6)
+    
+    // 표현식을 여러 줄에 걸쳐 작성하고자 한다면, 아래와 같이 여는 괄호를 return과 같은 줄에 쓰거나, return이 있는 줄에서 표현식을 작성해야 한다.
+    return (
+        1 + 2 + 3
+        + 4 + 5 + 6
+    );
+
+<br/><p>
+
+### **8. 함수 이름 짓기** <p>
+- 함수는 어떤 **동작**을 수행하기 위해 코드를 모아 놓은 것이므로, 이름은 대개 동사이며, 가능한 어떤 동작을 하는지 간결하고 명확하게 작성해야 한다. 
+- 더불어, 함수는 **동작 하나만 담당**하며, 해당 동작을 정확히 수행해야 하는 것이 목적이다.
+- 함수가 어떤 동작을 하는지 축약해 설명하는 동사를 접두어로 붙여 함수 이름을 만드는 것이 관습이다. 예를 들면,
+
+  - "show…" - 무언가를 보여줌
+  - "get…" – 값을 반환함
+  - "calc…" – 무언가를 계산함
+  - "create…" – 무언가를 생성함
+  - "check…" – 무언가를 확인하고 불린값을 반환함
+
+<br/><p>
+
+### **9. 함수 == 주석** <p>
+- 함수를 간결하게 만들면 테스트와 디버깅이 쉬워지며, 함수 그 자체로 주석의 역할까지 해낸다. 이를 '자기 설명적 (self-describing) 코드' 라고 한다. 
