@@ -74,7 +74,7 @@
   showMessage(); // 함수는 내부 변수인 userName만 사용
   console.log(userName); // Ella : 함수는 외부변수에 접근하지 않으므로 값이 변경되지 않고 Ella 출력
   ```
-    cf) userName처럼 함수 외부에 선언된 변수는 전역변수(global variable)이라고 하며, 지역변수에 의해 가려지지만 않는다면 모든 함수에서 접근 가능. 하지만 변수는 연관되는 함수 내에서만 선언하고, 되도록 사용을 권하지 않음.
+    cf. userName처럼 함수 외부에 선언된 변수는 전역변수(global variable)이라고 하며, 지역변수에 의해 가려지지만 않는다면 모든 함수에서 접근 가능. 하지만 변수는 연관되는 함수 내에서만 선언하고, 되도록 사용을 권하지 않음.
 
 <br/><p>
 
@@ -173,13 +173,13 @@
         alert('접속 차단');
     }
     ```
-- cf) return문이 없는 함수는 undefined를 반환한다.
+- cf. return문이 없는 함수는 undefined를 반환한다.
     ```jsx
     function doNothing() { /*empty */ }
     console.log(doNothing() === undefined); // true
     ```
 
-- cf) return 지시자만 있는 경우도 undefined를 반환한다. return은 return undefined와 동일하게 동작한다.
+- cf. return 지시자만 있는 경우도 undefined를 반환한다. return은 return undefined와 동일하게 동작한다.
     ```jsx
     function donNothin() {
         return;
