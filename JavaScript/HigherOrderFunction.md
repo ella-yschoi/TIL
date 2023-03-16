@@ -68,19 +68,40 @@
 
     c. 함수를 인자로 받고, 함수를 리턴하는 경우
     ```jsx
-    function triply(target) {
-        return target * 3; 
+    function double(num) { 
+        return num * 2
     }
-
-    function doubleAdder(added, func) {
-        // 함수 doubleAdder는 고차함수, 인자 func은 doubleAdder의 콜백함수
-        const doubled = func(added); // 6
-        return function (x, y) {
-            return x - y + doubled;
+    // 함수 doubleAdder는 고차함수
+    // 함수 doubleAdder의 인자 func는 함수 doubleAdder의 콜백함수
+    // 함수 double은 함수 doubleAdder의 콜백으로 전달됨
+    function doubleAdder(added, func) { 
+        const doubled = func(added);
+        return function(num) {
+            return num + doubled;
         };
     }
-    // 함수 double은 함수 doubleAdder의 콜백으로 전달됨
-    const lalala = doubleAdder(2, triply);
-    lalala(2, 3); 
+    // doubleAdder(5, double)는 함수이므로 함수 호출 기호 () 사용 가능
+    doubleAdder(5, double)(3); // 13
+    
+    // doubleAdder가 리턴하는 함수를 변수에 저장 가능 (일급 객체)
+    const addTwice3 = doubleAdder(3, double);
+    addTwice(2); // 8
+    ```
+<br/><p>
 
-    doubleAdder(2, triply)(2, 3)
+## **3. 내장 고차 함수** ##
+- JavaScript에서는 기본적으로 내장된 고차함수가 여러 개 있는데, 그 중 배열 메소드들 중 일부가 대표적인 고차함수에 해당됨.
+- 배열의 filter 메소드는 모든 배열의 요소 중 특정 조건을 만족하는 요소를 '걸러내는' 메소드
+
+    ```jsx
+    let arr = [1, 2, 3, 4];
+    let output = arr.filter(짝수);
+    console.log(output); // [2, 4]
+
+    arr = ['hello', 'front', 'end', 'happy', 'coding'];
+    output = arr.filter(길이 5 이하) // *syntax error : 이 코드는 의미만 이해하기
+    console.log(output); // 'hello', 'front', 'end' 'happy'
+    ```
+
+- 여기서 걸러내는 기준이 되는 특정 조건은 filter 메소드의 전달인자로 전달되며, 형태는 함수 형태임.
+- 따라서 filter 메소드는 걸러내기 위한 조건을 명시한 함수를 전달인자로 받기에 고차함수.
