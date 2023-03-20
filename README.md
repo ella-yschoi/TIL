@@ -16,8 +16,10 @@
 <br/>
 
 - **[JavaScript](JavaScript)**
-  - [JavaScript Array](JavaScript/array.md)
-  - [JavaScript Object](JavaScript/object.md)
-  - [JavaScript Function](JavaScript/Function.md)
-  - [JavaScript DOM Tree](JavaScript/DOM_Tree.md)
-  - [JavaScript Data Types](JavaScript/DataTypes.md)
+  - [Array](JavaScript/array.md)
+  - [Object](JavaScript/object.md)
+  - [Function](JavaScript/Function.md)
+  - [DOM Tree](JavaScript/DOM_Tree.md)
+  - [Data Types](JavaScript/DataTypes.md)
+  - [Higher Order Function](JavaScript/HigherOrderFunction.md)
+  - [Object Oriented Programming](JavaScript/ObjectOrientedProgramming.md)
