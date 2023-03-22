@@ -7,7 +7,7 @@
 
 - 클래스를 만드는 문법: class 키워드
   
-  ```jsx
+  ```javascript
   class Car {
     constructor (brand, name, color) {
         // 인스턴스가 만들어질 때(=초기화될 때) 실행되는 코드: constructor(생성자)
@@ -17,7 +17,7 @@
   ```
 
 - 클래스의 인스턴스 만들기
-  ```jsx
+  ```javascript
   let avante = new Car('hyundai', 'avante', 'black');
   // 인스턴스를 만들 때는 new 키워드 사용
   // 각각의 인스턴스는 Car 라는 클래스의 고유한 속성과, 메소드를 가짐
@@ -31,7 +31,7 @@
 
 - 메소드 정의
   - 생성자 함수와 함께 class 키워드 안쪽에 묶어서 정의
-  ```jsx
+  ```javascript
   class Car {
     constructor(brand, name, color) {/* 생략 */}
     refuel() {
@@ -42,7 +42,7 @@
   ```
 
 - 인스턴스에서의 사용: 위에서 설정한 속성과 메소드를 인스턴스에서 사용하는 방법
-  ```jsx
+  ```javascript
   let avante = new Car('hyundai', 'avnante', 'black');
   avante.color; // 'black'
   avante.drive(); // 아반떼가 운전을 시작합니다
@@ -53,7 +53,7 @@
   ```
 
 - 정리
-  ```jsx
+  ```javascript
   // constructor(생성자) 함수
   function Car (brand, name, color) { // Car는 class
     this.brand = brand; // 여기서 avante === this
@@ -77,7 +77,7 @@
   
   a. 매소드 호출
 
-  ```jsx
+  ```javascript
   let counter1 = {
     value: 0;
     increase: function() {
@@ -100,7 +100,7 @@
 
   b. 클로저를 이용해 매번 새로운 객체 생성하기
   
-  ```jsx
+  ```javascript
   function makeCounter() {
     let value = 0;
     return {

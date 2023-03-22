@@ -8,7 +8,7 @@
 - function 키워드, 함수 이름, 괄호로 둘러싼 매개변수를 차례로 써주면 된다. 만약 매개변수가 여러 개라면 콤마로 구분해 준다.
 - 이어서 함수를 구성하는 코드의 모임인 함수의 본문(body)을 중괄호로 감싼다.
 
-  ```jsx
+  ```javascript
   function name(parameter1, parameter2) {
       // 함수 본문
   }
@@ -18,7 +18,7 @@
 ### **2. 지역 변수** <p>
 - 함수 내에서 선언한 변수인 지역 변수(local variable)는 함수 안에서만 접근할 수 있다.
   
-  ```jsx
+  ```javascript
   function showMessage() {
       let message = 'hello'; // 지역변수
       console.log(message);
@@ -32,7 +32,7 @@
 ### **3. 외부 변수** <p>
 - 함수 내부에서 함수 외부 변수인 외부 변수(outer variable)에 접근할 수 있음
   
-  ```jsx
+  ```javascript
   let userName = 'Ella';
 
   function showMessage() {
@@ -44,7 +44,7 @@
   ```
 
 - 외부 변수 접근 뿐만 아니라 수정도 가능
-  ```jsx
+  ```javascript
   let userName = 'Ella'
 
   function showMessage() {
@@ -61,7 +61,7 @@
 
 - 외부 변수는 지역 변수가 없는 경우에만 사용 가능. 함수 내부에 외부 변수와 동일한 이름을 가진 변수가 선언되었다면, 내부 변수는 외부 변수를 가림. 
   
-  ```jsx
+  ```javascript
   let userName = 'Ella';
 
   function showMessage() {
@@ -82,7 +82,7 @@
 - 매개변수(parameter, 인자)를 사용하면 임의의 데이터를 함수 안에 전달할 수 있음. 
 - 아래 코드에서 (*), (**) 로 표시한 줄에서 함수 호출 시, 함수에 전달된 인자는 지역변수 from과 text에 각각 복사됨. 이후 함수는 지역변수에 복사된 값을 사용
   
-  ```jsx
+  ```javascript
   function showMessage(from, text) { // 인자: from, text
     console.log(from + ': ' + text);
   } 
@@ -98,7 +98,7 @@
 ### **5. 기본값** <p>
 - 매개변수에 값을 전달하지 않아도 그 값이 undefined가 되지 않게 하려면 함수 선언시 = 를 사용해 기본값(default value)을 설정해 주면 된다.
   
-  ```jsx
+  ```javascript
   function showMessage(from, text = 'please enter your last name') {
     console.log(from + " " + text);
   }
@@ -108,7 +108,7 @@
 
 - 아래와 같이 복잡한 표현식도 기본값으로 설정 가능하다.
   
-  ```jsx
+  ```javascript
   function showMessage(from, text = anotherFunction()) {
     // anotherFunction()은 text값이 없을 때만 호출됨
     // anotherFunction()의 반환 값이 text의 값이 됨
@@ -120,7 +120,7 @@
 ### **6. 매개변수 기본값을 설정할 수 있는 또다른 방법** <p>
 - 가끔은 함수 선언 시가 아닌, **함수 선언 후**에 매개변수 기본값을 설정할 때가 있음. 이때는 함수 호출 시 **매개변수를 undefined와 비교**해 매개변수가 잘 전달되었는지를 확인
 
-  ```jsx
+  ```javascript
   function showMessage(text) {
       // ...
 
@@ -134,7 +134,7 @@
 
 - if문 대신 논리 연산자 || 사용 가능하며, 아래 예시는 매개변수 생략 혹은 빈 문자열이 넘어오면 변수에 '빈 문자열'이 할당되도록 했다.
   
-  ```jsx
+  ```javascript
   function showMessage(text) {
       text = text || '빈 문자열';
   }
@@ -146,7 +146,7 @@
 - 함수 호출 시, 함수를 호출한 자리에 특정 값을 반환하게 할 수 있다. 이때 이 특정 값을 반환 값(return value)라고 한다. 
 - 지시자 return은 함수 내 어디서든 사용 가능하며, 이 return을 만나면 함수 실행은 즉시 중단되고, 함수를 호출한 곳에 값을 반환한다. 아래 예시에서는 반환 값을 result에 할당했다.
 
-  ```jsx
+  ```javascript
   function sum(a, b) {
     return a + b;
   }
@@ -156,7 +156,7 @@
   ```
 
 - 아래와 같이 함수 하나에 여러 개의 return문이 올 수도 있다. 
-  ```jsx
+  ```javascript
     function checkAge(age) {
         if (age >= 18) {
             return true;
@@ -174,13 +174,13 @@
     }
     ```
 - cf. return문이 없는 함수는 undefined를 반환한다.
-    ```jsx
+    ```javascript
     function doNothing() { /*empty */ }
     console.log(doNothing() === undefined); // true
     ```
 
 - cf. return 지시자만 있는 경우도 undefined를 반환한다. return은 return undefined와 동일하게 동작한다.
-    ```jsx
+    ```javascript
     function donNothin() {
         return;
     }
@@ -188,7 +188,7 @@
     ```
 
 - caution) return과 값 사이에는 절대 새 줄을 넣어 코드를 작성하면 안된다. 자바스크립트는 return문 끝에 자동으로 세미콜론을 넣기 때문에 반환하고자 했던 표현식을 반환하지 못한다. 
-    ```jsx
+    ```javascript
     // 예를 들면 이런 코드를
     return;
     (1 + 2 + 3 + 4 + 5 + 6)
