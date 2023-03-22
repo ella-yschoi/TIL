@@ -3,7 +3,7 @@
 
     a. 인덱스 값 구하기
         
-     ```jsx
+     ```javascript
      let myNumber = [73, 98, 86, 61, 96];
      // myNumber 라는 배열의 3번째 인덱스 값은?
      myNumber[3]; // 61
@@ -15,7 +15,7 @@
         
     b. 배열 안에 있는 배열의 인덱스 값 구하기
         
-     ```jsx
+     ```javascript
      let myNumber = [[13, 30], [73, 8], [44, 17]];
      // myNumber 라는 배열의 1번째 인덱스 값은?
      myNumber[1]; // [73, 8]: [13] 아님 주의!
@@ -31,7 +31,7 @@
         
     c. 배열로 길이 알아내기
         
-     ```jsx
+     ```javascript
      let myNumber = [73, 98, 86, 61];
      // myNumber 배열의 길이는?
      myNumber.length; // 4: 온점을 활용해 변수가 가지고 있는 속성에 접근 가능
@@ -40,7 +40,7 @@
     d. 배열로 **맨 뒤에** 요소 추가/삭제 하기 <br/>
     : 온점(.)으로 관련된 명령(method: 흔히 말하는 메소드)도 실행 가능하며, 명령을 실행할 때는 함수를 실행하듯 괄호 열고 닫기 형태로 실행할 수 있다.
      
-     ```jsx
+     ```javascript
      ley myNumber = [73, 98, 86, 61];
      
      // myNumber 배열 끝에 96 이라는 값을 '추가'하려면
@@ -54,7 +54,7 @@
 2. ### **배열의 반복** <p>
     a. 반복문을 이용해 배열의 요소를 한번씩 출력하기
         
-     ```jsx
+     ```javascript
      let myNum = [73, 98, 86, 61];
      for (let n = 0; n < myNum.length; n++) { // for문을 모르신다면 복습하고 오시라..
      	console.log(myNum[n]);
@@ -64,7 +64,7 @@
     b. 배열의 모든 요소를 누적해서 더하기 <br/>
     : 이때, 처음에 0 할당을 하지 않으면 undefined가 나오고, 초기값을 넣지 않은 상태로 아래의 계산을 쭉 진행하면 NaN이 나올 것이다.
         
-     ```jsx
+     ```javascript
      let myNum = [10, 20, 40, 10];
      let sum = 0; 
      
@@ -84,7 +84,7 @@
 
     a. **Array.isArray** : 특정 값이 배열인지 아닌지 판별하기
         
-     ```jsx
+     ```javascript
      let words = ['프론트', '엔드', '개발자'];
      typeof words // "object" : 문자열로 이루어진 words 라는 배열의 type은 object임
      
@@ -99,7 +99,7 @@
         
     b. **push, pop** : 배열의 요소를 추가하거나, 삭제하기
         
-     ```jsx
+     ```javascript
      let arr = ['frontend', 'engineer'];
      console.table(arr) // Array(2)
      
@@ -120,7 +120,7 @@
         
     c. **indexOf** : 특정 값이 배열에 포함되어 있는지 확인하고, 인덱스 값을 알아내기
         
-     ```jsx
+     ```javascript
      let word = ['front', 'end', 'engineer'];
      
      word.indexOf('end') // 1 : 해당 elemment가 들어있는 인덱스 값
@@ -136,7 +136,7 @@
     d. **includes** : 특정 값이 배열에 포함되어 있는지 확인 하기 <br/>
         함수를 활용하거나, includes 메소드를 활용하는 두 가지 방법이 있다.
         
-     ```jsx
+     ```javascript
      // 1. 함수를 활용하는 방법
      // 특정한 배열에 찾고자하는 element 포함 여부를 false/true로 반환하는 함수
      // hasElement(배열, 찾으려는 엘리먼트) -> true or false
