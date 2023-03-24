@@ -21,3 +21,9 @@
 <br/><p>
 
  ## **3. Router** ##
+- Routing: 다른 주소에 따라 다른 뷰를 보여주는 과정, 즉 "경로에 따라 변경한다"는 의미
+- React에서는 이 라우팅을 위해 React Router 라는 '라이브러리'를 가장 많이 사용
+- 주요 컴포넌트
+  - router: <BrowserRouter>
+  - route matchers <Routes>, <Route>
+  - route changers <Link>
