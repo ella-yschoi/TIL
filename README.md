@@ -11,7 +11,7 @@
 
 ### Web
 - **[HTML](HTML)**
-  - [HTML Basics](HTML/Basics.md)
+  - [Basics](HTML/Basics.md)
 
 <br/>
 
