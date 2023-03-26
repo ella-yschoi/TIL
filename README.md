@@ -16,8 +16,8 @@
 <br/>
 
 - **[JavaScript](JavaScript)**
-  - [Array](JavaScript/array.md)
-  - [Object](JavaScript/object.md)
+  - [Array](JavaScript/Array.md)
+  - [Object](JavaScript/Object.md)
   - [Function](JavaScript/Function.md)
   - [DOM Tree](JavaScript/DOM_Tree.md)
   - [Data Types](JavaScript/DataTypes.md)
@@ -28,3 +28,5 @@
 
 - **[React](React)**
   - [Intro_JSX](React/Intro.md)
+  - [SPA](React/SPA.md)
+  - [State&Props](React/State%26Props.md)
