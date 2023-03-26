@@ -6,14 +6,14 @@
 - `<body>` = document.body
 - `<head>` = document.head
 
-<br/><p>
+<br/><br/>
 
 ### **1. childNodes, firstChild, lastChild로 자식 노드 탐색하기** <p>
 - 자식 노드 (child node, children): 바로 아래의 자식 요소이며, 부모 노드 바로 아래에서 중첩 관계를 만듦.
 - 후손 노드(descendants): 중첩 관계에 있는 모든 요소들이며, 자식 노드와 자식 노드의 모든 자식 노드 등이 포함.
 - firstChild와 lastChild 프로퍼티를 이용하면 첫 번째, 마지막 자식 노드에 빠르게 접근할 수 있기도 하다.
 
-<br/><p>
+<br/><br/>
 
 ### **2. DOM 컬렉션** <p>
 - contents
@@ -23,7 +23,7 @@
   
   ```
 
-<br/><p>
+<br/><br/>
 
 ### **3. Title** <p>
 - contents
@@ -32,7 +32,7 @@
   ```javascript
   
   ```
-<br/><p>
+<br/><br/>
 
 ### **4. Title** <p>
 - contents
@@ -42,4 +42,4 @@
   
   ```
 
-<br/><p>
+<br/><br/>

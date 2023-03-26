@@ -6,7 +6,7 @@
   - '외부'로부터 전달받은 값
   - ex) 이름, 성별
 
-<br/><p>
+<br/><br/>
 
 ## **1.Props의 특징** ##
 - (1) 컴포넌트의 속성 (property)
@@ -22,7 +22,7 @@
   - 만약 읽기 전용이 아니라면 props를 전달한 상위 컴포넌트 값에 영향을 미칠 수 있음
   - 또한 의도치 않은 side effect이나 React의 단방향/하향식 데이터 흐름 원칙에 위배됨
   
-<br/><p>
+<br/><br/>
 
 ## **2.How to use Props** ##
 - (1) 하위 컴포넌트에 전달하고자 하는 값과 속성을 '정의'한다.
@@ -94,7 +94,7 @@
   };
   ```
   
-<br/><p>
+<br/><br/>
 
 ## **3. State hook, useState** ##
 - useState 사용 방법과 작동 방식
@@ -134,7 +134,7 @@
   <span>{isChecked ? 'Checked!!' : 'Unchecked'} </span>
   ```
   
-<br/><p>
+<br/><br/>
 
 ## **4. State 갱신하기** ##
 - 갱신하려면 state 변수를 갱신할 수 있는 함수인 setIsChecked를 호출
@@ -159,13 +159,13 @@
     }
     ```
   
-<br/><p>
+<br/><br/>
 
 ## **5. 주의점** ##
 - React 컴포넌트는 state가 변경되면 새롭게 호출되고, 리렌더링 됨
 - React state는 상태 변경 함수 호출로 변경해야 함, 강제로 변경 X
   
-<br/><p>
+<br/><br/>
 
 ## **6. 이벤트 처리** ##
 - React에서 이벤트는 camelCase 사용
