@@ -27,6 +27,6 @@
 <br/>
 
 - **[React](React)**
-  - [Intro_JSX](React/Intro.md)
+  - [JSX](React/Intro.md)
   - [SPA](React/SPA.md)
   - [State&Props](React/State%26Props.md)
