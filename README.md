@@ -11,13 +11,8 @@
 <br/>
 
 ### Web
-- **[HTML](HTML)**
-  - [Basics](HTML/Basics.md)
-
-- **[React](React)**
-  - [JSX](React/Intro.md)
-  - [SPA](React/SPA.md)
-  - [State&Props](React/State%26Props.md)
+  - [HTML Basics](/Web/HTML%20Basics.md)
+  - [HTTP&Network](/Web/HTTP%26Network.md)
 
 <br/>
 
@@ -33,5 +28,8 @@
 
 <br/>
 
-### Network
-  - [HTTP&Network](/Network/HTTP%26Network.md)
+### Framework
+- **[React](React)**
+  - [JSX](React/Intro.md)
+  - [SPA](React/SPA.md)
+  - [State&Props](React/State%26Props.md)
