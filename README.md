@@ -7,14 +7,21 @@
 <br/>
 
 ## 🪵 Branches
+
 <br/>
 
 ### Web
 - **[HTML](HTML)**
   - [Basics](HTML/Basics.md)
 
+- **[React](React)**
+  - [JSX](React/Intro.md)
+  - [SPA](React/SPA.md)
+  - [State&Props](React/State%26Props.md)
+
 <br/>
 
+### Language
 - **[JavaScript](JavaScript)**
   - [Array](JavaScript/Array.md)
   - [Object](JavaScript/Object.md)
@@ -26,12 +33,5 @@
 
 <br/>
 
-- **[React](React)**
-  - [JSX](React/Intro.md)
-  - [SPA](React/SPA.md)
-  - [State&Props](React/State%26Props.md)
-
-<br/>
-
-- **[Network](Network)**
+### Network
   - [HTTP&Network](/Network/HTTP%26Network.md)
