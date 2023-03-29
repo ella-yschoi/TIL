@@ -13,6 +13,7 @@
 ### Web
   - [HTML Basics](/Web/HTML%20Basics.md)
   - [HTTP&Network](/Web/HTTP%26Network.md)
+  - [REST API](/Web/REST%20API.md)
 
 <br/>
 
