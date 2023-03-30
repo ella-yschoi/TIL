@@ -25,7 +25,7 @@
   - [DOM Tree](JavaScript/DOM_Tree.md)
   - [Data Types](JavaScript/DataTypes.md)
   - [Higher Order Function](JavaScript/HigherOrderFunction.md)
-  - [Object Oriented Programming](JavaScript/ObjectOrientedProgramming.md)
+  - [OOP](/JavaScript/OOP.md)
 
 <br/>
 
