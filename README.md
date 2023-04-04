@@ -14,6 +14,8 @@
   - [HTML Basics](/Web/HTML%20Basics.md)
   - [HTTP&Network](/Web/HTTP%26Network.md)
   - [REST API](/Web/REST%20API.md)
+  - [Client Ajax](/Web/Client%20Ajax.md)
+  - [Web Server](/Web/Web%20Server.md)
 
 <br/>
 
