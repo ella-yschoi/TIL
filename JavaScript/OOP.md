@@ -148,4 +148,25 @@
 
 ## **2.프로토타입**
 ### 1. 프로토타입과 클래스
+- JavaScript는 프로토타입 기반 언어로, 프로로타입은 원형 객체를 의미
+    ```javascript
+    class Human {
+      constructor(name, age) {
+        this.name = name;
+        this.age = age;
+      }
+
+      sleep() {
+        console.log(`${this.name}은 잠에 들었습니다`);
+      }
+    }
+
+    let kimcoding = new Human('김코딩', 30);
+
+    Human.prototype.constructor === Human; // true
+    Human.prototype === kimcoding.__proto__; // true
+    Human.prototype.sleep === kimcoding.sleep; // true
+    ```
+
 ### 2. 프로토타입 체인
+- 객체지향 프로그래밍의 특성 중, 상속을 구현할 때는 프로토타입 체인 사용
