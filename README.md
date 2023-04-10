@@ -28,6 +28,7 @@
   - [Data Types](JavaScript/DataTypes.md)
   - [Higher Order Function](JavaScript/HigherOrderFunction.md)
   - [OOP](/JavaScript/OOP.md)
+  - [Async](/JavaScript/Async.md)
 
 <br/>
 
