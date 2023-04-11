@@ -29,6 +29,7 @@
   - [Higher Order Function](JavaScript/HigherOrderFunction.md)
   - [OOP](/JavaScript/OOP.md)
   - [Async](/JavaScript/Async.md)
+  - [Recursion](/JavaScript/Recursion.md)
 
 <br/>
 
