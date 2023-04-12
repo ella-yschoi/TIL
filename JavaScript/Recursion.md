@@ -19,7 +19,6 @@
     return arr.shift() + arrSum(arr)
   }
   ```
-
 <br/><br/>
 
 ## **2. 재귀적 사고**
@@ -48,3 +47,41 @@ function recursive (input1, input2, ...) {
     return 더 작은 문제로 새롭게 정의된 문제
 }
 ```
+<br/><br/>
+
+## **3.JSON.stringigy**
+### 1. JSON의 탄생 배경
+- JSON은 JavaScript Object Notation로서, 서로 다른 프로그램 사이에서 데이터 교환을 위해 만들어진 객체 형태의 포맷
+- `JSON.stringify`: 객체 → JSON로 변환하는 메소드
+  ```javascript
+  // message 객체를 JSON으로 변환하는 메소드 JSON.stringify
+
+  let transferableMessage = JSON.stringify(message)
+  
+  console.log(transferableMessage)
+  // `{"sender":"Ella","receiver":"Chloe","message":"Hi, Chloe.","createdAt":"2023-04-12 10:10:10"}`
+
+  console.log(typeof(transferableMessage)) // `string`
+  ```
+- `JSON.parse`: JSON → 객체로 변환하는 메소드
+  ```javascript
+  // 직렬화된 JSON에 메소드 JSON.parse를 적용해 다시 객체로 변환: 역질렬화
+
+  let packet = `{"sender":"Ella","receiver":"Chloe","message":"Hi, Chloe.","createdAt":"2023-04-12 10:10:10"}`
+  let obj = JSON.parse(packet)
+
+  console.log(obj)
+  /*
+   * {
+   * sender: "Ella",
+   * receiver: "Chloe",
+   * message: "Hi, Chloe.",
+   * createdAt: "2023-04-12 10:10:10"
+   * }
+   */
+
+  console.log(typeof(obj)) // `object`
+  ```
+
+### 2. JSON 기본 규칙
+![json_rules.png](/Images/json_rules.png)
