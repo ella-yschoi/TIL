@@ -157,6 +157,36 @@
 <br/><br/>
 
 ## **3.fetch API**
-### 1. 
-- contents
-- contents
+### 1. fetch API
+- 특정 URL로부터 정보를 받아오는 역할
+- 이 과정이 비동기로 이루어지기에 경우에 따라 다소 시간이 걸림
+  ```javascript
+  let url = 
+    "https://koreanjson.com/posts/1";
+  fetch(url)
+    .then((response) => response.json())
+    .then((json) => console.log(json))
+    .catch((error) => console.log(error));
+  ```
+
+### 2. Axios
+- fetch API와 비슷한 역할을 하는 라이브러리이며
+- 브라우저, Node.js를 위한 Promise API를 활용하는 HTTP 비동기 통신 라이브러리
+- Fetch API보다 사용이 간편하면서 추가적인 기능들이 포함됨
+
+- Axios
+  - 써드파티 라이브러리로 설치가 필요함
+  - 자동으로 JSON 데이터 형식으로 변환됨
+- Fetch API
+  - 빌트인 API라 별도의 설치 필요 없음
+  - .json() 메소드 사용 필요
+
+- GET 요청
+  ```shell
+  axios.get("url"[,config])
+  ```
+
+- POST 요청
+  ```shell
+  axios.post("url"[, data[, config]])
+  ```
