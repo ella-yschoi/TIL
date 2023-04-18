@@ -1,4 +1,4 @@
-## **1.Custom Component**
+## **1. Custom Component**
 ### 1. Component Driven Development
 - CDD란?
   - 부품 단위로 UI 컴포넌트를 만들어 나가는 개발 진행 가능
@@ -140,12 +140,33 @@
 
 <br/><br/>
 
-## **3.**
-### 1. 
-- contents
-- contents
-
-## **4.**
-### 1. 
-- contents
-- contents
+## **3. useRef**
+### 1. DOM reference를 잘 활용할 수 있는 useRef
+- React는 예외적인 상황에서 `useRef`로 DOM 노드, 엘리먼트, React 엘리먼트로 주소값 참조 가능
+  ```javascript
+  const 주소값을_담는_그릇 = useRef(참조자료형)
+  // 이제 주소값을_담는_그릇 변수에 어떤 주소값이든 담을 수 있음
+  return (
+      <div>
+        <input ref={주소값을_담는_그릇} type="text" />
+          {/* React에서 사용 가능한 ref라는 속성에 주소값을_담는_그릇을 값으로 할당하면*/}
+          {/* 주소값을_담는_그릇 변수에는 input DOM 엘리먼트의 주소가 담김 */}
+          {/* 향후 다른 컴포넌트에서 input DOM 엘리먼트를 활용할 수 있음 */}
+      </div>);
+  ```
+- 아래의 제한된 상황에서 `useRef` 사용 가능하나, 
+- React의 특징이자 장점인 선언형 프로그래밍 원칙과 배치되기에 해당 상황 제외한 경우 `useRef` 남용은 부적절
+  ```javascript
+  function TextInputWithFocusButton() {
+    const inputEl = useRef(null);
+    const onButtonClick = () => {
+      inputEl.current.focus();
+    };
+    return (
+      <>
+        <input ref={inputEl} type="text" />
+        <button onClick = {onButtonClick}>Focus the input</button>
+      </>;
+    )
+  }
+  ```
