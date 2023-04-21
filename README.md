@@ -39,3 +39,4 @@
   - [SPA](React/SPA.md)
   - [State&Props](React/State%26Props.md)
   - [CDD](/React/CDD.md)
+  - [Redux](/React/Redux.md)
