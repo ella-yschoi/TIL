@@ -33,6 +33,36 @@
   - (3) Dispatch 함수는 Action 객체를 Reducer 함수로 전달함
   - (4) Reducer 함수는 Action 객체의 값을 확인하고, 그 값에 따라 전역 상태 저장소 Store의 상태를 변경함
   - (5) 상태가 변경되면, React는 화면을 다시 렌더링
+- Reducer
+  - Reducer는 Dispatch에게서 전달받은 Action 객체의 type 값에 따라서 상태를 변경시키는 함수
+    ```javascript
+    const count = 1
+
+    // Reducer를 생성할 때에는 초기 상태를 인자로 요구
+    const counterReducer = (state = count, action) => {
+
+    // Action 객체의 type 값에 따라 분기하는 switch 조건문
+    switch (action.type) {
+
+      //action === 'INCREASE'일 경우
+      case 'INCREASE':
+        return state + 1
+
+      // action === 'DECREASE'일 경우
+      case 'DECREASE':
+        return state - 1
+
+      // action === 'SET_NUMBER'일 경우
+      case 'SET_NUMBER':
+        return action.payload
+
+      // 해당 되는 경우가 없을 땐 기존 상태를 그대로 리턴
+      default:
+        return state;
+      }
+    }
+    // Reducer가 리턴하는 값이 새로운 상태가 됨
+    ```
 
 <br/><br/>
 
