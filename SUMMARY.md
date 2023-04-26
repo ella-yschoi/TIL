@@ -16,6 +16,8 @@
   - [REST API](/Web/REST%20API.md)
   - [Client Ajax](/Web/Client%20Ajax.md)
   - [Web Server](/Web/Web%20Server.md)
+  - [Web Standard](/Web/Web%20Standard.md)
+  - [SEO](/Web/SEO.md)
 
 <br/>
 
