@@ -19,7 +19,7 @@
     return arr.shift() + arrSum(arr)
   }
   ```
-<br/><br/>
+<br/>
 
 ## **2. 재귀적 사고**
 ### 1. 재귀 함수의 입력값과 출력값 정의하기
@@ -47,7 +47,7 @@ function recursive (input1, input2, ...) {
     return 더 작은 문제로 새롭게 정의된 문제
 }
 ```
-<br/><br/>
+<br/>
 
 ## **3.JSON.stringigy**
 ### 1. JSON의 탄생 배경

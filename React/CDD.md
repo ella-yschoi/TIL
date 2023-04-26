@@ -14,7 +14,7 @@
   - CSS in JS
     - Styled-Component: 상태를 가진 컴포넌트들로부터 UI를 완전히 분리해 사용할 수 있는 아주 단순한 패턴을 제공
 
-<br/><br/>
+<br/>
 
 ## **2.CDD 개발도구**
 ### 1. Styled Components
@@ -138,7 +138,7 @@
     }
     ```
 
-<br/><br/>
+<br/>
 
 ## **3. useRef**
 ### 1. DOM reference를 잘 활용할 수 있는 useRef

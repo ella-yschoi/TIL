@@ -18,7 +18,7 @@
    - 이때, 서버는 클라이언트에게 리소스를 잘 활용할 수 있도록 인터페이스를 제공하는데, 이를 API(Application Programming *Interface)라고 함 (*Interface: 의사소통이 가능하도록 만들어진 접점)
    - API 문서를 작성해야 클라이언트가 이를 활용할 수 있음
 
-<br/><br/>
+<br/>
 
  ## **2. 브라우저의 작동 원리 (보이지 않는 곳)** ##
 ### 1. URL과 URI
@@ -58,7 +58,7 @@
 ### 4. 크롬 브라우저와 에러 읽기
    ![chrome_error.png](../Images/chrome_error.png)
 
-<br/><br/>
+<br/>
 
  ## **3. HTTP** ##
 ### 1. HTTP Messages
@@ -94,7 +94,7 @@
    - Header
      - 요청 헤더와 동일한 구조
 
-<br/><br/>
+<br/>
 
  ## **4. 브라우저의 작동 원리 (보이는 곳)** ##
 ### 1. SPA를 만드는 기술: AJAX

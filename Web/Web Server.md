@@ -70,7 +70,7 @@
     res.json({ msg: "example" });
     });
    ```
-<br/><br/>
+<br/>
 
 ## **2. Refactor Express**
 ### 1. Express 시작하기

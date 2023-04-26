@@ -154,7 +154,7 @@
     }
     ```
 
-<br/><br/>
+<br/>
 
 ## **3.fetch API**
 ### 1. fetch API
