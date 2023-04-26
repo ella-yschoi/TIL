@@ -21,7 +21,7 @@
   - 컴포넌트와 관련있는 state는 가능하면 가까이 유지하기
   - 상태관리 라이브러리 사용: 전역으로 관리하는 저장소에서 직접 state 꺼내 쓸 수 있기에 Props Drilling 방지 효과적
 
-<br/><br/>
+<br/>
 
 ## **2. Redux**
 ### 1. Redux 기초
@@ -29,12 +29,12 @@
   - 컴포넌트와 상태를 분리하여 전역에서 상태 관리를 해줄 수 있게 해주는 상태 관리 라이브러리
 
 2. Redux가 상태를 관리하는 순서
-  - (1) 상태가 변경되어야 하는 이벤트가 발생하면, 변경될 상태에 대한 정보가 담긴 Action 객체가 생성
-  - (2) 이 Action 객체는 Dispatch 함수의 인자로 전달됨
-  - (3) Dispatch 함수는 Action 객체를 Reducer 함수로 전달함
-  - (4) Reducer 함수는 Action 객체의 값을 확인하고, 그 값에 따라 전역 상태 저장소 Store의 상태를 변경함
-  - (5) 상태가 변경되면, React는 화면을 다시 렌더링
-  - 즉, Redux에서는 Action → Dispatch → Reducer → Store 순서로 데이터가 단방향으로 흐름
+  <br/>(1) 상태가 변경되어야 하는 이벤트가 발생하면, 변경될 상태에 대한 정보가 담긴 Action 객체가 생성
+  <br/>(2) 이 Action 객체는 Dispatch 함수의 인자로 전달됨
+  <br/>(3) Dispatch 함수는 Action 객체를 Reducer 함수로 전달함
+  <br/>(4) Reducer 함수는 Action 객체의 값을 확인하고, 그 값에 따라 전역 상태 저장소 Store의 상태를 변경함
+  <br/>(5) 상태가 변경되면, React는 화면을 다시 렌더링
+  <br/> → 즉, Redux에서는 Action → Dispatch → Reducer → Store 순서로 데이터가 단방향으로 흐름
 
 ### 2. Redux 구조
 1. Store
@@ -128,7 +128,8 @@
   console.log(counter) // 1
   ```
 
-<br/><br/>
+<br/>
+
 ## **3. Redux의 세 가지 원칙**
 1. Single source of truth
   - 동일한 데이터는 항상 같은 곳에서 가지고 와야 함
