@@ -18,6 +18,7 @@
   - [Web Server](/Web/Web%20Server.md)
   - [Web Standard](/Web/Web%20Standard.md)
   - [SEO](/Web/SEO.md)
+  - [Web Accessibility](/Web/Web%20Accessibility.md)
 
 <br/>
 
