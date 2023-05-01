@@ -56,9 +56,3 @@
     - OSI 계층의 세션, 표현, 응용 계층에 해당
     - TCP/UDP 기반의 응용 프로그램 구현시 사용
     - e.g. FTP, HTTP, SSH
-
-<br/>
-
-### 3. H3
-- contents
-- contents
