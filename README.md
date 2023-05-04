@@ -6,6 +6,14 @@
 <br/>
 
 ## 🪵 Branches
+
+### [Authentication & Security](/Auth/)
+  - [Cookie](/Auth/Cookie.md)
+  - [Hashing](/Auth/Hashing.md)
+  - [OAuth](/Auth/OAuth.md)
+  - [Session](/Auth/Session.md)
+  - [Token](/Auth/Token.md)
+
 ### [Web](/Web/)
   - [Architecture](/Web/Architecture.md)
   - [Browser](/Web/Browser.md)
@@ -16,6 +24,7 @@
   - [HTTP](/Web/HTTP.md)
   - [Middleware](/Web/Middleware.md)
   - [Network Layer Model](/Web/Network%20Layer%20Model.md)
+  - [OAuth](/Web/OAuth.md)
   - [REST API](/Web/REST%20API.md)
   - [SEO](/Web/SEO.md)
   - [Session](/Web/Session.md)
@@ -27,8 +36,7 @@
 
 <br/>
 
-### Language
-- **[JavaScript](JavaScript)**
+### [JavaScript](JavaScript)
   - [Array](JavaScript/Array.md)
   - [Async](/JavaScript/Async.md)
   - [Copy](/JavaScript/Copy.md)
@@ -42,8 +50,7 @@
 
 <br/>
 
-### Library
-- **[React](React)**
+### [React](React)
   - [CDD](/React/CDD.md)
   - [JSX](/React/JSX.md)
   - [Redux](/React/Redux.md)
