@@ -7,6 +7,14 @@
 
 ## 🪵 Branches
 
+### [Algorithm](/Algorithm/)
+  - [Graph](/Algorithm/Graph.md)
+  - [Queue](/Algorithm/Queue.md)
+  - [Stack](/Algorithm//Stack.md)
+  - [Tree](/Algorithm/Tree.md)
+
+<br/>
+
 ### [Authentication & Security](/Auth/)
   - [Cookie](/Auth/Cookie.md)
   - [Hashing](/Auth/Hashing.md)
