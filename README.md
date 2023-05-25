@@ -27,15 +27,21 @@
 
 <br/>
 
+### [Design](Design)
+
+- [Design System](/Design/Design_System.md)
+
+<br/>
+
 ### [JavaScript](JavaScript)
 
 - [Array](/JavaScript/Array.md)
 - [Async](/JavaScript/Async.md)
 - [Copy](/JavaScript/Copy.md)
-- [Data Types](JavaScript/DataTypes.md)
+- [Data Types](JavaScript/Data_Types.md)
 - [DOM Tree](JavaScript/DOM_Tree.md)
 - [Function](JavaScript/Function.md)
-- [Higher Order Function](JavaScript/HigherOrderFunction.md)
+- [Higher Order Function](JavaScript/Higher_Order_Function.md)
 - [Object](JavaScript/Object.md)
 - [OOP](/JavaScript/OOP.md)
 - [Recursion](/JavaScript/Recursion.md)
@@ -45,11 +51,12 @@
 ### [React](React)
 
 - [CDD](/React/CDD.md)
+- [Diffing Algorithm](/React/Diffing_Algorithm.md)
 - [JSX](/React/JSX.md)
 - [Redux](/React/Redux.md)
 - [SPA](React/SPA.md)
-- [State&Props](React/State%26Props.md)
-- [VirtualDOM](React/VirtualDOM.md)
+- [State&Props](React/State_Props.md)
+- [Virtual DOM](React/Virtual_DOM.md)
 
 <br/>
 
@@ -57,19 +64,15 @@
 
 - [Architecture](/Web/Architecture.md)
 - [Browser](/Web/Browser.md)
-- [Client Ajax](/Web/Client%20Ajax.md)
-- [Cookie](/Web/Cookie.md)
+- [Client Ajax](/Web/Client_Ajax.md)
 - [Express](/Web/Express.md)
-- [HTML Basics](/Web/HTML%20Basics.md)
+- [HTML Basics](/Web/HTML_Basics.md)
 - [HTTP](/Web/HTTP.md)
 - [Middleware](/Web/Middleware.md)
-- [Network Layer Model](/Web/Network%20Layer%20Model.md)
-- [OAuth](/Web/OAuth.md)
-- [REST API](/Web/REST%20API.md)
+- [Network Layer Model](/Web/Network_Layer_Model.md)
+- [REST API](/Web/REST_API.md)
 - [SEO](/Web/SEO.md)
-- [Session](/Web/Session.md)
-- [SOP&CORS](/Web/SOP%26CORS.md)
-- [TCP&IP](/Web/TCP%26IP.md)
-- [Token](/Web/Token.md)
-- [Web Accessibility](/Web/Web%20Accessibility.md)
-- [Web Standard](/Web/Web%20Standard.md)
+- [SOP&CORS](/Web/SOP_CORS.md)
+- [TCP&IP](/Web/TCP_IP.md)
+- [Web Accessibility](/Web/Web_Accessibility.md)
+- [Web Standard](/Web/Web_Standard.md)

@@ -1,7 +1,6 @@
 .DS_Store
 *_x.md
-Template1.md
-Template2.md
+Template.md
 node_modules
 .eslintrc.json
 package-lock.json
