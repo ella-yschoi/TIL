@@ -1,5 +1,7 @@
-## **1. Custom Component**
-### 1. Component Driven Development
+# Component Driven Development
+
+## 1. Component Driven Development 란?
+
 - CDD란?
   - 부품 단위로 UI 컴포넌트를 만들어 나가는 개발 진행 가능
   - 컴포넌트 단위로 만들어 페이지를 조립하는 개발 방식인 상향식 개발에 가까움
@@ -17,10 +19,13 @@
 <br/>
 
 ## **2.CDD 개발도구**
-### 1. Styled Components
+
+### Styled Components
+
 - Styled Components 설치하기
   - CSS를 컴포넌트화 하는 라이브러리로, React 환경에서 사용 가능하며, CSS를 Javascript안에 넣어줄 수 있음
   - package.json에 코드 추가
+
       ```javascript
       {
       "resolutions": {
@@ -28,13 +33,16 @@
           }
       }
       ```
+
   - Styled Components를 사용할 파일로 불러와주기
+
       ```javascript
       import styled from "styled-components"
       ```
 
 - Styled Components 문법
   - 컴포넌트 만들기
+
     ```javascript
     // 따옴표가 아닌 백 틱(`)을 사용
       import styled from "styled-components";
@@ -49,9 +57,10 @@
         // React 컴포넌트를 사용하듯 사용
         return <BlueButton>Blue Button</BlueButton>;
       }
-    ``` 
+    ```
 
   - 컴포넌트를 재활용해 새로운 컴포넌트 만들기
+
     ```javascript
     import styled from "styled-components";
 
@@ -85,6 +94,7 @@
     ```
 
   - Props 활용하기
+
     ```javascript
     import styled from "styled-components";
     import GlobalStyle from "./GlobalStyle";
@@ -108,6 +118,7 @@
     ```
 
   - Props 값으로 렌더링하기
+
     ```javascript
     import styled from "styled-components";
     import GlobalStyle from "./GlobalStyle";
@@ -141,8 +152,11 @@
 <br/>
 
 ## **3. useRef**
-### 1. DOM reference를 잘 활용할 수 있는 useRef
+
+### DOM reference를 잘 활용할 수 있는 useRef
+
 - React는 예외적인 상황에서 `useRef`로 DOM 노드, 엘리먼트, React 엘리먼트로 주소값 참조 가능
+  
   ```javascript
   const 주소값을_담는_그릇 = useRef(참조자료형)
   // 이제 주소값을_담는_그릇 변수에 어떤 주소값이든 담을 수 있음
@@ -154,8 +168,10 @@
           {/* 향후 다른 컴포넌트에서 input DOM 엘리먼트를 활용할 수 있음 */}
       </div>);
   ```
-- 아래의 제한된 상황에서 `useRef` 사용 가능하나, 
+
+- 아래의 제한된 상황에서 `useRef` 사용 가능하나,
 - React의 특징이자 장점인 선언형 프로그래밍 원칙과 배치되기에 해당 상황 제외한 경우 `useRef` 남용은 부적절
+
   ```javascript
   function TextInputWithFocusButton() {
     const inputEl = useRef(null);

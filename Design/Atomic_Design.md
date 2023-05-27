@@ -1,4 +1,4 @@
-# **Atomic Design**
+# Atomic Design
 
 ## 1. Atomic Design 등장 배경
 

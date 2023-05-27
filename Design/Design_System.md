@@ -1,4 +1,4 @@
-# **Design System**
+# Design System
 
 ## 1. 디자인 시스템이란?
 
