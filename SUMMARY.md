@@ -58,7 +58,7 @@
 - [Redux](/React/Redux.md)
 - [SPA](React/SPA.md)
 - [State&Props](React/State_Props.md)
-- [Usememo](/React/Usememo.md)
+- [UseMemo](/React/UseMemo.md)
 - [Virtual DOM](React/Virtual_DOM.md)
 
 <br/>
