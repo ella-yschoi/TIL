@@ -53,6 +53,7 @@
 
 - [CDD](/React/CDD.md)
 - [Diffing Algorithm](/React/Diffing_Algorithm.md)
+- [Hook](/React/Hook.md)
 - [JSX](/React/JSX.md)
 - [Redux](/React/Redux.md)
 - [SPA](React/SPA.md)
