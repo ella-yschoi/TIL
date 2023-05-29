@@ -29,7 +29,7 @@
 
 ### [Design](Design)
 
-- [Atomic_Design](/Design/Atomic_Design.md)
+- [Atomic Design](/Design/Atomic_Design.md)
 - [Design System](/Design/Design_System.md)
 
 <br/>
@@ -58,6 +58,7 @@
 - [Redux](/React/Redux.md)
 - [SPA](React/SPA.md)
 - [State&Props](React/State_Props.md)
+- [Usememo](/React/Usememo.md)
 - [Virtual DOM](React/Virtual_DOM.md)
 
 <br/>
