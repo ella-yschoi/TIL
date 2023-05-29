@@ -1,4 +1,4 @@
-# **OAuth**
+# OAuth
 
 ## 1. OAuth란?
 

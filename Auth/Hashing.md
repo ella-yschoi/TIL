@@ -1,4 +1,4 @@
-# **Hashing**
+# Hashing
 
 ## 1. Hashing 이란?
 
