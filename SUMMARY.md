@@ -63,6 +63,13 @@
 
 <br/>
 
+### [TypeScript](/TypeScript/)
+
+- [Basics](/TypeScript/Basics.md)
+- [Settings](/TypeScript/Settings.md)
+
+<br/>
+
 ### [Web](/Web/)
 
 - [Architecture](/Web/Architecture.md)
