@@ -1,4 +1,4 @@
-# Type
+# TypeScript Type
 
 ## 1. Boolean(불리언) 타입
 
