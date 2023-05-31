@@ -68,8 +68,11 @@
 ### [TypeScript](/TypeScript/)
 
 - [Basics](/TypeScript/Basics.md)
+- [Enum](/TypeScript/Enum.md)
+- [Function](/TypeScript/Function.md)
 - [Settings](/TypeScript/Settings.md)
 - [Type](/TypeScript/Type.md)
+- [Union&Intersection](/TypeScript/Union_Intersection.md)
 
 <br/>
 
