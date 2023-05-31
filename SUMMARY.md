@@ -52,12 +52,14 @@
 ### [React](React)
 
 - [CDD](/React/CDD.md)
+- [Custom Hooks](/React/Custom_Hooks.md)
 - [Diffing Algorithm](/React/Diffing_Algorithm.md)
 - [Hook](/React/Hook.md)
 - [JSX](/React/JSX.md)
 - [Redux](/React/Redux.md)
 - [SPA](React/SPA.md)
 - [State&Props](React/State_Props.md)
+- [UseCallback](/React/UseCallback.md)
 - [UseMemo](/React/UseMemo.md)
 - [Virtual DOM](React/Virtual_DOM.md)
 
@@ -67,6 +69,7 @@
 
 - [Basics](/TypeScript/Basics.md)
 - [Settings](/TypeScript/Settings.md)
+- [Type](/TypeScript/Type.md)
 
 <br/>
 
