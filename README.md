@@ -55,6 +55,7 @@
 - [Higher Order Function](JavaScript/Higher_Order_Function.md)
 - [Object](JavaScript/Object.md)
 - [OOP](/JavaScript/OOP.md)
+- [Promise](/JavaScript/Promise.md)
 - [Recursion](/JavaScript/Recursion.md)
 
 <br/>
