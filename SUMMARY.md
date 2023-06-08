@@ -37,14 +37,20 @@
 
 <br/>
 
-### [Design](Design)
+### [Design](/Design/)
 
 - [Atomic Design](/Design/Atomic_Design.md)
 - [Design System](/Design/Design_System.md)
 
 <br/>
 
-### [JavaScript](JavaScript)
+### [Infra](/Infra/)
+
+- [Proxy](/Infra/Proxy.md)
+
+<br/>
+
+### [JavaScript](/JavaScript/)
 
 - [Array](/JavaScript/Array.md)
 - [Async](/JavaScript/Async.md)
@@ -60,7 +66,7 @@
 
 <br/>
 
-### [React](React)
+### [React](/React/)
 
 - [CDD](/React/CDD.md)
 - [Custom Hooks](/React/Custom_Hooks.md)
