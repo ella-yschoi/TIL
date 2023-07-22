@@ -52,6 +52,8 @@
 - [Install Git](/Git/01_Install.md)
 - [Add&Commit](/Git/02_Add_Commit.md)
 - [Branch](/Git/03_Branch.md)
+- [Merge&Rebase](/Git/04_Merge_Rebase.md)
+- [Restore&Revert&Reset](/Git/05_Restore_Revert_Reset.md)
 
 ### [Infra](/Infra/)
 
