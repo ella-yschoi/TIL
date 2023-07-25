@@ -54,5 +54,5 @@ git reset --hard 커밋아이디
 - 다만, **협업 프로젝트 시에는 사용을 매우 주의**해야 함
 - untracked 파일들은 (git add 안 해놓은 파일들은) 사라지지 않고 유지됨
 - git clean 명령어는 untracked 파일들도 다 지울 수 있음 (더 위험..)
-- reset하면서 파일을 아예 지워버리는게 아니라, 검토하고 다시 commit 하고 싶다면 `--hard`가 아닌, `--soft`나 `--mixed`을 사용
-- 물론 `git reset` 입력 시, `--mixed` 옵션이 자동으로 발동하긴 함
+- reset하면서 파일을 아예 지워버리는게 아니라, (staging을 취소하면서) 검토하고 다시 commit 하고 싶다면 `--hard`가 아닌, `--soft`나 `--mixed`을 사용
+- 물론 `git reset` 입력 시, `--mixed` 옵션이 기본으로 작동되며, 인덱스(Staging Area)만 초기화됨.
