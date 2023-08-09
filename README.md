@@ -90,7 +90,7 @@
 - [SPA](React/SPA.md)
 - [State&Props](React/State_Props.md)
 - [UseCallback](/React/UseCallback.md)
-- [UseMemo](/React/UseMemo.md)
+- [UseMemo](/React/Usememo.md)
 - [Virtual DOM](React/Virtual_DOM.md)
 
 <br/>
