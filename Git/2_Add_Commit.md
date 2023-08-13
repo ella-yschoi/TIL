@@ -61,3 +61,22 @@
   # 입력 후 Vim 에디터가 켜지면 j, k 키로 위아래 스크롤 가능, q 키로 종료 가능
   git log --graph
   ```
+
+- commit 취소하기
+
+  ```shell
+    # [방법 1] commit을 취소하고 해당 파일들은 staged 상태로 working directory에 보존
+    git reset --soft HEAD^
+
+    # [방법 2] commit을 취소하고 해당 파일들은 unstaged 상태로 워킹 디렉터리에 보존
+    # 기본 옵션
+    git reset --mixed HEAD^
+    # 위와 동일
+    git reset HEAD^
+    # 마지막 2개의 commit을 취소
+    git reset HEAD~2
+
+    # [방법 3] commit을 취소하고 해당 파일들은 unstaged 상태로 워킹 디렉터리에서 삭제
+    git reset --hard HEAD^
+    git-cancel.html
+  ```
