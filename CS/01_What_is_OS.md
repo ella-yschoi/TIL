@@ -1,4 +1,6 @@
-# What is OS?
+# 01. 운영체제 개요
+
+> Reference: [이화여자대학교 운영체제 강의 - 반효경](http://www.kocw.net/home/cview.do?cid=4b9cd4c7178db077)
 
 ## 운영체제(Operating System, OS)란?
 
