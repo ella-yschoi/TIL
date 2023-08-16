@@ -31,7 +31,7 @@
 
 ### [CS](/CS/)
 
-- [What is OS](/CS/01_what_is_OS.md)
+- [What is OS](/CS/01_What_is_OS.md)
 - [OS Kernel](/CS/OS_Kernel.md)
 - [Unix vs. Linux vs. macOS vs. Windows](/CS/Unix_Linux_macOS_Windows.md)
 
