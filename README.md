@@ -31,7 +31,9 @@
 
 ### [CS](/CS/)
 
-- [What is OS](/CS/1_what_is_OS.md)
+- [What is OS](/CS/01_what_is_OS.md)
+- [OS Kernel](/CS/OS_Kernel.md)
+- [Unix vs. Linux vs. macOS vs. Windows](/CS/Unix_Linux_macOS_Windows.md)
 
 ### [Design](/Design/)
 
@@ -44,9 +46,9 @@
 
 ### [Git](/Git/)
 
-- [Install Git](/Git/1_Install.md)
-- [Add&Commit](/Git/2_Add_Commit.md)
-- [Branch](/Git/3_Branch.md)
+- [Install Git](/Git/01_Install.md)
+- [Add&Commit](/Git/02_Add_Commit.md)
+- [Branch](/Git/03_Branch.md)
 
 ### [Infra](/Infra/)
 
