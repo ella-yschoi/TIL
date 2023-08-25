@@ -144,3 +144,114 @@
 ## 운영체제의 구조
 
 ![OS_structure](/Images/OS_structure.png)
+
+## 컴퓨터 시스템의 구조
+
+## Mode bit
+
+### Mode bit이란?
+
+- 사용자 프로그램의 잘못된 수행으로 다른 프로그램 및 **운영체제에 피해가 가지 않도록 하기 위한 보호장치**
+
+### Mode bit의 필요성
+
+- CPU가 사용자 프로그램에 넘어가면 **운영체제는 제어할 수 없기 때문**
+- CPU에서 기계어를 실행할 때 운영체제 or 사용자 프로그램이 실행하는지 **구분하는 존재**가 필요함
+- CPU가 제어 가능한 위치가 아닐 때 (다른 일을 하고 있을 때) mode bit이라는 것을 두어서 권한 제어를 하는 것
+- 즉, Mode bit은 **안전한 기계어만 실행**할 수 있게끔 하여 **시스템을 보호**하는 역할
+
+### Mode bit의 종류
+
+Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
+
+- 1 (사용자 모드)
+    - 사용자 프로그램 수행
+    - 운영체제가 CPU로 무슨 일이든 할 수 있음
+- 0 (모니터 모드)
+    - OS 코드 수행
+    - 운영체제가 사용자 프로그램에게 넘겨줄 때
+    - 커널 모드, 시스템 모드 라고 부르기도 함
+
+### Mode bit의 원리
+
+- 보안을 해칠 수 있는 중요한 명령어는 **0 (모니터 모드)에서만 수행 가능한 ‘특권 명령’**으로 규정
+- Interrupt나 Exception 발생 시, 하드웨어가 **Mode bit을 0으로** 세팅
+- 사용자 프로그램에게 CPU를 넘기기 전에 **Mode bit을 1로** 세팅
+
+### Mode bit 전환 방식
+
+- Exception
+    - 권한이 없는 기계어 실행 시, **Mode bit이 0으로 바뀌면서** CPU 사용권이 운영체제에 넘어감
+    - 이는 권한이 없는 작업을 실행하려고 할 때 발생하는 Exception을 뜻함
+- Interrupt
+    - Interrupt line에서 매순간 기계어를 읽다가, 다음 기계어를 읽을 때 line에서 I/O 장치들이 준 다른 요청이 들어온건 없는지 체크
+    - 이는 CPU Interrupt를 의미 (from Disk controller, I/O controller, etc.)
+
+## Registers
+
+### Registers란?
+
+- 연산의 input과 output을 저장하기 위한 빠르고 작은 크기의 것으로, CPU에 붙어 있음
+
+### Registers의 종류
+
+- PC (Program Counter) Register
+    - 다음번에 실행할 기계어의 memory의 주소를 가지고 있음 → 주소를 가리키고 있다는 뜻
+    - CPU는 PC Registers가 가리키고 있는 memory 주소의 기계어를 실행
+    - 실행이 끝나면 그 다음 위치의 기계어를 실행
+    - CPU Interrupt가 발생하면 PC Registers가 바라보고 있는 memory는 OS가 됨
+
+## Timer
+
+### Timer란?
+
+- 프로그램으로부터 CPU 사용권을 빼앗아 오는 것
+
+### Timer의 역할
+
+- 일정 시간이 지나면 Interrupt 를 발생 → **CPU의 사용권을 뺏어오는 역할**
+    - CPU 사용권을 뺏어오는 작업은 OS가 혼자 할 수 없음
+    - 정해진 시간이 흐른 뒤 **OS에게 제어권이 넘어가도록 Interrupt를 발생**
+    - **CPU의 독점을 막기 위한 hardware**가 필요 → 바로 Timer
+- Time sharing을 구현하기 위해 널리 이용되며, 시간 계산 목적으로도 사용됨
+
+### Timer의 동작 방식
+
+- Timer는 매 clock tick 마다 1씩 감소
+- Timer 값이 0이 되면 Timer Interrupt가 발생
+- 운영체제가 사용자 프로그램에게 넘길 때 그냥 넘기는 것이 아닌, Timer에 시간을 세팅하고 넘겨줌
+- 따라서 무한루프를 돌면서 CPU를 계속 쓰고 싶더라도 Timer가 CPU에게 interrupt를 걸기 때문에 CPU의 제어권이 운영체제에게 넘어옴 → 운영체제가 다른 프로그램에게 CPU 사용권을 넘겨주는 방식
+
+## Interrupt
+
+- timer가 interrupt를 걸었다면, 운영체제와 협력해서 CPU의 독점권을 막기 위함
+- CPU가 기계어를 실행하다가 파일을 읽어올 때, 느린 I/O장치에서 가져오려고 할 때 CPU가 직접 접근을 못하니까 파일 읽어올 때는 기계어를 통해 읽지 못하니 CPU는 디스크를 전담하는 컨트롤러에게 별도의 기계어(특권 명령인 기계어)로 부탁
+- 모든 I/O 장치를 접근하는 (즉, CPU가 I/O를 해달라고 하는) 명령어는 전부 특권 명령어로 묶여 있다. 이는 운영체제에게 해달라고 요청 → 시스템 콜
+
+### Interrupt란?
+
+- Interrupt 당한 시점의 Registers와 Program Counter를 save한 후, CPU의 제어를 Interrupt 처리 루틴에 넘김
+
+### Interrupt의 넓은 의미
+
+- Interrupt (하드웨어 Interrupt) : 하드웨어가 발생시킨 Interrupt
+- Trap (소프트웨어 Interrupt)
+    - Exception: 프로그램이 오류를 범한 경우
+    - System Call: 프로그램이 커널 함수를 호출하는 경우
+
+## System Call
+
+- 사용자 프로그램이 운영체제의 서비스를 받기 위해 커널 함수를 호출하는 것
+- 사용자 프로그램이 실행되다가 → 디스크에서 읽어와야 겠다 → 내가 CPU 기계어로는 특권명령을 못하기 때문에 → 스스로 운영체제를 불러서 대신 해주세요 요청 → 시스템 콜 → 사용자 프로그램 위치에서 기계어 실행되다가 → 운영체제로 기계어 실행되는 점프 : 프로그램의 가상메모리를 가로질러서 점프함
+- 이 프로그램이 스스로 interrupt를 검 → system call
+- 직접 program counter를 넘길 수 없기 때문에 자신의 기계어로 interrupt line을 형성 → 운영체제에게 CPU 사용권을 넘김
+
+## Device Controller
+
+- Device Controller: 하드웨어
+- CPU: 하드웨어
+- I/O 장치의 펌웨어라는 미리 코딩된 프로그램이 들어 있기에 동작이 됨
+- Device Driver: 소프트웨어
+    - OS 코드 중 각 장치별 처리 루틴 (코드는 아니고 운영체제 안의 코드중에서 CPU가 부탁하는 기계어임)
+    - Device Controller가 수행하는 코드가 아닌, CPU가 수행하는 코드임
+    - Device Driver에서 수행되는 코드는 펌웨어라고 함
