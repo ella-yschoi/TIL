@@ -166,34 +166,37 @@
 
 Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 
+#### 0 (모니터 모드, 커널 모드, 시스템 모드)
+
+- 운영체제가 CPU를 실행 중일 때 (OS 코드 수행 중) **무슨 일이든** 해도 되는 상황
+- 단, 운영체제가 사용자 프로그램에게 넘겨줄 때는 1로 바꿔서 넘겨줌
+- 특권 명령(위험한 명령어)는 0일 때만, 운영체제만 실행 가능
+
 #### 1 (사용자 모드)
 
 - 사용자 프로그램 수행
-- 운영체제가 CPU로 무슨 일이든 할 수 있음
-
-#### 0 (모니터 모드)
-
-- OS 코드 수행
-- 운영체제가 사용자 프로그램에게 넘겨줄 때
-- 커널 모드, 시스템 모드 라고 부르기도 함
+- 운영체제가 CPU로 **안전한 기계어만** 실행할 수 있도록 함
 
 ### Mode bit의 원리
 
-- 보안을 해칠 수 있는 중요한 명령어는 **0 (모니터 모드)에서만 수행 가능한 특권 명령**으로 규정
-- Interrupt나 Exception 발생 시, 하드웨어가 **Mode bit을 0으로** 세팅
-- 사용자 프로그램에게 CPU를 넘기기 전에 **Mode bit을 1로** 세팅
+- 보안을 해칠 수 있는 중요한 명령어는 **모니터 모드(0)에서만 수행 가능한 특권 명령. 즉, 위험한 명령어**으로 규정
+- 반대로, 사용자 프로그램에 CPU 사용 중, 특권 명령임에도 사용자 모드(1)인 상황이라면, 권한에도 없는 기계어를 실행한다고 확인 후, 자동으로 CPU가 운영체제에게 넘어감 (→ Interrupt와 Exception이라고 함)
+- Exception 상황 발생 시, 다시 모니터 모드(0)로 전환되어 자동으로 CPU가 운영체제에게 넘어감
+- 사용자 프로그램에게 CPU를 넘기기 전에는 모니터 모드(0)로 전환되어야 하고, 운영체제가 실행되는 동안 Mode bit은 1로 설정됨
 
 ### Mode bit 전환 방식
 
 ![mode_bit](/Images/mode_bit.png)
 
 #### Exception
+
 - 권한이 없는 기계어 실행 시, **Mode bit이 0으로 바뀌면서** CPU 사용권이 운영체제에 넘어감
 - 이는 권한이 없는 작업을 실행하려고 할 때 발생하는 Exception을 뜻함
 
-#### Interrupt
+#### Interrupt의 개요
 
-- Interrupt line에서 매순간 기계어를 읽다가, 다음 기계어를 읽을 때 line에서 I/O 장치들이 준 다른 요청이 들어온건 없는지 체크
+- Interrupt line에서 매 순간 기계어를 읽다가, 다음 기계어를 읽기에 앞서, line에서 I/O 장치들이 준 Interrupt가 들어온건 없는지 체크
+- 만약 Interrupt가 들어왔다면 CPU는 자동으로 운영체제에게 넘어감 → Mode bit이 0으로 바뀜 → 운영체제가 CPU를 잡아서 그 Interrupt에 대응함
 - 이는 CPU Interrupt를 의미 (from Disk controller, I/O controller, etc.)
 
 ## Registers
@@ -224,7 +227,7 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - 일정 시간이 지나면 Interrupt 를 발생 → **CPU의 사용권을 뺏어오는 역할**
   - CPU 사용권을 뺏어오는 작업은 OS가 혼자 할 수 없음
   - 정해진 시간이 흐른 뒤 **OS에게 제어권이 넘어가도록 Interrupt를 발생**
-  - **CPU의 독점을 막기 위한 hardware**가 필요 → 바로 Timer
+  - **CPU의 독점을 막기 위한 부가적인 hardware**가 필요 → 바로 Timer
 - Time sharing을 구현하기 위해 널리 이용되며, 시간 계산 목적으로도 사용됨
 
 ### Timer의 동작 방식
@@ -234,27 +237,29 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - 운영체제가 사용자 프로그램에게 넘길 때 그냥 넘기는 것이 아닌, Timer에 시간을 세팅하고 넘겨줌
 - 따라서 무한루프를 돌면서 CPU를 계속 쓰고 싶더라도 Timer가 CPU에게 interrupt를 걸기 때문에 CPU의 제어권이 운영체제에게 넘어옴 → 운영체제가 다른 프로그램에게 CPU 사용권을 넘겨주는 방식
 
-## Interrupt
+## Interrupt의 추가 설명
 
 ![interrupt_line](/Images/interrupt_line.png)
 
 ### Interrupt란?
 
 - Interrupt 당한 시점의 Registers와 Program Counter를 save한 후, CPU의 제어를 Interrupt 처리 루틴에 넘기는 것
+- 즉, CPU에 붙어 있는 Interrupt line이 세팅되어 다음 기계어를 실행하기 전에, CPU 제어권을 자동으로 운영체제에게 넘어가게 하는 것
 
-### Interrupt의 넓은 의미
+### Interrupt의 두 가지 의미
 
-- Interrupt (하드웨어 Interrupt)
-  - 하드웨어가 발생시킨 Interrupt
-- Trap (소프트웨어 Interrupt)
-  - Exception: 프로그램이 오류를 범한 경우
-  - System Call: 프로그램이 커널 함수를 호출하는 경우
+- Interrupt (Hardware Interrupt)
+  - 하드웨어가 발생시킨 Interrupt로, 더 일반적인 의미의 Interrupt
+  - e.g. Timer, Disc Controller 등
+- Trap (Software Interrupt)
+  - 개별 프로그램이 운영체제에게 CPU를 넘기기 위해 소프트웨어가 발생시키는 Interrupt
+  - e.g. Exception, System Call
 
 ### Interrupt 관련 용어
 
 - Interrupt Vector
   - 해당 Interrupt 처리 루틴 주소를 가지고 있음
-- Interrupt 처리 루틴 ( = Interrupt Service Routine, Interrupt Handler)
+- Interrupt 처리 루틴 (=Interrupt Service Routine, Interrupt Handler)
   - 해당 Interrupt를 처리하는 Kernel 함수
 
 ## System Call
@@ -264,14 +269,15 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 ### System Call이란?
 
 - 사용자 프로그램이 운영체제의 서비스를 받기 위해 Kernel 함수를 호출하는 것
-- 프로그램이 스스로 Interrupt를 거는 것
+- 만약 I/O를 하고 싶은데 운영체제만이 할 수 있는 상황이라면, 스스로 Interrupt를 거는 것 → System Call
+- CPU를 운영체제에 넘기고자 할 때 직접 PC(Program Counter)를 넘길 수 없기 때문에, 프로그램이 자신의 기계어를 통해서 Interrupt line 세팅 → Interrupt 발생 (여기서는 Software Interrupt)
 
 ### System Call의 원리
 
-- CPU가 I/O 를 요청하는 명령어는 전부 **특권 명령어로 묶여 있음**
+- CPU가 I/O를 요청하는 명령어는 전부 **특권 명령어로 묶여 있음**
   - 즉, 사용자 프로그램이 직접 실행할 수 없음
-  - mode bit이 1(사용자 모드)일 때는 특권 명령을 수행할 수 없기 때문
-- 따라서 운영체제에게 대신 해 달라고 요청 필요 → System Call
+  - mode bit이 사용자 모드(1)일 때는 특권 명령을 수행할 수 없기 때문
+- 따라서 운영체제에게 대신 해 달라고 요청(System Call) 필요
   - 사용자 프로그램 위치에서 기계어 실행되다가 → 운영체제에게 CPU 사용권을 넘김
   - 이때, 기계어가 실행되는 점프 발생 (프로그램의 가상 메모리를 가로질러 점프)
 
@@ -285,9 +291,9 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 
 ### Device Controller의 원리
 
-- I/O 는 실제 device 와 local buffer 사이에서 일어남
-- Device Controller는 I/O 가 끝났을 경우 Interrupt 로 CPU에게 그 사실을 알림
-- Device Driver에서 수행되는 코드는 펌웨어라고 함
+- I/O 는 실제 device와 local buffer 사이에서 일어남
+- **Device Controller는 I/O 가 끝났을 경우 Interrupt 로 CPU에게 그 사실을 알림**
+- Device Driver에서 수행되는 코드는 '펌웨어' 라고 함
 - I/O 장치의 펌웨어라는 미리 코딩된 프로그램이 들어 있기에 동작이 됨
 
 ### Device Controller 용어 정리
