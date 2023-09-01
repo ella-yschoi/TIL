@@ -2,6 +2,8 @@
 
 > Reference: [이화여자대학교 운영체제 강의 - 반효경](http://www.kocw.net/home/cview.do?cid=4b9cd4c7178db077)
 
+<br/>
+
 ## 운영체제의 종류
 
 ### 운영체제에 따른 오픈/비공개 소스 여부
@@ -16,6 +18,8 @@
 - 독점 체제가 가능한 시장이므로 1등 소프트웨어는 잘 팔고 나면 시장 장악하지만, 1등 외의 경쟁자들은 도태됨
 - 2등 소프트웨어는 도태되기 전에 오픈하여, 사용자들이 여러 환경에 맞게 소스코드를 적용하여 점차 점유율이 높아지도록 함
 
+<br/>
+
 ## 운영체제란 무엇인가?
 
 ### 운영체제란?
@@ -28,6 +32,8 @@
   - 운영체제의 핵심으로, 메모리에 상주하는 부분
 - 넓은 의미의 운영체제
   - 커널 뿐만 아니라, 각종 주변 시스템 유틸리티를 포함한 개념
+
+<br/>
 
 ## 운영체제의 목적
 
@@ -45,6 +51,8 @@
 
 - 운영체제는 효율적으로 관리 및 운영하는 **통치자의 역할**이라고 보면 됨
 - 한정된 메모리 공간에 동시에 여러 프로그램이 올라가면 적절히 할당하는 역할
+
+<br/>
 
 ## 운영체제의 분류
 
@@ -108,6 +116,8 @@
   - 하나의 컴퓨터에 CPU(Processor)가 여러 개 붙어 있음을 의미
   - 다만, 일반적인 환경은 아니고 고성능 컴퓨팅, 클라우드 컴퓨팅 분야에서 다룸
 
+<br/>
+
 ## 운영체제의 예시
 
 ### UNIX
@@ -141,13 +151,19 @@
   - DOS용 응용 프로그램과 호환성 제공
   - 풍부한 지원 소프트웨어
 
+<br/>
+
 ## 운영체제의 구조
 
 ![OS_structure](/Images/OS_structure.png)
 
+<br/>
+
 ## 컴퓨터 시스템의 구조
 
 ![computer_system_structure](/Images/computer_system_structure.png)
+
+<br/>
 
 ## Mode bit
 
@@ -199,6 +215,8 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - 만약 Interrupt가 들어왔다면 CPU는 자동으로 운영체제에게 넘어감 → Mode bit이 0으로 바뀜 → 운영체제가 CPU를 잡아서 그 Interrupt에 대응함
 - 이는 CPU Interrupt를 의미 (from Disk controller, I/O controller, etc.)
 
+<br/>
+
 ## Registers
 
 ![registers](/Images/registers.png)
@@ -215,6 +233,8 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - CPU는 PC Registers가 가리키고 있는 memory 주소의 기계어를 실행
 - 실행이 끝나면 그 다음 위치의 기계어를 실행
 - CPU Interrupt가 발생하면 PC Registers가 바라보고 있는 memory는 OS가 됨
+
+<br/>
 
 ## Timer
 
@@ -236,6 +256,8 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - Timer 값이 0이 되면 Timer Interrupt가 발생
 - 운영체제가 사용자 프로그램에게 넘길 때 그냥 넘기는 것이 아닌, Timer에 시간을 세팅하고 넘겨줌
 - 따라서 무한루프를 돌면서 CPU를 계속 쓰고 싶더라도 Timer가 CPU에게 interrupt를 걸기 때문에 CPU의 제어권이 운영체제에게 넘어옴 → 운영체제가 다른 프로그램에게 CPU 사용권을 넘겨주는 방식
+
+<br/>
 
 ## Interrupt의 추가 설명
 
@@ -259,8 +281,13 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 
 - Interrupt Vector
   - 해당 Interrupt 처리 루틴 주소를 가지고 있음
+  - 운영체제의 어떤 코드를 실행해야 하는지 Interrupt 종류별로 실행할 코드의 위치를 담고 있음
+  - **일종의 주소에 대한 포인터**라고 할 수 있음
 - Interrupt 처리 루틴 (=Interrupt Service Routine, Interrupt Handler)
   - 해당 Interrupt를 처리하는 Kernel 함수
+  - 정해진 주소로 가면, 무슨 일을 해야 하는지 기계어로 정해져 있음
+
+<br/>
 
 ## System Call
 
@@ -280,6 +307,8 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - 따라서 운영체제에게 대신 해 달라고 요청(System Call) 필요
   - 사용자 프로그램 위치에서 기계어 실행되다가 → 운영체제에게 CPU 사용권을 넘김
   - 이때, 기계어가 실행되는 점프 발생 (프로그램의 가상 메모리를 가로질러 점프)
+
+<br/>
 
 ## Device Controller
 
@@ -305,3 +334,130 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 - Device Controller (장치 제어기)
   - 각 장치를 제어하는 일종의 작은 CPU  → hardware
   - Device Controller가 수행하는 코드가 아닌, CPU가 수행하는 코드
+
+<br/>
+
+## OS에 CPU가 넘어가는 경우들
+
+### (1) 진정한 의미의 Interrupt
+
+- Hardware 장치들이 Interrupt를 걸어 CPU가 넘어가는 경우
+
+### (2) System Call
+
+- 사용자 프로그램 Software가 직접 Interrupt line을 세팅해서 CPU가 넘어가는 경우
+
+### (3) Trap
+
+- 프로그램 본인에 요구에 의해 CPU가 넘어가는 경우 (Interrupt 라고는 할 수 없음)
+- 다만 넓은 의미 Interrupt 즉, Trap정도로 해석
+
+### (4) Exception
+
+- 권한이 없는 기계어를 실행하는 경우
+- 스스로 Interrupt가 걸려서 CPU가 넘어가는 경우
+
+<br/>
+
+## CPU를 내려놓는 경우
+
+사용자 프로그램이 CPU를 가지고 있다가 다른 프로그램이나 운영체제에게 넘어가거나, 내려놓는 경우
+
+### (1) 타의에 의한
+
+- CPU를 쓰고 싶은데 독점권을 빼앗기는 경우
+- e.g. Timer Interrupt
+
+### (2) 자의에 의한
+
+- 더이상 CPU를 사용하고자 하지 않는 경우
+- e.g. 오래 걸리는 I/O 작업 시 (CPU를 가지고 있어도 I/O가 끝날 때까지 기다려야 하기 때문)
+
+<br/>
+
+## 현대의 운영체제는 **Interrupt**에 의해 구동
+
+- 운영체제는 아무 일도 안하고, Interrupt가 들어올 때만 일한다는 의미
+- 운영체제도 하나의 프로그램이기에, 막강한 권력을 가지고 CPU를 빼앗을 수 있다는게 아니라, **Interrupt가 들어오는 한 해 사용**할 수 있음
+- 운영체제의 역할이 필요할 때는 CPU 독점을 막기 위해 **항상 Interrupt에 의해 넘어가도록 함**
+
+<br/>
+
+## 동기식 입출력과 비동기식 입출력
+
+![synchronous_asynchronous](/Images/synchronous_asynchronous.png)
+
+### (1) 동기식 입출력 (synchronous I/O)
+
+- I/O 에서 일어나는 작업과 CPU에서 일어나는 작업이 시간적으로 잘 맞아야 하는 경우
+- CPU가 I/O 요청 후, **입출력 작업이 완료된 후에야** 제어가 사용자 프로그램에 넘어감
+- 즉, Disc에게 I/O 요청 후, I/O가 끝나면 컨트롤러가 Interrupt → **결과를 보고 서로 조율하며 그 다음 step을 밟아 나감**
+- 비동기식보다 **더 일반적**인 입출력 방식임
+
+#### 동기식 입출력 구현 방법 1
+
+- I/O가 끝날때까지 CPU를 낭비시킴
+- 매시점 **하나의 I/O만** 일어날 수 있음
+
+#### 동기식 입출력 구현 방법 2
+
+- I/O가 완료될 때까지 **해당 프로그램에게서 CPU를 빼앗음**
+- 마냥 기다리고 있으면 CPU가 낭비되기 때문
+- I/O 처리를 기다리는 줄에 그 프로그램을 줄 세움
+- 기다리는 동안에는 다른 프로그램에게 CPU를 넘겨줌
+
+### (2) 비동기식 입출력 (asynchronous I/O)
+
+- I/O 에서 일어나는 작업과 CPU에서 일어나는 작업이 맞지 않아도 되는 경우
+- I/O가 시작된 후, 입출력 작업이 끝나기를 기다리지 않고 제어가 사용자 프로그램에 즉시 넘어감
+- 즉, CPU가 Disc에 요청하면, **요청과 결과와는 무관하게 요청받은 다음 일을 알아서 함**
+
+> 동기식, 비동기식 모두 I/O의 완료는 Interrupt로 알려줌
+
+<br/>
+
+## DMA (Direct Memory Access)
+
+![dma_controller](/Images/dma_controller.png)
+
+![dma_picture](/Images/dma_picture.png)
+
+### DMA의 필요성
+
+- Interrupt가 너무 자주 걸리면 → overhead
+- 따라서 Interrupt의 빈도를 줄이기 위해 사용됨
+
+### DMA란?
+
+- Device Controller가 CPU의 개입 없이 직접 Memory와 통신할 수 있도록 하는 메커니즘
+- 간혹 빠른 속도를 가진 I/O 장치를 Memory에 가까운 속도로 처리하기 위해 사용됨
+- 즉, DMA는 CPU의 개입 없이 메모리와 장치 사이에서 데이터 블록을 직접 copy 하여, Interrupt의 빈도를 줄이고, CPU의 효율성을 향상시킴
+
+### DMA의 작동 원리
+
+- Memory에 접근할 수 있는 장치는 CPU 뿐이기에, 원래는 CPU가 매번 Device Controller의 Interrupt에 의해 움직임 → 때때로 비효율적
+- Device Controller가 DMA를 통해 데이터 블록을 Memory에 전송할 수 있고, 데이터 블록 전송이 완료되면 DMA Controller는 CPU에게 Interrrupt를 발생시킴
+- 정리하자면, Memory에 직접 접근할 수 있는 DMA이라는 메커니즘을 하나 더 두어서 → Device에서 읽은 내용을 CPU Interrupt 없이 Device Controller가 **직접 메모리에 올려두는 작업**을 하고 → 작업이 끝나면 CPU에게 Interrupt를 걸어서 **한번에** 알려준다.
+
+### DMA 사용 시 장점
+
+- 위와 같이 한다면 Interrupt가 덜 빈번하게 발생하여 CPU가 효율적인 동작을 할 수 있음
+
+<br/>
+
+## 서로 다른 입출력 기계어
+
+![special_instruction](/Images/special_instruction.png)
+
+### I/O를 기계어를 통해 수행하는 두 가지 방법
+
+#### (1) I/O만 전담하는 기계어를 두는 방법
+
+- CPU에서 기계어 실행 시, 요청하는 기계어가 따로 있음
+- Memory에 접근하는 기계어 따로 있고, I/O 수행하는 기계어가 따로 있음
+- (위 그림에서 좌측) Device Addresses + Memory Addresses
+
+#### (2) 메모리 접근 기계어가 I/O에 접근까지
+
+- 메모리 주소를 실제 메모리 뿐만 아니라, I/O 장치에도 Primary Memory에 주소를 연장하고, 메모리 접근하는 기계어를 통해 I/O에 접근
+- (위 그림에서 우측) Memory Addresses만
