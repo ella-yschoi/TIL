@@ -54,6 +54,7 @@
 - [Branch](/Git/03_Branch.md)
 - [Merge&Rebase](/Git/04_Merge_Rebase.md)
 - [Restore&Revert&Reset](/Git/05_Restore_Revert_Reset.md)
+- [Push](/Git/06_Push.md)
 
 ### [Infra](/Infra/)
 
