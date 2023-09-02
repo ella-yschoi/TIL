@@ -1,6 +1,6 @@
 # git restore, revert, reset
 
-> Reference: codingapple
+<br/>
 
 ## git restore : 파일 하나를 되돌리기
 

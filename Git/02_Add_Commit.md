@@ -1,5 +1,7 @@
 # git add, commit
 
+<br/>
+
 ## 작업 폴더에서 git 이용하기
 
 - 새로운 Git 저장소 (repository)를 생성하는 명령어를 입력하면, 현재 디렉토리를 기준으로 Git 저장소가 생성된다.

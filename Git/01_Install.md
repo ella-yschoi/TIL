@@ -1,5 +1,7 @@
 # Install Git
 
+<br/>
+
 ## 맥에서 brew 설치하기
 
 1. [Git 홈페이지](https://git-scm.com/) 접속 후, [Download for Mac] 클릭해 다운로드 받기
