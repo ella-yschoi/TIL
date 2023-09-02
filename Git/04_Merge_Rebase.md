@@ -1,6 +1,6 @@
 # git merge, rebase
 
-> Reference: codingapple
+<br/>
 
 ## git merge
 
