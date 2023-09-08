@@ -191,14 +191,14 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 #### 1 (사용자 모드)
 
 - 사용자 프로그램 수행
-- 운영체제가 CPU로 **안전한 기계어만** 실행할 수 있도록 함
+- 사용자 프로그램이 CPU로 **안전한 기계어만** 실행할 수 있도록 함
 
 ### Mode bit의 원리
 
 - 보안을 해칠 수 있는 중요한 명령어는 **모니터 모드(0)에서만 수행 가능한 특권 명령. 즉, 위험한 명령어**으로 규정
 - 반대로, 사용자 프로그램에 CPU 사용 중, 특권 명령임에도 사용자 모드(1)인 상황이라면, 권한에도 없는 기계어를 실행한다고 확인 후, 자동으로 CPU가 운영체제에게 넘어감 (→ Interrupt와 Exception이라고 함)
 - Exception 상황 발생 시, 다시 모니터 모드(0)로 전환되어 자동으로 CPU가 운영체제에게 넘어감
-- 사용자 프로그램에게 CPU를 넘기기 전에는 모니터 모드(0)로 전환되어야 하고, 운영체제가 실행되는 동안 Mode bit은 1로 설정됨
+- 사용자 프로그램에게 CPU를 넘기기 전까지는 모니터 모드(0)로 실행되어야 하고, 사용자 프로그램이 실행되는 동안 Mode bit은 1로 설정됨
 
 ### Mode bit 전환 방식
 
@@ -227,12 +227,12 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 
 ### Registers의 종류
 
-#### PC (Program Counter) Register
+#### PC (Program Counter) Registers
 
 - 다음번에 실행할 기계어의 memory의 주소를 가지고 있음 → 주소를 가리키고 있다는 뜻
 - CPU는 PC Registers가 가리키고 있는 memory 주소의 기계어를 실행
 - 실행이 끝나면 그 다음 위치의 기계어를 실행
-- CPU Interrupt가 발생하면 PC Registers가 바라보고 있는 memory는 OS가 됨
+- CPU Interrupt가 발생하면 PC Registers가 OS의 메모리 주소를 바라보고, 권한이 OS에 넘어간다. (즉, mode bit은 0이 된다)
 
 <br/>
 
@@ -265,7 +265,7 @@ Mode bit을 통해 하드웨어적으로 두 가지 모드의 operation 지원
 
 ### Interrupt란?
 
-- Interrupt 당한 시점의 Registers와 Program Counter를 save한 후, CPU의 제어를 Interrupt 처리 루틴에 넘기는 것
+- Interrupt 당한 시점의 Registers와 PC Registers를 save한 후, CPU의 제어를 Interrupt 처리 루틴에 넘기는 것
 - 즉, CPU에 붙어 있는 Interrupt line이 세팅되어 다음 기계어를 실행하기 전에, CPU 제어권을 자동으로 운영체제에게 넘어가게 하는 것
 
 ### Interrupt의 두 가지 의미
