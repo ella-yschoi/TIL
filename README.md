@@ -33,7 +33,7 @@
 
 - [What is OS](/CS/01_What_is_OS.md)
 - [Computer System Structure](/CS/02_Computer_System_Structure.md)
-- [Process Managament](/CS/03_Process_Managament.md)
+- [Process Management](/CS/03_Process_Management.md)
 - [Caching](/CS/Caching.md)
 - [OS Kernel](/CS/OS_Kernel.md)
 - [Round Robin](/CS/Round_Robin.md)
