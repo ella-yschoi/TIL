@@ -14,8 +14,8 @@
 - 실행하면 해당 프로그램이 memory에 올라가서 process가 됨
 - 이때, 운영체제 Kernel은 이미 memory에 올라가 있음
 - 프로그램이 실행될 때 해당 프로그램만의 자신만의 독자적인 Address Space가 → Virtual memory
-- 만약 당장 필요한 부분은 물리적인 momory에 올라감
-- momory에 올라가 있지 않은 부분은 Swap area로 들어감
+- 만약 당장 필요한 부분은 물리적인 memory에 올라감
+- memory에 올라가 있지 않은 부분은 Swap area로 들어감
 - 이 중 일부는 파일 시스템의 파일 형태로 존재
 
 ### Address Translation
@@ -147,7 +147,7 @@
 > CPU에서 어디까지 수행했는가?
 
 - program counter 값 → 현재 어디를 실행하고 있는가
-- 각종 register 값 → → Register에 어떤 값을 넣고 있었는가
+- 각종 Register 값 → Register에 어떤 값을 넣고 있었는가
 
 #### Process의 주소 공간
 
