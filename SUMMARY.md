@@ -35,6 +35,7 @@
 - [Computer System Structure](/CS/02_Computer_System_Structure.md)
 - [Process Management](/CS/03_Process_Management.md)
 - [Caching](/CS/Caching.md)
+- [Interrupt](/CS/Interrupt.md)
 - [OS Kernel](/CS/OS_Kernel.md)
 - [Round Robin](/CS/Round_Robin.md)
 - [Unix vs. Linux vs. macOS vs. Windows](/CS/Unix_Linux_macOS_Windows.md)
