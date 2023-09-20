@@ -339,3 +339,180 @@
 - 끝나면 다시 ready queue에서 CPU 얻을 권한 생기고
 - CPU 계속 쓰고 싶은데 timer interrupt 끝나면
 - 다시 ready queue로 감
+
+<br/>
+
+## Scheduler
+
+> 운영체제 안에 들어있는 code의 일부
+
+### Long-Term Scheduler (장기 스케줄러 or Job scheduler)
+
+> 운영체제 내에서 memory scheduling을 하는 역할
+
+#### 역할
+
+- 시작 프로세스 중 어떤 것들을 ready queue로 보낼지 결정
+- 프로세스에 memory (및 각종 자원)을 ‘주는’ 문제. 즉, 프로세스가 실행될 때 memory에 올라오도록 하는 역할을 담당
+- Degree of Multi-programming(memory에 올라가 있는 program의 수)을 제어
+
+#### 특징
+
+- 일반적인 운영체제 Time Sharing System 에서는 보통 장기 스케줄러가 없음 (무조건 곧바로 ready 상태로 들어감)
+- 장기 스케줄러가 없는 대신, 메모리 관리는 어떻게 하나? → 중기 스케줄러로 관리
+
+### Medium-Term Scheduler (중기 스케줄러 or Swapper)
+
+> Time sharing system은 장기 스케줄러를 두지 않고 중기 스케줄러를 둠
+
+#### 역할
+
+- 시작된 프로그램은 다 메모리에 들어오면 → 경합하므로 시스템 성능이 떨어지므로, 여유 공간 마련을 위해 프로세스를 통째로 memory에서 disk로 쫓아냄
+- 프로세스에게서 memory 를 ‘뺏는’ 문제 (일단 다 주고, memory가 부족해서 전체 시스템 성능이 떨어지면 memory에서 쫓아냄)
+- Degree of Multi-programming 을 제어
+
+### Short-Term Scheduler (단기 스케줄러 or CPU scheduler)
+
+> CPU scheduling을 하는 역할
+
+#### 역할
+
+- 어떤 프로세스를 다음번에 running 시킬지 결정
+- 프로세스에 CPU를 '주는' 문제
+
+#### 특징
+
+- 굉장히 자주 호출되므로 충분히 빨라야 함 (millisecond 단위)
+
+<br/>
+
+## 프로세스의 상태
+
+### Suspended (Stopped)
+
+#### 특징
+
+- 중기 스케줄러가 추가되면서 생기는 상태
+- 중기 스케줄러 때문에 메모리에서 쫓겨난 상태
+- 프로세스는 통째로 disk에 swap out 됨
+- 뿐만 아니라 그 외의 외부적인 이유로 프로세스의 수행이 정지된 상태
+
+#### e.g. 외부적인 이유
+
+- 사용자가 프로그램을 일시 정지시킨 경우 (by break key, Linux 환경에서 Ctrl+Z)
+- system이 여러 이유로 process를 잠시 중단시킨 경우 (memory에 너무 많은 process가 올라와 경합이 심한 경우) 중기 스케줄러가 여유 공간 마련을 위해 process를 통째로 memory에서 disk로 쫓아냄
+
+### Blocked와 Suspended의 차이
+
+#### 공통점
+
+- CPU를 얻을 수 없는 상태
+
+#### 주요 차이점
+
+- Blocked 상태
+  - 프로세스가 여전히 메모리에 남아 있고
+  - 이벤트를 기다리며 CPU를 얻을 수 있는 상태
+- Suspended 상태
+  - 프로세스가 일시적으로 메모리에서 제거되고
+  - 외부에서 활성화될 때까지 아무 작업도 수행하지 않는 상태
+
+#### Blocked
+
+- 프로세스가 I/O 작업 또는 다른 이벤트(e.g. 외부 자원 요청)를 기다리는 동안 CPU를 얻을 수 없는 상태
+- 프로세스가 스스로 해당 이벤트가 발생할 때까지 (스스로) 기다리는 상태
+- 이벤트가 발생하면 프로세스는 준비 상태(Ready)로 전환되어 CPU를 다시 얻을 수 있게 됨
+
+#### Suspended
+
+- 프로세스가 일시적으로 중지되거나 정지된 상태
+- 일을 아예 못하는 정지된 상태
+- 정지 상태는 일반적으로 외부에서 프로세스를 다시 활성화하거나 재개(resume)해야만 함
+- 주로 메모리에서 프로세스의 상태를 제거하고 나중에 필요할 때 다시 메모리로 로드할 때 사용
+
+<br/>
+
+## 프로세스 상태도
+
+> Suspended를 포함한 상태도
+
+![process_state](/Images/CS03_process_state.png)
+
+### Active / Inactive
+
+#### Active
+
+- Running
+- Ready
+- Blocked
+
+#### Inactive
+
+- Suspended Blocked
+- Suspended Ready
+
+### Swap Out / Swap In
+
+> 운영 체제에서 메모리 관리를 위해 사용되며, 메모리 부족 상황에서 프로세스들을 관리하는 데 중요한 역할을 함
+
+#### Swap out
+
+- 프로세스나 프로그램이 현재 메모리(RAM)에 적재되어 있을 때
+- 시스템이 메모리 공간을 확보하기 위해 해당 프로세스나 프로그램을 메모리에서 "통째로 쫓겨나게" 하는 작업을 의미
+- 이때, 해당 프로세스의 데이터와 코드가 디스크의 Swap File 또는 Swap Area에 저장됨
+
+#### Swap in
+
+- Swap out된 프로세스나 프로그램이 다시 실행되어야 할 때
+- 시스템이 스왑 파일 또는 스왑 영역에 저장된 해당 프로세스의 데이터와 코드를 메모리로 다시 "올리는 작업"을 의미
+- 이로써 해당 프로세스는 메모리에서 다시 실행 가능한 상태가 됨
+
+### Suspended(Blocked) / Suspended(Ready)
+
+#### 공통점
+
+- 메모리를 통째로 빼앗겨서 없는 상태
+- 메모리를 통째로 빼앗겼으니 CPU 작업은 할 수 없지만, I/O 작업은 일부 진행 가능
+- 외부에서 다시 메모리를 할당해야 active 상태가 됨
+
+#### Suspended(Blocked)
+
+- Suspended 상태로 진입하기 전에 I/O 작업을 하던 프로세스
+- I/O 작업이 일시 중단되고 "Suspended Blocked" 상태로 진입하며
+- I/O 작업이 완료되면 "Suspended Ready" 상태로 돌아갈 수 있음
+
+#### Suspended(Ready)
+
+- 완료된 상태이며 I/O 작업을 하고 있지 않다는 의미
+
+### Running (User mode / Kernel mode)
+
+![process_status_running](/Images/CS03_process_status_running.png)
+
+#### 중요한 개념
+
+- 여기서 말하는 상태는 운영체제가 사용자 프로그램을 관리하기 위해 존재하는 상태지, 운영체제 본인의 상태를 의미하는 것은 아님
+- Running 상태는 현재 CPU를 사용하고 있는 프로세스 또는 운영 체제 Kernel mode 코드를 나타냄
+- Interrupt나 System Call로 인해 프로세스가 일시 중단되는 경우, CPU는 다른 작업을 수행
+
+#### User mode에서 Running 상태인 경우
+
+- 프로세스 본인의 코드가 실행 중인 상태
+- CPU를 사용하여 해당 프로세스의 명령을 수행함
+
+#### Kernel mode에서 Running 상태인 경우
+
+- 운영 체제의 커널 코드가 실행 중인 상태
+- 주로 System Call이나 Interrupt 처리와 같은 운영 체제의 핵심 기능을 수행할 때 발생
+
+#### User mode에서 프로세스가 System Call을 호출한 경우
+
+- 해당 System Call이 kernel mode에서 실행됨
+- 해당 program은 CPU를 빼앗긴 것이 아니므로 CPU를 사용중인 것으로 간주되지만
+- Kernel mode에서 실행되는 System Call은 프로세스의 요청을 처리하고 다시 User mode로 돌아감
+
+#### Interrupt가 들어오는 경우
+
+- Interrupt는 프로세스가 실행 중일 때 다른 이벤트(예: I/O 완료, 하드웨어 이벤트)가 발생했을 때 발생
+- 이 경우, 현재 실행 중인 프로세스가 Blocked 상태로 전환되며, 이후 운영 체제는 해당 Interrupt를 처리하기 위해 Kernel mode에서 실행됨
+- 이렇게 되면 현재 실행 중인 프로세스는 일시 중단되었지만, CPU는 여전히 사용 중이며 다른 이유로 Kernel mode에서 running 상태라고 간주함
