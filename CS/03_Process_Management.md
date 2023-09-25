@@ -436,7 +436,7 @@
 
 > Suspended를 포함한 상태도
 
-![process_state](/Images/CS03_process_state.png)
+![process_status_active_inactive](/Images/CS03_process_status_active_inactive.png)
 
 ### Active / Inactive
 
