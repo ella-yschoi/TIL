@@ -516,3 +516,182 @@
 - Interrupt는 프로세스가 실행 중일 때 다른 이벤트(예: I/O 완료, 하드웨어 이벤트)가 발생했을 때 발생
 - 이 경우, 현재 실행 중인 프로세스가 Blocked 상태로 전환되며, 이후 운영 체제는 해당 Interrupt를 처리하기 위해 Kernel mode에서 실행됨
 - 이렇게 되면 현재 실행 중인 프로세스는 일시 중단되었지만, CPU는 여전히 사용 중이며 다른 이유로 Kernel mode에서 running 상태라고 간주함
+
+<br/>
+
+## Thread
+
+> A thread (or lightweight process) is a basic unit of CPU utilization : CPU 수행 단위
+
+### 설명
+
+- Process에서 CPU 수행에 실행에 필요한 부분만 별도로 가지고 있는 것이 Thread
+- Process는 공유하되, thread는 작업에 따라 각자 가짐
+
+### Thread가 동료 thread와 공유하는 부분 (=task)
+
+> 전통적인 개념의 heavyweight process는 하나의 thread를 가지고 있는 task로 볼 수 있음
+
+- code section
+- data section
+- OS resources
+
+### Thread의 효율성
+
+<p align="center" width="100%"><img width="737" alt="thread-efficiency" src="https://github.com/ella-yschoi/TIL/assets/123397411/f68d530d-c37f-4d00-91b7-6beb3ff499a9">
+
+- 프로세스에서 스레드로 CPU 수행 관련 부분만 별도로 가지고 있고, 그 외는 단일 프로세스로 관리하는 것이 효율적. 여러 개 띄우면 코드는 여러 개 뜨고, 프로세스는 하나가 뜸.
+- context switch는 overhead가 큰 편이지만, thread에서 thread로 넘어가는 것은 효율적임
+- 웹 브라우저를 여러 개 띄우면 여러 프로세스가 뜨니 비효율적이므로 스레드를 만드는게 효율적
+- 다만, 크롬 브라우저는 보안 상의 이슈가 있어 프로세스를 띄움(Multi-process Architecture) 브라우저마다 구현 방식은 다를 수 있음
+
+### Thread의 구성
+
+<p align="center" width="100%"><img width="740" alt="thread-composition" src="https://github.com/ella-yschoi/TIL/assets/123397411/438efd77-c002-4392-840a-7b4439fd468c">
+
+- program counter
+- register set
+- stack space
+  - 주소 공간에서는 thread가 함수 호출과 관련된 stack만을 가짐
+  - 그 외에는 process 내에서 다른 thread들과 공유
+
+### Thread의 장점
+
+<p align="center" width="100%"><img width="744" alt="thred-pros" src="https://github.com/ella-yschoi/TIL/assets/123397411/67207b0b-1b79-48cc-81ad-421bd23cf6c1">
+
+#### Responsiveness (빠른 응답성)
+
+- 하나의 스레드가 네트워크를 통해 읽어오는 동안, 또다른 스레드가 화면에 보여주면 사용자에게 빠른 응답 제공 가능
+
+#### Resource Sharing(자원 공유)
+
+- 동일 프로세스 안에 있는 스레드들끼리는 CPU 수행 정보를 제외한 모든 것 (스택 제외) 공유해 효율적
+- 즉, 여러 개의 thread는 process의 binary code, data, resource를 공유 가능
+
+#### Economy(경제적)
+
+- 똑같은 일을 프로세스 여러 개 or 프로세스 안에 스레드를 여러 개 두는 것의 차이
+- creating & CPU switching thread (rather than a process)
+- solaris의 경우, 위 두 가지 overhead가 각각 30배, 5배이다
+
+#### Utilization of Multiprocessor Architectures(병렬성)
+
+- Multiprocessor(CPU가 여러 개 있는 상황)에서는 병렬성 추구 가능
+- 예를 들어 만약, 큰 행렬을 곱셈을 한다 했을 때, CPU가 하나 있으면 한 열씩 순차적으로 해야 하는 상황. CPU가 여러 개 있다면 행렬의 곱셈을 여러 스레드로 나눠서 연산 후, 서로 다른 CPU에 배치하며 연산을 병렬적으로 작업을 수행함 → 효율적
+
+### 다중 thread 구성의 장점
+
+- 다중 스레드로 구성된 태스크 구조에서는 하나의 서버 스레드가 blocked(waiting) 상태인 동안에도, 동일한 태스크 내의 다른 스레드가 실행(running)되어 빠른 처리를 할 수 있다.
+- 동일한 일을 수행하는 다중 스레드가 협력하여 높은 처리율(throughput)과 성능 향상을 얻을 수 있음. 따라서 스레드 사용 시, 병렬성을 높일 수 있음
+- 예를 들어 만약, HTML 문서를 통해 웹 브라우저에서 당장 보여줄 수 있는 것만이라도 보여주어야 하는 상황인데, 이미지 url을 받아오는 등 오래 걸리는 작업으로 인해 시간이 오래 걸린다면, 하나의 스레드가 읽어오는 동안 또 다른 스레드가 당장 표현할 수 있는 텍스트라도 빠르게 보여줄 수 있음
+
+### Thread 구현 방법
+
+<p align="center" width="100%"><img width="739" alt="thread-supported" src="https://github.com/ella-yschoi/TIL/assets/123397411/ec3b56b7-9c1f-4d3b-92ed-e95878431c18">
+
+#### Kernel Threads
+
+> supported by kernel
+
+- 운영체제가 이미 스레드의 존재를 알게 구현하는 것
+- 운영체제 커널이 직접 지원해주는 스레드를 사용
+- 운영체제가 서로 다른 스레드 간의 CPU 전환을 할 수 있음 (마치 프로세스간의 CPU 스케줄링 처럼)
+
+#### User Threads
+
+> supported by library
+
+- 사용자 프로그램 단에서 스레드를 관리
+- 운영체제가 이미 스레드의 존재를 모르게 구현하는 것
+  - 운영체제가 볼 때는 그저 스레드가 없는 프로세스처럼 보임
+- 운영체제가 thread 간의 CPU를 넘기는 작업을 할 수 없음
+  - process 내부에서 운영체제에 비동기식 I/O를 요청해서 바로 다시 받아 다른 thread로 CPU를 넘기는 등 사용자 프로그램단에서 관리하는 것을 의미
+
+## 프로세스 관리
+
+> 프로세스가 어떻게 만들어지고 종료되는가
+
+### 프로세스의 생성
+
+#### 생성 원리
+
+- 부모 프로세스(parent process)가 자식 프로세스(children process)를 만들면 복제 생성 (프로세스가 또다른 프로세스를 생성)
+- 부모와 똑같은 나이를 가진 프로세스를 생성
+- 즉, 본인이 직접 만드는 것이 아니라, 운영체제에게 system call 요청을 통해 생성 (fork system call)
+- 프로세스의 트리(계층 구조) 형성
+
+#### 프로세스는 자원을 필요로 함
+
+- 운영체제로부터 받음
+- 부모와 공유 (사실 부모와 자식 프로세스는 별개의 프로세스이므로 자원을 할당받기 위해 경쟁)
+
+#### 자원의 공유
+
+- 부모와 자식이 모든 자원을 공유하는 모델
+- 일부를 공유하는 모델
+- 전혀 공유하지 않는 모델
+
+#### 수행 (Execution)
+
+- 부모와 자식은 공존하며 수행되는 모델
+- 자식이 종료(terminate)될 때까지 부모가 기다리는 모델 (blocked 상태)
+
+#### 주소 공간 (Address Space)
+
+- 자식은 부모의 공간을 복사 (binary and OS data)
+- 자식은 그 공간에 새로운 프로그램을 올림
+- 즉, 부모의 것을 그대로 복사하여 코드도 복사되지만, 데이터와 스택도 복사됨 → 전역 변수 등도 그대로 가져가고, 스택도 카피한다는 것은 현재 수행 위치에서부터 자식이 실행된다는 의미
+
+#### 여러 프로그램들을 돌린다?
+
+- 일단 복제(fork system call)해놓고, 거기에 다른 프로그램을 덮어 씌워서(exec system call) 새로운 프로그램을 돌린다는 의미
+
+#### Unix(유닉스)의 예
+
+- fork() system call이 새로운 프로세스를 생성
+  - 부모를 그대로 복사 (OS data except PID + binary)
+  - 주소 공간 할당
+- fork 다음에 이어지는 exec() system call을 통해 새로운 프로그램을 메모리에 올림
+
+### 프로세스 종료
+
+- 프로세스가 마지막 명령을 수행한 후, 운영체제에게 이를 알려줌 (exit)
+  - exit system call → 운영체제가 프로세스를 종료하면서 모든 자원을 반납하고 종료
+  - 자식이 부모에게 output data를 보냄 (via wait)
+  - 프로세스의 각종 자원들이 운영체제에게 반납됨
+- 부모 프로세스가 자식의 수행을 강제 종료시킴 (abort)
+  - 자식이 할당 자원의 한계치를 넘어섬
+  - 자식에게 할당된 태스크가 더이상 필요하지 않음
+  - 부모가 종료(exit)하는 경우
+    - 운영체제는 부모 프로세스가 종료하는 경우, 자식이 더이상 수행되도록 두지 않음
+    - 단계적 종료 (제일 아래 자손부터 순차적으로 죽임)
+- 보통 자식이 먼저 종료 → 부모가 뒷 일을 함 (exit)
+  - 자식이 부모에게 output data를 보냄
+  - 프로세스의 각종 자원들이 운영체제에게 반납됨
+- 브라우저 창을 끄면 실행되던 것들이 전부 종료되는 것
+
+### fork() system call
+
+- Process는 fork() system call에 의해 생성됨
+  - 운영체제에게 자식을 만들어 달라는 함수
+  - caller를 복제해 새로운 address space를 생성
+
+### Parent process와 Child process 구분
+
+<p align="center" width="100%"><img width="740" alt="process-end" src="https://github.com/ella-yschoi/TIL/assets/123397411/ecc4b973-846b-4411-b202-723daf57324f">
+
+- 부모: PID 값이 0보다 큰 return value로 받게 됨
+- 자식: PID 값을 0으로 return value로 받게 됨
+
+### exec() system call
+
+<p align="center" width="100%"><img width="740" alt="exec-systemcall-1" src="https://github.com/ella-yschoi/TIL/assets/123397411/1dabcb46-8ca2-4b55-a017-0af035443df1">
+
+- hello 출력 후, 새로운 프로그램으로 덮어 씌움
+
+<p align="center" width="100%"><img width="740" alt="exec-systemcall-2" src="https://github.com/ella-yschoi/TIL/assets/123397411/de7761d1-06e4-4bab-a7bb-0ca99b3127c0">
+
+- 자식 프로세스를 생성하여 다른 프로그램을 돌리고 싶을 때 (자식에게 새로운 프로그램을 덮어 씌울 때)
+  - 부모는 그냥 덮어 씌우는게 아니라 fork() 실행해 복제 후
+  - 부모 자신은 원래 실행하던 프로그램 이어서 실행하고
+  - 자식에게는 exec() 실행해 기존 프로그램 말고 다른 새로운 프로그램을 돌리게 함
