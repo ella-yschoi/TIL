@@ -544,6 +544,9 @@
 - context switch는 overhead가 큰 편이지만, thread에서 thread로 넘어가는 것은 효율적임
 - 웹 브라우저를 여러 개 띄우면 여러 프로세스가 뜨니 비효율적이므로 스레드를 만드는게 효율적
 - 다만, 크롬 브라우저는 보안 상의 이슈가 있어 프로세스를 띄움(Multi-process Architecture) 브라우저마다 구현 방식은 다를 수 있음
+  - [Chrome for Developers - Inside look at modern web browser (part 1)](https://developer.chrome.com/blog/inside-browser-part1/)
+  - [[위 블로그 한국어 번역] 크롬 브라우저는 어떻게 작동 할까? - 01](https://onlydev.tistory.com/80)
+  - [The Chromium Projects - Multi-process Architecture](https://www.chromium.org/developers/design-documents/multi-process-architecture/)
 
 ### Thread의 구성
 
