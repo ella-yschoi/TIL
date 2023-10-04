@@ -536,22 +536,9 @@
 - data section
 - OS resources
 
-### Thread의 효율성
-
-<p align="center" width="100%"><img width="737" alt="thread-efficiency" src="https://github.com/ella-yschoi/TIL/assets/123397411/f68d530d-c37f-4d00-91b7-6beb3ff499a9">
-
-- 프로세스에서 스레드로 CPU 수행 관련 부분만 별도로 가지고 있고, 그 외는 단일 프로세스로 관리하는 것이 효율적임.
-- 즉, 스레드를 사용함으로써 프로세스 간 통신 및 데이터 공유가 더 효율적으로 이루어질 수 있다는 것을 의미함. 여러 스레드가 같은 프로세스 내에서 작동하며, 프로세스의 메모리 및 자원을 공유하므로 커뮤니케이션 비용이 낮아짐.
-- context switch는 overhead가 큰 편이지만, thread에서 thread로 넘어가는 것은 효율적임
-- 웹 브라우저를 여러 개 띄우면 여러 프로세스가 뜨니 비효율적이므로 스레드를 만드는게 효율적
-- 다만, 크롬 브라우저는 보안 상의 이슈가 있어 프로세스를 띄움(Multi-process Architecture) 브라우저마다 구현 방식은 다를 수 있음
-  - [Chrome for Developers - Inside look at modern web browser (part 1)](https://developer.chrome.com/blog/inside-browser-part1/)
-  - [[위 블로그 한국어 번역] 크롬 브라우저는 어떻게 작동 할까? - 01](https://onlydev.tistory.com/80)
-  - [The Chromium Projects - Multi-process Architecture](https://www.chromium.org/developers/design-documents/multi-process-architecture/)
-
 ### Thread의 구성
 
-<p align="center" width="100%"><img width="740" alt="thread-composition" src="https://github.com/ella-yschoi/TIL/assets/123397411/438efd77-c002-4392-840a-7b4439fd468c">
+<p align="center" width="100%"><img width="1010" alt="thread-composition" src="https://github.com/ella-yschoi/TIL/assets/123397411/438efd77-c002-4392-840a-7b4439fd468c">
 
 - program counter
 - register set
@@ -559,9 +546,22 @@
   - 주소 공간에서는 thread가 함수 호출과 관련된 stack만을 가짐
   - 그 외에는 process 내에서 다른 thread들과 공유
 
+### Thread의 효율성
+
+<p align="center" width="100%"><img width="1010" alt="thread-efficiency" src="https://github.com/ella-yschoi/TIL/assets/123397411/f68d530d-c37f-4d00-91b7-6beb3ff499a9">
+
+- 프로세스에서 스레드로 CPU 수행 관련 부분만 별도로 가지고 있고, 그 외는 단일 프로세스로 관리하는 것이 효율적임.
+- 즉, 스레드를 사용함으로써 프로세스 간 통신 및 데이터 공유가 더 효율적으로 이루어질 수 있다는 것을 의미함. 여러 스레드가 같은 프로세스 내에서 작동하며, 프로세스의 메모리 및 자원을 공유하므로 커뮤니케이션 비용이 낮아짐.
+- context switch는 overhead가 큰 편이지만, thread에서 thread로 넘어가는 것은 효율적임
+- 웹 브라우저를 여러 개 띄우면 여러 프로세스가 뜨니 비효율적이므로 스레드를 만드는게 효율적
+- 다만, 크롬 브라우저는 보안 상의 이슈가 있어 여러 개의 프로세스를 띄우며 (Multi-process Architecture) 브라우저마다 구현 방식은 다를 수 있음
+  - [Chrome for Developers - Inside look at modern web browser (part 1)](https://developer.chrome.com/blog/inside-browser-part1/)
+  - [[위 블로그 한국어 번역] 크롬 브라우저는 어떻게 작동 할까? - 01](https://onlydev.tistory.com/80)
+  - [The Chromium Projects - Multi-process Architecture](https://www.chromium.org/developers/design-documents/multi-process-architecture/)
+
 ### Thread의 장점
 
-<p align="center" width="100%"><img width="744" alt="thred-pros" src="https://github.com/ella-yschoi/TIL/assets/123397411/67207b0b-1b79-48cc-81ad-421bd23cf6c1">
+<p align="center" width="100%"><img width="1010" alt="thred-pros" src="https://github.com/ella-yschoi/TIL/assets/123397411/67207b0b-1b79-48cc-81ad-421bd23cf6c1">
 
 #### Responsiveness (빠른 응답성)
 
@@ -570,14 +570,15 @@
 #### Resource Sharing(자원 공유)
 
 - 동일 프로세스 내에 있는 스레드들끼리는 CPU 수행 정보를 제외한 대부분의 것들을 공유할 수 있기에 효율적인 자원 공유가 가능
-- 스레드는 같은 프로세스 내에서 실행되므로 프로세스의 코드, 데이터, 자원(파일 핸들 등)을 공유할 수 있음. 이것은 자원 공유를 간편하게 만들며, 데이터를 복사하는 등의 오버헤드를 줄여줌.
+- 스레드는 같은 프로세스 내에서 실행되므로 프로세스의 code, data, resource를 공유할 수 있음.
+- 이는 자원 공유를 간편하게 만들며, 데이터를 복사하는 등의 overhead를 줄여줌.
 - 즉, 여러 개의 thread는 process의 binary code, data, resource를 공유 가능
 
 #### Economy(경제적)
 
 - 똑같은 일을 프로세스 여러 개 or 프로세스 안에 스레드를 여러 개 두는 것의 차이
 - creating & CPU switching thread (rather than a process)
-- solaris의 경우, 위 두 가지 overhead가 각각 30배, 5배이다
+- solaris(Oracle가 개발한 다중 스레드 모델)의 경우, 위 두 가지 overhead가 각각 30배, 5배
 
 #### Utilization of Multiprocessor Architectures(병렬성)
 
@@ -586,13 +587,13 @@
 
 ### 다중 thread 구성의 장점
 
-- 다중 스레드로 구성된 태스크 구조에서는 하나의 서버 스레드가 blocked(waiting) 상태인 동안에도, 동일한 태스크 내의 다른 스레드가 실행(running)되어 빠른 처리를 할 수 있다.
+- 다중 스레드로 구성된 태스크 구조에서는 하나의 서버 스레드가 blocked(waiting) 상태인 동안에도, 동일한 태스크 내의 다른 스레드가 실행(running)되어 빠른 처리를 할 수 있음
 - 동일한 일을 수행하는 다중 스레드가 협력하여 높은 처리율(throughput)과 성능 향상을 얻을 수 있음. 따라서 스레드 사용 시, 병렬성을 높일 수 있음
 - 예를 들어 만약, HTML 문서를 통해 웹 브라우저에서 당장 보여줄 수 있는 것만이라도 보여주어야 하는 상황인데, 이미지 url을 받아오는 등 오래 걸리는 작업으로 인해 시간이 오래 걸린다면, 하나의 스레드가 읽어오는 동안 또 다른 스레드가 당장 표현할 수 있는 텍스트라도 빠르게 보여줄 수 있음
 
 ### Thread 구현 방법
 
-<p align="center" width="100%"><img width="739" alt="thread-supported" src="https://github.com/ella-yschoi/TIL/assets/123397411/ec3b56b7-9c1f-4d3b-92ed-e95878431c18">
+<p align="center" width="100%"><img width="1010" alt="thread-supported" src="https://github.com/ella-yschoi/TIL/assets/123397411/ec3b56b7-9c1f-4d3b-92ed-e95878431c18">
 
 #### Kernel Threads
 
@@ -664,13 +665,13 @@
   - exit system call → 운영체제가 프로세스를 종료하면서 모든 자원을 반납하고 종료
   - 자식이 부모에게 output data를 보냄 (via wait)
   - 프로세스의 각종 자원들이 운영체제에게 반납됨
-- 부모 프로세스가 자식의 수행을 강제 종료시킴 (abort)
-  - 자식이 할당 자원의 한계치를 넘어섬
-  - 자식에게 할당된 태스크가 더이상 필요하지 않음
+- 부모 프로세스가 자식의 수행을 강제 종료시키는 경우 (abort)
+  - 자식이 할당 자원의 한계치를 넘어설 때
+  - 자식에게 할당된 태스크가 더이상 필요하지 않을 때
   - 부모가 종료(exit)하는 경우
-    - 운영체제는 부모 프로세스가 종료하는 경우, 자식이 더이상 수행되도록 두지 않음
-    - 단계적 종료 (제일 아래 자손부터 순차적으로 죽임)
-- 보통 자식이 먼저 종료 → 부모가 뒷 일을 함 (exit)
+    - 운영체제는 부모 프로세스가 종료하는 경우, 부모가 죽기 전에 자식을 먼저 죽임
+    - 단계적 종료 (계층 구조의 제일 아래 자손부터 순차적으로 죽임)
+- 보통은 자식이 먼저 종료 → 부모가 뒷 일을 함 (exit)
   - 자식이 부모에게 output data를 보냄
   - 프로세스의 각종 자원들이 운영체제에게 반납됨
 - 브라우저 창을 끄면 실행되던 것들이 전부 종료되는 것
@@ -683,18 +684,18 @@
 
 ### Parent process와 Child process 구분
 
-<p align="center" width="100%"><img width="740" alt="process-end" src="https://github.com/ella-yschoi/TIL/assets/123397411/ecc4b973-846b-4411-b202-723daf57324f">
+<p align="center" width="100%"><img width="1010" alt="process-end" src="https://github.com/ella-yschoi/TIL/assets/123397411/ecc4b973-846b-4411-b202-723daf57324f">
 
 - 부모: PID 값이 0보다 큰 return value로 받게 됨
 - 자식: PID 값을 0으로 return value로 받게 됨
 
 ### exec() system call
 
-<p align="center" width="100%"><img width="740" alt="exec-systemcall-1" src="https://github.com/ella-yschoi/TIL/assets/123397411/1dabcb46-8ca2-4b55-a017-0af035443df1">
+<p align="center" width="100%"><img width="1010" alt="exec-systemcall-1" src="https://github.com/ella-yschoi/TIL/assets/123397411/1dabcb46-8ca2-4b55-a017-0af035443df1">
 
 - hello 출력 후, 새로운 프로그램으로 덮어 씌움
 
-<p align="center" width="100%"><img width="740" alt="exec-systemcall-2" src="https://github.com/ella-yschoi/TIL/assets/123397411/de7761d1-06e4-4bab-a7bb-0ca99b3127c0">
+<p align="center" width="100%"><img width="1010" alt="exec-systemcall-2" src="https://github.com/ella-yschoi/TIL/assets/123397411/de7761d1-06e4-4bab-a7bb-0ca99b3127c0">
 
 - 자식 프로세스를 생성하여 다른 프로그램을 돌리고 싶을 때 (자식에게 새로운 프로그램을 덮어 씌울 때)
   - 부모는 그냥 덮어 씌우는게 아니라 fork() 실행해 복제 후
