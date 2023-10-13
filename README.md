@@ -29,18 +29,6 @@
 - [RDS](/AWS/RDS.md)
 - [S3](/AWS/S3.md)
 
-### [CS](/CS/)
-
-- [What is OS](/CS/01_What_is_OS.md)
-- [Computer System Structure](/CS/02_Computer_System_Structure.md)
-- [Process Management](/CS/03_Process_Management.md)
-- [Blocking vs. Non-Blocking](/CS/Blocking_NonBlocking.md)
-- [Caching](/CS/Caching.md)
-- [Interrupt](/CS/Interrupt.md)
-- [OS Kernel](/CS/OS_Kernel.md)
-- [Round Robin](/CS/Round_Robin.md)
-- [Unix vs. Linux vs. macOS vs. Windows](/CS/Unix_Linux_macOS_Windows.md)
-
 ### [Design](/Design/)
 
 - [Atomic Design](/Design/Atomic_Design.md)
