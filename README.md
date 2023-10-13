@@ -73,8 +73,8 @@
 - [DOM Tree](JavaScript/DOM_Tree.md)
 - [Function](JavaScript/Function.md)
 - [Higher Order Function](JavaScript/Higher_Order_Function.md)
+- [Object Oriented Programming](/JavaScript/Object_Oriented_Programming.md)
 - [Object](JavaScript/Object.md)
-- [OOP](/JavaScript/OOP.md)
 - [Promise](/JavaScript/Promise.md)
 - [Recursion](/JavaScript/Recursion.md)
 
