@@ -18,9 +18,9 @@
   function Calculator({value}) {
     const result = calculate(value);
     return <>
-        <div>
-            {result}
-        </div>
+      <div>
+        {result}
+      </div>
     </>;
   }
   ```
@@ -31,11 +31,10 @@
   import { useMemo } from "react";
   const result = useMemo(() => calculate(value), [value]);
     return <>
-        <div>
-            {result}
-        </div>
+      <div>
+        {result}
+      </div>
     </>;
-  
   ```
 
 - 위 Calculator 컴포넌트의 value는 일종의 값으로서, 렌더링을 할 때마다 이 value값이 계속 바뀌는 게 아니라면 & 값을 어딘가에 저장을 해뒀다가 다시 꺼내서 쓸 수만 있다면 굳이 calculate 함수를 호출할 필요도 없을 것임
