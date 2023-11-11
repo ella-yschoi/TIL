@@ -79,10 +79,12 @@
 ## 9. Message State 요청
 
 ### root-endpoing(혹은 root-URL)
+
 - API로 요청을 서버와 통신할 때, 서버가 요청을 수락하는 시작점
 - 일반적으로 root-endpoint는 도메인주소의 루트(/)를 가리킴
 - 마찬가지로 Message State Server의 URL을 기준으로 파악할 수 있는 root-endpoint는 Message States Server의 가장 마지막 Location인 호스트의 루트(/)임 (ex. Github API의 root-endpoint는 <https://api.github.com>)
 
 ### path
 
-path 혹은 url-path는 API를 통해 서버와 통신할 때, 서버와 통신할 수 있는 key 역할을 하며, 서버에 정의된 문자열에 따라 path가 달라짐 (ex. <https://api.github.com/user> 에서는 'user'가 path)
+- path 혹은 url-path는 API를 통해 서버와 통신할 때, 서버와 통신할 수 있는 key 역할
+- 서버에 정의된 문자열에 따라 path가 달라짐 (ex. <https://api.github.com/user> 에서는 'user'가 path)
