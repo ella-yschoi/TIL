@@ -4,25 +4,25 @@
 - 함수 표현식은 할당 전에 사용할 수 없음
 - square(7); -> Reference Error
 
-    ```javascript
-    const square = function(num) { // 변수 square에 함수를 할당하는 함수 표현식
-        return num * num;
-    }; // 변수 square에는 함수가 할당되어 있으므로 일급객체, 함수 호출 연산자 () 사용 가능
+  ```javascript
+  const square = function(num) { // 변수 square에 함수를 할당하는 함수 표현식
+    return num * num;
+  }; // 변수 square에는 함수가 할당되어 있으므로 일급객체, 함수 호출 연산자 () 사용 가능
 
-    output = square(7);
-    ```
+  output = square(7);
+  ```
 
 - 함수는 일급 객체의 특징을 가지기에 아래처럼 객체 속성의 값으로 할당될 수 있음
 
-    ```javascript
-    const cat = {
-        name: 'nabi',
-        age: 3,
-        cry: fuction(){
-            console.log('miaow..')
-        }
+  ```javascript
+  const cat = {
+    name: 'nabi',
+    age: 3,
+    cry: fuction(){
+      console.log('miaow..')
     }
-    ```
+  }
+  ```
 
 <br/>
 
@@ -38,11 +38,11 @@
 
     ```javascript
     function double(num) {
-        return num * 2;
+      return num * 2;
     }
 
     function doubleNum(func, num) {
-        return func(num);
+      return func(num);
     }
 
     // 함수 doubleNum은 다른 함수를 인자로 받는 고차함수
@@ -57,9 +57,9 @@
 
     ```javascript
     function adder(added) { // 함수 adder는 
-        return fuction (num) { // 인자 한 개를 입력받아 다른 함수(익명함수)를 리턴하는 고차함수
-            return num + added; // 리턴되는 익명함수는 인자 한 개를 받아 added와 더한 값을 리턴
-        };
+      return fuction (num) { // 인자 한 개를 입력받아 다른 함수(익명함수)를 리턴하는 고차함수
+        return num + added; // 리턴되는 익명함수는 인자 한 개를 받아 added와 더한 값을 리턴
+      };
     }
 
     // adder(5)는 함수이므로 함수 호출 연산자 () 사용 가능
@@ -77,16 +77,16 @@
 
     ```javascript
     function double(num) { 
-        return num * 2
+      return num * 2
     }
     // 함수 doubleAdder는 고차함수
     // 함수 doubleAdder의 인자 func는 함수 doubleAdder의 콜백함수
     // 함수 double은 함수 doubleAdder의 콜백으로 전달됨
     function doubleAdder(added, func) { 
-        const doubled = func(added);
-        return function(num) {
-            return num + doubled;
-        };
+      const doubled = func(added);
+      return function(num) {
+        return num + doubled;
+      };
     }
     // doubleAdder(5, double)는 함수이므로 함수 호출 기호 () 사용 가능
     doubleAdder(5, double)(3); // 13
@@ -119,7 +119,7 @@
     ```javascript
     // 함수 표현식
     const isEven = function (num) {
-        return num % 2 === 0;
+      return num % 2 === 0;
     };
 
     let arr = [1, 2, 3, 4];
@@ -129,8 +129,8 @@
     console.log(output); // [2, 4]
 
     const isLteFive = function (str) {
-        // Lte = less than equal
-        return str.length <= 5;
+      // Lte = less than equal
+      return str.length <= 5;
     };
 
     arr = ['hello', 'front', 'end', 'happy', 'coding'];
