@@ -1,0 +1,278 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Multilingual TIL Workflow Rules
+
+## 🎯 Workflow Overview
+This document defines the workflow for maintaining a bilingual TIL project with Korean (kor/) and English (eng/) versions. All content must be created and maintained in both languages simultaneously.
+
+## 📁 Directory Structure Management
+
+### MUST FOLLOW:
+- **Dual language structure**: Always maintain both kor/ and eng/ directories
+- **Mirror organization**: Keep identical folder structure in both languages
+- **Shared resources**: Images and assets must exist in both versions
+- **Language-specific navigation**: Each language has its own README.md and SUMMARY.md
+
+### Directory Structure:
+```
+TIL/
+├── README.md (Bilingual overview with language selection)
+├── kor/
+│   ├── README.md (Korean overview with tree theme)
+│   ├── SUMMARY.md (Korean navigation)
+│   ├── Images/ (Korean version images)
+│   └── [Technology Domains]/
+├── eng/
+│   ├── README.md (English overview with tree theme)
+│   ├── SUMMARY.md (English navigation)
+│   ├── Images/ (English version images)
+│   └── [Technology Domains]/
+```
+
+### PROHIBITED:
+- ❌ **NEVER** create content in only one language directory
+- ❌ **NEVER** have different folder structures between languages
+- ❌ **NEVER** place content outside kor/ or eng/ directories
+- ❌ **NEVER** create orphaned files without corresponding versions
+
+## 🔄 Content Creation Workflow
+
+### MUST FOLLOW:
+1. **Create in both languages**: Always create content in both kor/ and eng/
+2. **Maintain synchronization**: Keep both versions updated together
+3. **Test both versions**: Verify all links and content work in both languages
+4. **Update navigation**: Keep all navigation files synchronized
+
+### Content Creation Steps:
+1. **Plan content structure**: Define sections, headings, and organization
+2. **Create Korean version**: Write content in Korean (kor/)
+3. **Create English version**: Write content in English (eng/)
+4. **Verify consistency**: Ensure identical structure and code examples
+5. **Update navigation**: Add links to both language versions
+6. **Test functionality**: Verify all links work in both languages
+
+### PROHIBITED:
+- ❌ **NEVER** create content in only one language
+- ❌ **NEVER** skip the synchronization step
+- ❌ **NEVER** ignore navigation updates
+- ❌ **NEVER** forget to test both versions
+
+## 📝 File Management Standards
+
+### MUST FOLLOW:
+- **Identical file names**: Use same naming across kor/ and eng/ directories
+- **Same file structure**: Maintain identical organization in both languages
+- **Parallel content**: Every file must have a corresponding version in both languages
+- **Consistent formatting**: Use same markdown formatting in both versions
+
+### File Naming Examples:
+```
+kor/JavaScript/Array.md
+eng/JavaScript/Array.md
+
+kor/Git/01_Install.md
+eng/Git/01_Install.md
+
+kor/React/Hook.md
+eng/React/Hook.md
+```
+
+### PROHIBITED:
+- ❌ **NEVER** use different file names between languages
+- ❌ **NEVER** create files with spaces in names
+- ❌ **NEVER** use camelCase or PascalCase for file names
+- ❌ **NEVER** create orphaned files
+
+## 🌐 Language-Specific Content Standards
+
+### Korean Version (kor/):
+- **Use Korean language**: All content must be in Korean
+- **Korean technical terms**: Use appropriate Korean terminology
+- **Korean explanations**: Provide clear Korean explanations
+- **Korean navigation**: All navigation elements in Korean
+- **Natural Korean**: Write in natural, fluent Korean
+
+### English Version (eng/):
+- **Use English language**: All content must be in English
+- **English technical terms**: Use standard English terminology
+- **English explanations**: Provide clear English explanations
+- **English navigation**: All navigation elements in English
+- **Natural English**: Write in natural, fluent English
+
+### PROHIBITED:
+- ❌ **NEVER** mix languages within the same file
+- ❌ **NEVER** use inconsistent terminology within a language
+- ❌ **NEVER** translate programming language keywords
+- ❌ **NEVER** lose technical accuracy during translation
+
+## 💻 Code Example Standards
+
+### MUST FOLLOW:
+- **Identical code**: Code blocks must be exactly the same in both languages
+- **Language-specific comments**: Only comments and explanations should differ
+- **Same examples**: Use identical code examples in both versions
+- **Consistent formatting**: Same code formatting in both languages
+
+### Code Example Structure:
+```javascript
+// Korean version (kor/)
+let arr = [1, 2, 3];
+arr.pop(); // 배열의 마지막 요소를 제거하는 방법
+
+// English version (eng/)
+let arr = [1, 2, 3];
+arr.pop(); // Method to remove the last element of an array
+```
+
+### PROHIBITED:
+- ❌ **NEVER** change code logic between languages
+- ❌ **NEVER** modify variable names or function calls
+- ❌ **NEVER** use different code examples
+- ❌ **NEVER** translate programming keywords
+
+## 🖼️ Image Management
+
+### MUST FOLLOW:
+- **Duplicate images**: Store identical images in both `kor/Images/` and `eng/Images/`
+- **Same file names**: Use identical image names across languages
+- **Consistent references**: Use same image references in both versions
+- **Descriptive names**: Use clear, descriptive image names
+
+### Image Reference Examples:
+```markdown
+// Both kor/ and eng/ versions use:
+![array.png](mdc:../Images/array.png)
+![git_merge.png](mdc:../Images/git_merge.png)
+```
+
+### PROHIBITED:
+- ❌ **NEVER** use different image names between languages
+- ❌ **NEVER** reference images from external URLs
+- ❌ **NEVER** place images outside the Images/ directory
+- ❌ **NEVER** use generic names like `image1.png`
+
+## 🔗 Navigation Management
+
+### MUST FOLLOW:
+- **Language-specific navigation**: Each language has its own SUMMARY.md
+- **Consistent structure**: Same file organization in both languages
+- **Working links**: All internal links must work within each language
+- **Cross-language references**: Root README.md provides language selection
+
+### Navigation Structure:
+- Root `README.md` - Bilingual overview with language selection
+- `kor/README.md` - Korean project overview with tree theme
+- `kor/SUMMARY.md` - Korean navigation
+- `eng/README.md` - English project overview with tree theme
+- `eng/SUMMARY.md` - English navigation
+
+### PROHIBITED:
+- ❌ **NEVER** break internal links within a language
+- ❌ **NEVER** create dead links
+- ❌ **NEVER** forget to update navigation when adding files
+- ❌ **NEVER** mix language references in navigation
+
+## 📋 Quality Assurance Checklist
+
+### MUST VERIFY:
+- [ ] Content exists in both kor/ and eng/
+- [ ] File names are identical across languages
+- [ ] Code examples are identical
+- [ ] Navigation works in both languages
+- [ ] Images are available in both versions
+- [ ] Terminology is consistent within each language
+- [ ] All links work in both languages
+- [ ] Formatting is consistent across languages
+
+### PROHIBITED:
+- ❌ **NEVER** skip quality checks for either language
+- ❌ **NEVER** ignore broken links
+- ❌ **NEVER** forget to test both versions
+- ❌ **NEVER** skip terminology consistency checks
+
+## 🚀 Technology Stack Management
+
+### Priority Technologies (Both Languages):
+1. **JavaScript/TypeScript**: Core programming concepts
+2. **React**: Modern frontend development
+3. **Git**: Version control and collaboration
+4. **Web Technologies**: HTTP, REST API, Browser concepts
+5. **Cloud/AWS**: Modern deployment and infrastructure
+6. **Design Systems**: UI/UX and design principles
+
+### MUST FOLLOW:
+- **Focus on practical application**: Emphasize real-world usage in both languages
+- **Include modern best practices**: Stay current with industry standards
+- **Provide troubleshooting guides**: Include common issues and solutions
+- **Maintain technical accuracy**: Preserve exact technical meaning
+
+### PROHIBITED:
+- ❌ **NEVER** include outdated information
+- ❌ **NEVER** skip security considerations
+- ❌ **NEVER** ignore performance implications
+- ❌ **NEVER** lose technical precision
+
+## 🔄 Maintenance Workflow
+
+### Regular Maintenance Tasks:
+1. **Content updates**: Update both language versions simultaneously
+2. **Navigation synchronization**: Keep all navigation files current
+3. **Link verification**: Test all internal links in both languages
+4. **Image management**: Ensure images exist in both versions
+5. **Terminology consistency**: Maintain consistent terms within each language
+
+### Update Process:
+1. **Identify changes**: Determine what needs to be updated
+2. **Update Korean version**: Make changes to kor/ content
+3. **Update English version**: Make corresponding changes to eng/ content
+4. **Verify consistency**: Ensure both versions remain synchronized
+5. **Update navigation**: Update all navigation files as needed
+6. **Test functionality**: Verify all links and content work
+
+### PROHIBITED:
+- ❌ **NEVER** update only one language version
+- ❌ **NEVER** forget to synchronize changes
+- ❌ **NEVER** ignore navigation updates
+- ❌ **NEVER** skip testing after updates
+
+## ⚠️ Critical Workflow Reminders
+
+### ALWAYS REMEMBER:
+- This is a **multilingual learning resource**
+- **Both languages are equally important**
+- **Content must be identical in structure and code**
+- **Navigation must work in both languages**
+- **Images must be available in both versions**
+- **Technical accuracy must be preserved**
+- **Quality checks must be performed for both languages**
+
+### IMMEDIATE STOP CONDITIONS:
+- If you're about to create content in only one language
+- If you're about to use different file names between languages
+- If you're about to change code examples between languages
+- If you're about to break navigation in either language
+- If you're about to lose technical accuracy
+- If you're about to create inconsistent terminology
+- If you're about to skip quality checks for either language
+
+## 📋 File Reference Examples
+
+### Core Files:
+- [README.md](mdc:README.md) - Bilingual project overview
+- [kor/README.md](mdc:kor/README.md) - Korean project overview
+- [eng/README.md](mdc:eng/README.md) - English project overview
+- [kor/SUMMARY.md](mdc:kor/SUMMARY.md) - Korean navigation
+- [eng/SUMMARY.md](mdc:eng/SUMMARY.md) - English navigation
+
+### Content Examples:
+- [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean array concepts
+- [eng/JavaScript/Array.md](mdc:eng/JavaScript/Array.md) - English array concepts
+- [kor/Git/01_Install.md](mdc:kor/Git/01_Install.md) - Korean Git installation
+- [eng/Git/01_Install.md](mdc:eng/Git/01_Install.md) - English Git installation
+
+### Image References:
+- [kor/Images/array.png](mdc:kor/Images/array.png) - Korean version image
+- [eng/Images/array.png](mdc:eng/Images/array.png) - English version image

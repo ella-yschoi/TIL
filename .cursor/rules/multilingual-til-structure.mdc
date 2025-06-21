@@ -1,9 +1,9 @@
 ---
-description: 
-globs: 
-alwaysApply: true
+description:
+globs:
+alwaysApply: false
 ---
-# TIL Project Structure and Documentation Rules
+# Multilingual TIL Project Structure Rules
 
 ## 🎯 Project Overview
 This is a **Today I Learned (TIL)** knowledge base organized as a multilingual tree structure. The project maintains both Korean (kor/) and English (eng/) versions of all learning materials across various technology domains.
@@ -15,9 +15,9 @@ This is a **Today I Learned (TIL)** knowledge base organized as a multilingual t
   - `kor/` - Korean version of all content
   - `eng/` - English version of all content
   - Root level - Bilingual navigation and overview
-- **Use hierarchical categorization**: Organize content by technology domains (Algorithm, Auth, AWS, Design, Docker, Git, Infra, JavaScript, React, TypeScript, Web)
-- **Maintain sequential numbering**: For learning sequences, use `01_`, `02_`, `03_` prefix (e.g., `01_Install.md`, `02_Add_Commit.md`)
-- **Create Images folder**: Store all visual aids in `Images/` directory with descriptive names in both languages
+- **Mirror directory structure**: Both `kor/` and `eng/` must have identical folder organization
+- **Shared images**: Images are stored in both `kor/Images/` and `eng/Images/` for consistency
+- **Language-specific README**: Each language directory has its own README.md
 
 ### Directory Structure:
 ```
@@ -38,10 +38,8 @@ TIL/
 ### PROHIBITED:
 - ❌ **NEVER** create content outside kor/ or eng/ directories
 - ❌ **NEVER** have different folder structures between languages
-- ❌ **NEVER** create files with spaces in names
-- ❌ **NEVER** use camelCase or PascalCase for file names
-- ❌ **NEVER** place images outside the `Images/` directory
-- ❌ **NEVER** create nested subdirectories beyond the main categories
+- ❌ **NEVER** mix languages within the same file
+- ❌ **NEVER** create orphaned files without corresponding versions
 
 ## 📝 File Naming Conventions
 
@@ -57,22 +55,14 @@ TIL/
 - ❌ **NEVER** use camelCase or PascalCase for file names
 - ❌ **NEVER** use special characters except `_` and `&`
 - ❌ **NEVER** create different file names for same content across languages
-- ❌ **NEVER** use abbreviations unless universally understood
 
-## 📄 Markdown Content Structure
+## 📄 Content Structure Standards
 
 ### MUST FOLLOW:
-```markdown
-# Main Title (H1)
-
-## Section Title (H2)
-
-### Subsection (H3)
-
-<br/>
-
-## Content with proper spacing
-```
+- **Identical structure**: Same headings, sections, and organization across languages
+- **Same code examples**: Code blocks must be identical in both versions
+- **Consistent formatting**: Same markdown formatting and visual elements
+- **Parallel content**: Every section must have corresponding content in both languages
 
 ### Content Organization Rules:
 1. **Start with definition**: What is the concept?
@@ -82,12 +72,10 @@ TIL/
 5. **Add learning progression**: From basic to advanced
 
 ### PROHIBITED:
-- ❌ **NEVER** skip the definition section
-- ❌ **NEVER** write code without language specification
-- ❌ **NEVER** use more than 3 heading levels
-- ❌ **NEVER** forget to add `<br/>` for visual separation
 - ❌ **NEVER** skip sections in one language version
 - ❌ **NEVER** have different code examples between languages
+- ❌ **NEVER** use different heading structures
+- ❌ **NEVER** omit visual elements in one version
 
 ## 💻 Code Block Standards
 
@@ -95,9 +83,7 @@ TIL/
 - **Identical code**: Code blocks must be exactly the same in both languages
 - **Language-specific comments**: Only comments and explanations should differ
 - **Specify language**: Always use ```javascript, ```shell, ```typescript
-- **Include comments**: Explain complex logic with inline comments
-- **Provide runnable examples**: Code should be executable in both versions
-- **Use realistic scenarios**: Examples should reflect real development situations
+- **Runnable examples**: Code should be executable in both versions
 
 ### Code Translation Rules:
 ```javascript
@@ -111,12 +97,9 @@ arr.pop(); // Remove the last element
 ```
 
 ### PROHIBITED:
-- ❌ **NEVER** write code without language tags
-- ❌ **NEVER** include syntax errors in examples
-- ❌ **NEVER** use placeholder text like "your_code_here"
-- ❌ **NEVER** forget to explain what the code does
 - ❌ **NEVER** change code logic between languages
 - ❌ **NEVER** modify variable names or function calls
+- ❌ **NEVER** use different code examples
 - ❌ **NEVER** translate programming keywords
 
 ## 🖼️ Image Usage Rules
@@ -124,17 +107,14 @@ arr.pop(); // Remove the last element
 ### MUST FOLLOW:
 - **Duplicate images**: Store identical images in both `kor/Images/` and `eng/Images/`
 - **Same file names**: Use identical image names across languages
-- **Store in Images/**: All images must be in the Images directory
-- **Use relative paths**: Reference as `../Images/filename.png` in both versions
+- **Relative paths**: Reference as `../Images/filename.png` in both versions
 - **Descriptive names**: `git_merge.png`, `http_message.png`
-- **Include alt text**: Always describe the image content
 
 ### PROHIBITED:
 - ❌ **NEVER** reference images from external URLs
-- ❌ **NEVER** use generic names like `image1.png`
-- ❌ **NEVER** forget to update image references when moving files
 - ❌ **NEVER** use different image names between languages
 - ❌ **NEVER** place images outside the Images/ directory
+- ❌ **NEVER** use generic names like `image1.png`
 
 ## 🌐 Language-Specific Standards
 
@@ -156,26 +136,6 @@ arr.pop(); // Remove the last element
 - ❌ **NEVER** translate programming language keywords
 - ❌ **NEVER** lose technical accuracy during translation
 
-## 🎨 Visual Design Standards
-
-### MUST FOLLOW:
-- **Consistent emojis**: Use same emojis across both languages
-- **Use emojis strategically**: 🌳 for tree theme, 🪵 for branches
-- **Same formatting**: Identical bold, italic, and code formatting
-- **Bold important terms**: Use **bold** for key concepts
-- **Inline code formatting**: Use `backticks` for technical terms
-- **Consistent spacing**: Use `<br/>` for visual breaks
-- **Visual hierarchy**: Same heading structure and spacing
-- **Tree theme**: Maintain 🌳 tree theme in both versions
-
-### PROHIBITED:
-- ❌ **NEVER** overuse emojis (max 2-3 per section)
-- ❌ **NEVER** use all caps for emphasis
-- ❌ **NEVER** mix different formatting styles inconsistently
-- ❌ **NEVER** use different emojis between languages
-- ❌ **NEVER** change visual formatting
-- ❌ **NEVER** modify spacing or layout
-
 ## 📚 Content Quality Standards
 
 ### MUST FOLLOW:
@@ -183,28 +143,18 @@ arr.pop(); // Remove the last element
 - **Preserve technical accuracy**: Exact technical meaning in both languages
 - **Consistent terminology**: Use uniform terms within each language
 - **Complete content**: No missing sections in either language
-- **Include practical examples**: Every concept should have working code
-- **Explain error scenarios**: Include common mistakes and solutions
-- **Maintain learning progression**: Build from fundamentals to advanced topics
-- **Use consistent terminology**: Follow technical glossary for translations
+- **Practical examples**: Working code examples in both versions
 
 ### PROHIBITED:
 - ❌ **NEVER** skip content in one language version
 - ❌ **NEVER** use different examples between languages
 - ❌ **NEVER** lose educational progression
 - ❌ **NEVER** create inconsistent terminology
-- ❌ **NEVER** copy-paste without understanding
-- ❌ **NEVER** skip error handling explanations
-- ❌ **NEVER** assume reader knowledge of advanced concepts
-- ❌ **NEVER** translate inconsistently across files
 
 ## 🔄 Navigation and Linking
 
 ### MUST FOLLOW:
 - **Language-specific navigation**: Each language has its own SUMMARY.md
-- **Maintain SUMMARY.md**: Keep it synchronized with actual file structure
-- **Use proper links**: Ensure all internal links work correctly
-- **Update README.md**: Keep project overview current
 - **Consistent structure**: Same file organization in both languages
 - **Working links**: All internal links must work within each language
 - **Cross-language references**: Root README.md provides language selection
@@ -217,35 +167,24 @@ arr.pop(); // Remove the last element
 - `eng/SUMMARY.md` - English navigation
 
 ### PROHIBITED:
-- ❌ **NEVER** break internal links
-- ❌ **NEVER** forget to update SUMMARY.md when adding new files
-- ❌ **NEVER** create orphaned files without proper linking
 - ❌ **NEVER** break internal links within a language
 - ❌ **NEVER** create dead links
 - ❌ **NEVER** forget to update navigation when adding files
 - ❌ **NEVER** mix language references in navigation
 
-## 🚀 Technology Stack Focus
-
-### Priority Technologies (Both Languages):
-1. **JavaScript/TypeScript**: Core programming concepts
-2. **React**: Modern frontend development
-3. **Git**: Version control and collaboration
-4. **Web Technologies**: HTTP, REST API, Browser concepts
-5. **Cloud/AWS**: Modern deployment and infrastructure
-6. **Design Systems**: UI/UX and design principles
+## 🎨 Visual Design Standards
 
 ### MUST FOLLOW:
-- **Focus on practical application**: Emphasize real-world usage in both languages
-- **Include modern best practices**: Stay current with industry standards
-- **Provide troubleshooting guides**: Include common issues and solutions
-- **Maintain technical accuracy**: Preserve exact technical meaning
+- **Consistent emojis**: Use same emojis across both languages
+- **Same formatting**: Identical bold, italic, and code formatting
+- **Visual hierarchy**: Same heading structure and spacing
+- **Tree theme**: Maintain 🌳 tree theme in both versions
 
 ### PROHIBITED:
-- ❌ **NEVER** include outdated information
-- ❌ **NEVER** skip security considerations
-- ❌ **NEVER** ignore performance implications
-- ❌ **NEVER** lose technical precision during translation
+- ❌ **NEVER** use different emojis between languages
+- ❌ **NEVER** change visual formatting
+- ❌ **NEVER** modify spacing or layout
+- ❌ **NEVER** lose visual consistency
 
 ## 📋 File Management Workflow
 
@@ -269,47 +208,27 @@ arr.pop(); // Remove the last element
 - ❌ **NEVER** ignore navigation synchronization
 - ❌ **NEVER** skip quality checks for either language
 
-## 🌐 Translation Integration
+## 🚀 Technology Stack Focus
+
+### Priority Technologies (Both Languages):
+1. **JavaScript/TypeScript**: Core programming concepts
+2. **React**: Modern frontend development
+3. **Git**: Version control and collaboration
+4. **Web Technologies**: HTTP, REST API, Browser concepts
+5. **Cloud/AWS**: Modern deployment and infrastructure
+6. **Design Systems**: UI/UX and design principles
 
 ### MUST FOLLOW:
-- **Reference translation rules**: See [translation-guidelines.mdc](mdc:.cursor/rules/translation-guidelines.mdc)
-- **Maintain technical glossary**: Use consistent terminology across all files
-- **Preserve educational structure**: Keep learning progression intact
-- **Update cross-references**: Ensure all internal links work after translation
-
-### Translation Workflow:
-1. **Identify Korean content**: Mark all text requiring translation
-2. **Preserve technical accuracy**: Maintain exact technical meaning
-3. **Update navigation**: Translate Korean text in links and navigation
-4. **Verify consistency**: Ensure terms are translated uniformly
-5. **Test functionality**: Confirm all links and references work
+- **Focus on practical application**: Emphasize real-world usage in both languages
+- **Include modern best practices**: Stay current with industry standards
+- **Provide troubleshooting guides**: Include common issues and solutions
+- **Maintain technical accuracy**: Preserve exact technical meaning
 
 ### PROHIBITED:
-- ❌ **NEVER** translate without following translation guidelines
-- ❌ **NEVER** ignore technical term consistency
-- ❌ **NEVER** break cross-file references during translation
-- ❌ **NEVER** lose the educational flow and structure
-
-## 📋 File Reference Examples
-
-### Core Files:
-- [README.md](mdc:README.md) - Bilingual project overview
-- [kor/README.md](mdc:kor/README.md) - Korean project overview
-- [eng/README.md](mdc:eng/README.md) - English project overview
-- [kor/SUMMARY.md](mdc:kor/SUMMARY.md) - Korean navigation
-- [eng/SUMMARY.md](mdc:eng/SUMMARY.md) - English navigation
-- [kor/Git/01_Install.md](mdc:kor/Git/01_Install.md) - Korean sequential learning example
-- [eng/Git/01_Install.md](mdc:eng/Git/01_Install.md) - English sequential learning example
-- [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean comprehensive content example
-- [eng/JavaScript/Array.md](mdc:eng/JavaScript/Array.md) - English comprehensive content example
-- [kor/React/Hook.md](mdc:kor/React/Hook.md) - Korean modern React concepts
-- [eng/React/Hook.md](mdc:eng/React/Hook.md) - English modern React concepts
-
-### Image References:
-- [kor/Images/array.png](mdc:kor/Images/array.png) - Korean version image
-- [eng/Images/array.png](mdc:eng/Images/array.png) - English version image
-- [kor/Images/git_merge.png](mdc:kor/Images/git_merge.png) - Korean Git concept illustration
-- [eng/Images/git_merge.png](mdc:eng/Images/git_merge.png) - English Git concept illustration
+- ❌ **NEVER** include outdated information
+- ❌ **NEVER** skip security considerations
+- ❌ **NEVER** ignore performance implications
+- ❌ **NEVER** lose technical precision
 
 ## ⚠️ Critical Reminders
 
@@ -320,9 +239,6 @@ arr.pop(); // Remove the last element
 - **Navigation must work in both languages**
 - **Images must be available in both versions**
 - **Technical accuracy must be preserved**
-- **Practical examples** are more valuable than theory
-- **Visual aids** significantly improve understanding
-- **Sequential learning** structure must be maintained
 
 ### IMMEDIATE STOP CONDITIONS:
 - If you're about to create content in only one language
@@ -331,7 +247,16 @@ arr.pop(); // Remove the last element
 - If you're about to break navigation in either language
 - If you're about to lose technical accuracy
 - If you're about to create inconsistent terminology
-- If you're about to create a file with spaces in the name
-- If you're about to place an image outside the Images/ directory
-- If you're about to skip the definition section
-- If you're about to write code without language specification
+
+## 📋 File Reference Examples
+
+### Core Files:
+- [README.md](mdc:README.md) - Bilingual project overview
+- [kor/README.md](mdc:kor/README.md) - Korean project overview
+- [eng/README.md](mdc:eng/README.md) - English project overview
+- [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean array concepts
+- [eng/JavaScript/Array.md](mdc:eng/JavaScript/Array.md) - English array concepts
+
+### Image References:
+- [kor/Images/array.png](mdc:kor/Images/array.png) - Korean version image
+- [eng/Images/array.png](mdc:eng/Images/array.png) - English version image
