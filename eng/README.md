@@ -1,4 +1,4 @@
-# 🌳 Dev. Ella's TIL Tree
+# 🌳 Ella's TIL Tree (English)
 
 > I grow tree through the records that I learned.
 
