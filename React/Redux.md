@@ -1,132 +1,132 @@
 # Redux
 
-## 1. 상태 관리
+## 1. State Management
 
-### 전역 상태 관리
+### Global State Management
 
-- 프론트엔드 개발에서의 상태: 동적으로 표현되는 데이터
+- State in frontend development: Data expressed dynamically
 
-### 전역 상태
+### Global State
 
-- 서로 다른 컴포넌트가 사용하는 상태의 종류가 다르다면, 서로 다른 출처가 있어도 괜찮음
-- 하지만 서로 다른 컴포넌트가 동일한 상태를 다룬다면, 서로 다른 출처로 가져오는 것은 피하는 것이 좋음
+- If different components use different types of state, it's okay to have different sources
+- However, if different components handle the same state, it's better to avoid getting it from different sources
 
-### 데이터 무결성
+### Data Integrity
 
-- 동일한 데이터는 항상 같은 곳에서 데이터를 가져온다. → Single source of truth
+- Identical data is always retrieved from the same place → Single source of truth
 
-### 상태 관리 툴이 해결해주는 문제들
+### Problems State Management Tools Solve
 
-- 전역 상태 저장소 제공
-- Props Drilling 이슈 해결
+- Provide global state storage
+- Solve Props Drilling issues
 
 ### Props Drilling
 
-- 상위 컴포넌트의 state를 props를 통해 전달하고자 하는 컴포넌트로 전달하기 위해
-- 그 사이는 props를 전달하는 용도로만 쓰이는 컴포넌트들을 거치면서 데이터를 전달하는 현상
+- Phenomenon of passing data through components that are only used to pass props
+- To pass state from a parent component to a component that wants to receive it through props
 
-### Props Drilling의 문제
+### Problems with Props Drilling
 
-- 코드 가독성이 나빠짐
-- 코드의 유지보수 또한 힘들어짐
-- state 변경 시, Props의 전달 과정에서 불필요하게 관여된 컴포넌트들 또한 리렌더링 발생해 성능에 악영향
+- Code readability becomes poor
+- Code maintenance also becomes difficult
+- When state changes, components unnecessarily involved in the props passing process also re-render, negatively affecting performance
 
-### 이에 대한 해결책
+### Solutions for This
 
-- 컴포넌트와 관련있는 state는 가능하면 가까이 유지하기
-- 상태관리 라이브러리 사용: 전역으로 관리하는 저장소에서 직접 state 꺼내 쓸 수 있기에 Props Drilling 방지 효과적
-
-<br/>
-
-## 2. Redux란
-
-컴포넌트와 상태를 분리하여 전역에서 상태 관리를 해줄 수 있게 해주는 상태 관리 라이브러리
-
-### Redux가 상태를 관리하는 순서
-
-1. 상태가 변경되어야 하는 이벤트가 발생하면, 변경될 상태에 대한 정보가 담긴 Action 객체가 생성
-2. 이 Action 객체는 Dispatch 함수의 인자로 전달됨
-3. Dispatch 함수는 Action 객체를 Reducer 함수로 전달함
-4. Reducer 함수는 Action 객체의 값을 확인하고, 그 값에 따라 전역 상태 저장소 Store의 상태를 변경함
-5. 상태가 변경되면, React는 화면을 다시 렌더링
-6. 즉, Redux에서는 Action → Dispatch → Reducer → Store 순서로 데이터가 단방향으로 흐름
+- Keep state related to components as close as possible
+- Use state management libraries: Effective in preventing Props Drilling since state can be directly retrieved from globally managed storage
 
 <br/>
 
-## 3. Redux 구조
+## 2. What is Redux
+
+A state management library that separates components and state to enable global state management
+
+### Order of Redux State Management
+
+1. When an event that requires state change occurs, an Action object containing information about the state to be changed is created
+2. This Action object is passed as an argument to the Dispatch function
+3. The Dispatch function passes the Action object to the Reducer function
+4. The Reducer function checks the Action object's value and changes the state of the global state storage Store according to that value
+5. When the state changes, React re-renders the screen
+6. In other words, in Redux, data flows unidirectionally in the order Action → Dispatch → Reducer → Store
+
+<br/>
+
+## 3. Redux Structure
 
 ### Store
 
-상태가 관리되는 오직 하나뿐인 저장소 역할로, Redux 앱의 state가 저장되어 있는 공간
+Acts as the only storage where state is managed, the space where the Redux app's state is stored
 
 ```javascript
-// `createStore` 메소드로 Reducer 연결해 store 생성
+// Create store by connecting Reducer with `createStore` method
 import { createStore } from 'redux';
 const store = createStore(rootReducer);
 ```
 
 ### Reducer
 
-Dispatch에게서 전달받은 Action 객체의 type 값에 따라서 상태를 변경시키는 함수
+A function that changes state according to the type value of the Action object received from Dispatch
 
 ```javascript
-const count = 1
+const count = 1;
 
-// Reducer 생성시 초기 상태의 인자로 요구
+// Requires initial state as argument when creating Reducer
 const counterReducer = (state = count, action) => {
- // Action 객체의 type 값에 따라 분기하는 switch 조건문
- switch(action.type) {
-   // action === 'INCREASE'일 경우
-   case 'INCREASE':
-     return state + 1
-   // action === 'DECREASE'일 경우
-   case 'DECREASE':
-     return state - 1
-   // action === 'SET_NUMBER'일 경우
-   case 'SET_NUMBER':
-     return action.payload
-   // 해당되는 경우가 없을 때는 기존 상태를 그대로 리턴
-   default:
-     return state;
- }
-}
-// Reducer가 리턴하는 값이 새로운 상태가 됨
-// 이때 Reducer는 순수함수여야 함.
+  // Switch conditional statement that branches according to Action object's type value
+  switch (action.type) {
+    // when action === 'INCREASE'
+    case 'INCREASE':
+      return state + 1;
+    // when action === 'DECREASE'
+    case 'DECREASE':
+      return state - 1;
+    // when action === 'SET_NUMBER'
+    case 'SET_NUMBER':
+      return action.payload;
+    // when no case matches, return existing state as is
+    default:
+      return state;
+  }
+};
+// The value returned by Reducer becomes the new state
+// At this time, Reducer must be a pure function.
 ```
 
 ### Action
 
-Action은 어떤 액션을 취할 것인지 정의해 놓은 객체로, type은 필수로 지정해 주어야 하며, 대문자와 Snake Case로 작성함. 보통 Action 객체를 생성하는 함수를 만들어 사용하는데, 이를 액션 생성자 (Action Creator)라고 함.
+Action is an object that defines what action to take, type must be specified as required, and is written in uppercase and Snake Case. Usually, a function that creates Action objects is made and used, which is called an Action Creator.
 
 ```javascript
-// payload가 필요 없는 경우
+// When payload is not needed
 const increase = () => {
- return {
-   type: 'INCREASE'
- }
-}
+  return {
+    type: 'INCREASE',
+  };
+};
 
-// payload가 필요한 경우
+// When payload is needed
 const setNumber = (num) => {
- return {
-   type: 'SET_NUMBER',
-   payload: num
- }
-}
+  return {
+    type: 'SET_NUMBER',
+    payload: num,
+  };
+};
 ```
 
 ### Dispatch
 
-Reducer로 Action을 전달해 주는 함수
+A function that passes Action to Reducer
 
 ```javascript
-// Action 객체를 직접 작성하는 경우
-dispatch( {type: 'INCREASE'} );
-dispatch( {type: 'SET_NUMBER', payload: 5} );
+// When writing Action object directly
+dispatch({ type: 'INCREASE' });
+dispatch({ type: 'SET_NUMBER', payload: 5 });
 
-// Action Creator를 사용하는 경우
-dispatch( increase() );
-dispatch( setNumber(5) );
+// When using Action Creator
+dispatch(increase());
+dispatch(setNumber(5));
 ```
 
 <br/>
@@ -135,46 +135,46 @@ dispatch( setNumber(5) );
 
 ### useDispatch()
 
-Action 객체를 Reducer로 전달해 주는 Dispatch 함수를 반환하는 메소드
+A method that returns the Dispatch function that passes Action objects to Reducer
 
 ```javascript
-import {useDispatch} from 'react-redux'
+import { useDispatch } from 'react-redux';
 
-const dispatch = useDispatch()
-dispatch(increase())
-console.log(counter) // 2
+const dispatch = useDispatch();
+dispatch(increase());
+console.log(counter); // 2
 
-dispatch(setNumber(5))
-console.log(counter) // 5
+dispatch(setNumber(5));
+console.log(counter); // 5
 ```
 
 ### useSelector()
 
-컴포넌트와 state를 연결해 Redux의 state에 접근할 수 있게 해주는 메소드
+A method that connects components and state to access Redux's state
 
 ```javascript
-// Redux Hooks 메소드는 redux가 아닌 react-redux에서 불러옴
-import {useSelector} from 'react-redux'
-const counter = useSelector(state => state)
-console.log(counter) // 1
+// Redux Hooks methods are imported from react-redux, not redux
+import { useSelector } from 'react-redux';
+const counter = useSelector((state) => state);
+console.log(counter); // 1
 ```
 
 <br/>
 
-## 5. Redux의 세 가지 원칙
+## 5. Three Principles of Redux
 
 ### Single source of truth
 
-- 동일한 데이터는 항상 같은 곳에서 가지고 와야 함
-- Redux에는 데이터를 저장하는 Store 라는 하나뿐인 공간이 있음
+- Identical data must always be retrieved from the same place
+- Redux has only one space called Store for storing data
 
 ### State is read-only
 
-- 상태는 읽기 전용
-- React에서 상태갱신함수로만 상태를 변경했던 것처럼 Redux의 상태도 직접 변경할 수 없음을 의미
-- 즉, Action 객체가 있어야만 상태를 변경 가능
+- State is read-only
+- Just like in React where state was only changed with state update functions, Redux state cannot be changed directly
+- In other words, state can only be changed when there's an Action object
 
 ### Changes are made with pure functions
 
-- 변경은 순수함수로만 가능
-- 상태가 엉뚱한 값으로 변경되는 일이 없도록 순수함수로만 작성되어야 함
+- Changes are only possible with pure functions
+- Must be written only with pure functions to prevent state from being changed to unexpected values

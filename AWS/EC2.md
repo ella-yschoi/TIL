@@ -1,23 +1,23 @@
 # EC2
 
-## EC2란?
+## What is EC2?
 
-- AWS에서 (비용, 성능, 용량 면에서 탄력적인) 클라우드 컴퓨터를 제공하는 서비스
-- Elastic Compute Cloud: AWS에서 원격으로 제어할 수 있는 가상의 컴퓨터를 한 대 빌리는 것
-
-<br/>
-
-## EC2로 할 수 있는 일
-
-- EC2를 통해 할 수 있는 가장 기본적인 일은 **웹서버를 설치**하고 **사용자가 웹 브라우저를 통해 요청하는 서비스를 제공하는 것**
-- 인스턴스는 1대의 컴퓨터를 의미하는 단위이며, **AWS에서 컴퓨터를 빌리는 것을 인스턴스를 생성**한다고 함.
-- AWS EC2 인스턴스를 생성한다는 것은 AMI를 토대로 운영체제, CPU, RAM 혹은 런타임 등이 구성된 컴퓨터를 빌리는 것을 뜻함.
+- A service that provides cloud computers (elastic in terms of cost, performance, and capacity) from AWS
+- Elastic Compute Cloud: Renting a virtual computer that can be controlled remotely from AWS
 
 <br/>
 
-## EC2 사용의 이점
+## What Can You Do with EC2?
 
-- 구성하는 데에 필요한 시간이 짧음 (better than PC 구매 후 세팅)
-- AMI(Amazon Machine Image: 소프트웨어 구성이 기재된 템플릿)를 통해서 필요한 용도에 따라 다양한 운영체제에 대한 선택이 가능함
-  - EC2에서는 AMI라는 다양한 템플릿을 제공하고 있어 필요에 따라 손쉽게 운영체제를 선택 및 구성 가능
-  - 운영체제 뿐만이 아니라 CPU와 RAM, 용량까지도 손쉽게 구성 가능
+- The most basic thing you can do through EC2 is **installing a web server** and **providing services that users request through web browsers**
+- An instance is a unit that means one computer, and **renting a computer from AWS is called creating an instance**
+- Creating an AWS EC2 instance means renting a computer configured with operating system, CPU, RAM, or runtime based on AMI
+
+<br/>
+
+## Benefits of Using EC2
+
+- Short time required for configuration (better than buying a PC and setting it up)
+- Through AMI (Amazon Machine Image: template with software configuration), you can choose various operating systems according to your needs
+  - EC2 provides various templates called AMI, making it easy to select and configure operating systems as needed
+  - Not only operating systems but also CPU, RAM, and capacity can be easily configured

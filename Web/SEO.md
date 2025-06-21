@@ -1,40 +1,40 @@
 # SEO
 
-## 1. SEO 개념
+## 1. SEO Concept
 
-### SEO란?
+### What is SEO?
 
-- 검색 엔진의 작동 방식에 맞게 웹 페이지를 최적화해 주는 작업
+- Work to optimize web pages according to search engine operation methods
 
-### SEO의 종류
+### Types of SEO
 
-- On-Page SEO: 제목과 컨텐츠, 핵심 키워드의 배치, 효율적인 HTML 요소 사용법
-- Off-Page SEO: 소셜 미디어 홍보, 광고, 백링크 등을 사용하며 웹 페이지 내용과 구조와는 상관 X
+- On-Page SEO: Title and content, placement of core keywords, efficient use of HTML elements
+- Off-Page SEO: Using social media promotion, advertising, backlinks, etc., unrelated to web page content and structure
 
 <br/>
 
-## 2. SEO에 영향을 미치는 요소
+## 2. Elements Affecting SEO
 
-### `<title>` 요소
+### `<title>` Element
 
-- 검색 결과창에서 제목에 해당되는 요소로, `<head>`의 자식 요소로 작성
-- 핵심 키워드가 포함되면 상위 노출 될 확률 높아짐
+- Element corresponding to the title in search results, written as a child element of `<head>`
+- If core keywords are included, probability of top exposure increases
 
-### `<meta>` 요소
+### `<meta>` Element
 
-- 웹사이트에서 다루고 있는 데이터가 무엇인지에 대한 데이터, 즉 메타 데이터를 담는 요소로, `<head>`의 자식 요소로 작성
-- `name` 속성을 사용해 SEO가 목적
-- 검색 결과창 뿐만 아니라, 링크 공유 시 링크 미리보기에도 뜸
-- `property` 속성을 활용해 공유가 목적 → OG(Open Graph)라고 부름
-- OG를 잘 사용하면 방문자 수 증가에 기여해 상위노출 확률도 높아짐
+- Element that contains data about what data the website deals with, i.e., metadata, written as a child element of `<head>`
+- Uses `name` attribute for SEO purposes
+- Appears not only in search results but also in link previews when sharing links
+- Uses `property` attribute for sharing purposes → Called OG (Open Graph)
+- Using OG well contributes to increasing visitor numbers and also increases probability of top exposure
 
-### `<hgroup>` 요소
+### `<hgroup>` Element
 
-- 핵심 키워드를 `<hgroup>` 요소에 담아주기 단, 반복은 역효과
+- Put core keywords in `<hgroup>` element, but repetition has reverse effect
 
-### 콘텐츠
+### Content
 
-- 복사 붙여넣기 금지
-- 간결한 제목과 설명글
-- 최대한 텍스트로 설명하기
-- 꼭 이미지를 넣어야 한다면 `alt`속성을 사용해 이미지에 대한 설명을 간결한 텍스트로 작성하기
+- No copy and paste
+- Concise titles and descriptions
+- Explain as much as possible in text
+- If you must include images, use `alt` attribute to write concise text descriptions of images

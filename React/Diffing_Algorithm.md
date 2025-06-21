@@ -1,131 +1,131 @@
 # **React Diffing Algorithm**
 
-## 1. Diffing Algorithm의 필요성
+## 1. Need for Diffing Algorithm
 
-- React가 기존 가상 DOM과 변경된 새로운 가상 DOM을 비교 시
-- 변경된 새로운 가상 DOM 트리에 부합하도록 **기존의 UI를 효율적으로 갱신하는 방법**을 알아낼 필요
-- 즉 하나의 트리를 다른 트리로 변형을 시키는 **가장 작은 조작 방식**을 알아내야만 했음
-- 기존에 알아낸 조작 방식 알고리즘은 O(n^3)의 복잡도를 가지고 있었음.
-- 이는 너무 비싼 연산으로 두 가지 가정으로 새로운 휴리스틱 알고리즘을 구현함.
-- 이 두 가정은 거의 모든 실제 사용 사례에 들어맞고, React는 비교 알고리즘(Diffing Algorithm)을 사용
-  - 각기 서로 다른 두 요소는 **다른 트리를 구축**할 것이다.
-  - 개발자가 제공하는 key 프로퍼티를 가지고, 여러 번 렌더링을 거쳐도 **변경되지 말아야 하는 자식 요소**가 무엇인지 알아낼 수 있을 것이다.
+- When React compares existing virtual DOM with changed new virtual DOM
+- Need to find out **efficient method to update existing UI** to match changed new virtual DOM tree
+- In other words, had to find out **the smallest operation method** to transform one tree into another tree
+- Previously discovered operation method algorithm had O(n^3) complexity
+- This was too expensive operation, so implemented new heuristic algorithm with two assumptions
+- These two assumptions fit almost all actual use cases, and React uses comparison algorithm (Diffing Algorithm)
+  - Two elements that are different from each other will **build different trees**
+  - With key property provided by developers, can find out **which child elements should not change** even through multiple renderings
 
 <br/>
 
-## 2. React가 DOM 트리를 탐색하는 방법
+## 2. How React Traverses DOM Tree
 
-- 트리의 레벨 순서대로 순회하는 방식으로 탐색
-- 즉 같은 레벨(위치)끼리 비교
-- 이는 너비 우선 탐색(BFS)의 일종
+- Traverses in level order of tree
+- In other words, compares elements at the same level (position)
+- This is a type of breadth-first search (BFS)
 
-### 1) 다른 타입의 DOM 엘리먼트인 경우
+### 1) When DOM elements are of different types
 
-- DOM 트리는 각 HTML 태그마다 각각의 규칙이 있어 그 아래 들어가는 자식 태그가 한정적이라는 특징이 있음
-- 자식 태그의 부모 태그 또한 정해져 있다는 특징이 있기 때문에, 부모 태그가 달라진다면 React는 이전 트리를 버리고 새로운 트리를 구축하고, 이전의 DOM 노드들은 전부 파괴됨
+- DOM tree has the characteristic that each HTML tag has its own rules, so child tags that go under it are limited
+- There's also the characteristic that parent tags of child tags are also predetermined, so if parent tag changes, React discards previous tree and builds new tree, and all previous DOM nodes are destroyed
 
-    ```javascript
-    <div>
-    <Counter />
-    </div>
+  ```javascript
+  <div>
+  <Counter />
+  </div>
 
-    // 부모 태그가 div에서 span으로 바뀌면 자식 노드 <Counter/>는 완전히 해제
-    <span>
-    <Counter />
-    </span>
-    ```
+  // If parent tag changes from div to span, child node <Counter/> is completely released
+  <span>
+  <Counter />
+  </span>
+  ```
 
-### 2) 같은 타입의 DOM 엘리먼트인 경우
+### 2) When DOM elements are of the same type
 
-- 타입이 바뀌지 않는다면 React는 최대한 렌더링을 하지 않는 방향으로 최소한의 변경 사항만 업데이트
-- 업데이트할 내용이 생기면 virtual DOM 내부의 프로퍼티만 수정한 뒤, 모든 노드에 걸친 업데이트가 끝나면 그때 단 한번 실제 DOM으로의 렌더링을 시도
+- If type doesn't change, React tries to minimize changes and avoid rendering as much as possible
+- When there's content to update, only modifies properties inside virtual DOM, then attempts actual DOM rendering only once after all node updates are complete
 
-    ```javascript
-    <div className="before" title="stuff" />
+  ```javascript
+  <div className="before" title="stuff" />
 
-    // 기존의 엘리먼트가 태그는 바뀌지 않은 채 className만 변경됨
-    // React는 두 요소 비교 시 className만 수정되고 있다는 것을 알게 됨
-    <div className="after" title="stuff" />
-    ```
+  // Existing element's tag doesn't change, only className changes
+  // React knows that only className is being modified when comparing two elements
+  <div className="after" title="stuff" />
+  ```
 
-    ```javascript
-    // className이 before인 컴포넌트
-    <div style={{color: 'red', fontWeight: 'bold"}} title="stuff" />
+  ```javascript
+  // Component with className 'before'
+  <div style={{color: 'red', fontWeight: 'bold'}} title="stuff" />
 
-    // className이 after인 컴포넌트
-    <div style={{color: 'green', fontWeight: 'bold"}} title="stuff" />
-    ```
+  // Component with className 'after'
+  <div style={{color: 'green', fontWeight: 'bold'}} title="stuff" />
+  ```
 
-- 두 엘리먼트 비교 시, React는 **정확히 color 스타일만** 바뀌고 있음을 눈치챔
-- 따라서 React는 color 스타일만 수정, 다른 요소는 수정하지 않음
-- 이렇듯 하나의 DOM 노드를 처리한 뒤 React는 뒤이어 해당 노드들 밑의 자식들을 **순차적으로 동시에 순회하면서 차이가 발견될 때마다 변경**함
-- 이를 **재귀적**으로 처리한다고 표현
+- When comparing two elements, React notices that **exactly only the color style** is changing
+- Therefore React only modifies color style, doesn't modify other elements
+- After processing one DOM node this way, React **sequentially traverses children under those nodes simultaneously and changes whenever differences are found**
+- This is expressed as being processed **recursively**
 
-### 3) 자식 엘리먼트의 재귀적 처리
+### 3) Recursive processing of child elements
 
-- 아래와 같이 자식 엘리먼트 변경 시
+- When child elements change as below:
 
-    ```javascript
-    <ul>
-    <li>first</li>
-    <li>second</li>
-    </ul>
+  ```javascript
+  <ul>
+  <li>first</li>
+  <li>second</li>
+  </ul>
 
-    // 자식 엘리먼트의 끝에 새로운 자식 엘리먼트를 추가
-    <ul>
-    <li>first</li>
-    <li>second</li>
-    <li>third</li>
-    </ul>
-    ```
+  // Add new child element at the end of child elements
+  <ul>
+  <li>first</li>
+  <li>second</li>
+  <li>third</li>
+  </ul>
+  ```
 
-- React는 기존 `<ul>`과 새로운 `<ul>`을 비교 시 자식 노드를 순차적으로 위에서부터 아래로 비교하면서 바뀐 점을 찾음
-- 때문에 첫 번째 자식 노드들과 두 번째 자식 노드들이 **일치하는 점 확인 후 세 번째 자식 노드를 추가**
-- 이렇듯 React는 위에서 아래로 순차적으로 비교하기에 리스트의 처음에 엘리먼트를 삽입하시 이전 코드에 비해 훨씬 나쁜 성능을 낼 수 있음.
-- 따라서 아래와 같이 자식 엘리먼트 변경 시
+- When React compares existing `<ul>` with new `<ul>`, it compares child nodes sequentially from top to bottom to find what changed
+- Therefore, **confirms matching points of first and second child nodes, then adds third child node**
+- Since React compares sequentially from top to bottom this way, inserting elements at the beginning of list can produce much worse performance compared to previous code
+- Therefore, when child elements change as below:
 
-    ```javascript
-    <ul>
-    <li>Duke</li>
-    <li>Villanova</li>
-    </ul>
+  ```javascript
+  <ul>
+  <li>Duke</li>
+  <li>Villanova</li>
+  </ul>
 
-    // 자식 엘리먼트를 처음에 추가
-    <ul>
-    <li>Connecticut</li>
-    <li>Duke</li>
-    <li>Villanova</li>
-    </ul>
-    ```
+  // Add child element at the beginning
+  <ul>
+  <li>Connecticut</li>
+  <li>Duke</li>
+  <li>Villanova</li>
+  </ul>
+  ```
 
-- React는 우리의 기대대로 최소한으로 동작하지 못하게 됨. 기존처럼 처음의 노드들을 비교하기 때문
-- `<li>`Duke`</li>`와 `<li>`Connecticut`</li>`으로 자식 노드가 서로 다르다고 인지한 React는 리스트 전체가 바뀌었다고 받아들임
-- 즉 그대로인 자식 노드는 유지시켜도 된다는 것을 깨닫지 못하고 전부 버리고 새롭게 렌더링 해버립니다. 이는 굉장히 비효율적인 동작 방식
-- 따라서 React는 이 문제를 해결하기 위해 `key`라는 속성을 지원
+- React cannot operate minimally as we expect. Because it compares first nodes as before
+- React recognizes that `<li>Duke</li>` and `<li>Connecticut</li>` child nodes are different from each other and accepts that the entire list has changed
+- In other words, it doesn't realize that unchanged child nodes should be maintained, discards everything and renders newly. This is a very inefficient operation method
+- Therefore, React supports `key` property to solve this problem
 
-### 4) 키(Key)
+### 4) Key
 
-- 만약 자식 노드들이 key를 갖고 있다면, React는 key로 기존 트리의 자식과 새로운 트리의 자식의 일치 여부 확인 가능
+- If child nodes have keys, React can check matching between children of existing tree and children of new tree using keys
 
-    ```javascript
-    <ul>
-    <li key="2015">Duke</li>
-    <li key="2016">Villanova</li>
-    </ul>
+  ```javascript
+  <ul>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+  </ul>
 
-    // key가 2014인 자식 엘리먼트를 처음에 추가
-    <ul>
-    <li key="2014">Connecticut</li>
-    <li key="2015">Duke</li>
-    <li key="2016">Villanova</li>
-    </ul>
-    ```
+  // Add child element with key 2014 at the beginning
+  <ul>
+  <li key="2014">Connecticut</li>
+  <li key="2015">Duke</li>
+  <li key="2016">Villanova</li>
+  </ul>
+  ```
 
-- React는 key 속성으로 ‘2014’라는 자식 엘리먼트가 새롭게 생겼고, ‘2015’, ‘2016’ 키를 가진 엘리먼트는 그저 위치만 이동했다는 걸 알게 됨.
-- 따라서 React는 기존의 동작 방식대로 **다른 자식 엘리먼트는 변경하지 않고 추가된 엘리먼트만 변경**
-- 이 key 속성에는 보통 데이터 베이스 상의 **유니크한 값**(ex. Id)을 부여해 주면 됨
-- 키는 전역적으로 유일할 필요는 없고, **형제 엘리먼트 사이에서만 유일하면 됨**
+- React knows that child element with key '2014' is newly created, and elements with keys '2015', '2016' just moved positions
+- Therefore, React **doesn't change other child elements and only changes added element** as in existing operation method
+- For this key property, you can usually assign **unique values** from database (ex. Id)
+- Keys don't need to be globally unique, just **unique among sibling elements**
 
-- 만약 유니크한 값이 없다면 **배열의 인덱스를 key로도 사용** 가능
-- 다만 배열이 다르게 정렬될 경우가 생긴다면 배열의 인덱스를 key로 선택했을 경우는 비효율적으로 동작할 수 있다는 점 참고
-- 인덱스는 그대로지만 그 요소가 바뀐다면 React는 배열의 전체가 바뀌었다고 받아들일 것이고, 기존의 DOM 트리를 버리고 새로운 DOM 트리를 구축해 버리기 때문에 비효율적으로 동작하게 될 것임.
+- If there's no unique value, **can also use array index as key**
+- However, note that if array is sorted differently, using array index as key can operate inefficiently
+- If index stays the same but that element changes, React will accept that the entire array has changed and discard existing DOM tree and build new DOM tree, so it will operate inefficiently

@@ -1,38 +1,38 @@
 # SPA(Single Page Application)
 
-## 1. SPA란?
+## 1. What is SPA?
 
-### 전통적인 웹사이트
+### Traditional Websites
 
-- 사용자가 웹사이트 내 다른 페이지 이동 시 브라우저가 페이지를 보여주기 위해 매번 HTML 파일로 된 '페이지 전체'를 불러와야 했음
+- When users moved to different pages within a website, the browser had to load the 'entire page' as an HTML file every time to show the page
 
 ### SPA
 
-- SPA는페이지 전환 전후에 중복되는 부분은 새로 불러오지 않고, 업데이트가 필요한 부분만 새로 불러옴
-- JavaScript가 업데이트에 필요한 데이터를 조작하여, HTML 요소를 생성하여 화면에 보여주는 방식으로 작동하는 웹 애플리케이션 혹은 웹 사이트를 말함.
+- SPA doesn't reload overlapping parts before and after page transitions, but only reloads parts that need updates
+- Refers to web applications or websites that work by manipulating data needed for updates with JavaScript and generating HTML elements to display on screen
 
-### SPA의 장점
+### Benefits of SPA
 
-- 필요한 부분의 데이터만 받아서 화면을 업데이트 하면 되기에 사용자와의 interaction에 빠르게 반응
-- 서버에서는 요청 받은 데이터만 넘겨주면 되기에 서버 과부하 문제가 감소
-- 전체 페이지를 렌더링 할 필요가 없기에 더 나은 유저 경험 제공
+- Only needs to receive data for necessary parts and update the screen, so it responds quickly to user interactions
+- Server only needs to pass requested data, reducing server overload problems
+- Provides better user experience since there's no need to render the entire page
 
-### SPA의 단점
+### Disadvantages of SPA
 
-- JavaScript 파일의 크기가 크기에, 이 파일을 기다리는 시간으로 첫 화면 로딩 시간이 길어짐
-- SEO에 좋지 않음. 검색엔진은 HTML 파일에 있는 자료를 분석하는 방식으로 검색 기능을 구동하는데, SPA의 경우 HTML에 별다른 자료가 없기에 검색엔진이 적절히 동작하지 못함.
+- JavaScript file size is large, so first screen loading time becomes longer due to waiting time for this file
+- Not good for SEO. Search engines operate search functions by analyzing data in HTML files, but SPA has no special data in HTML, so search engines don't work properly
 
 <br/>
 
-## 2. Wireframe과 Mockup의 차이
+## 2. Difference Between Wireframe and Mockup
 
 ### Wireframe
 
-- 웹 페이지의 레이아웃과 UI 요소 등에 대한 뼈대로, 개발자가 디자인 컨셉과 사이트 기능에 대한 이해 가능
+- Skeleton for web page layout and UI elements, allowing developers to understand design concepts and site functionality
 
 ### Mockup
 
-- 데모 시연, 평가를 위한 최소한의 기능만 담은 모형으로, 스마트폰이나 데스크탑의 프레임을 덧씌워 직관적으로 이해하기 쉽게 디자인한 것
+- A model with minimal functionality for demo presentation and evaluation, designed with smartphone or desktop frames overlaid for intuitive understanding
 
 <br/>
 
@@ -40,10 +40,10 @@
 
 ### Routing
 
-- 다른 주소에 따라 다른 뷰를 보여주는 과정, 즉 "경로에 따라 변경한다"는 의미
-- React에서는 이 라우팅을 위해 React Router 라는 '라이브러리'를 가장 많이 사용
+- Process of showing different views according to different addresses, meaning "change according to path"
+- In React, 'React Router' library is most commonly used for this routing
 
-### 주요 컴포넌트
+### Main Components
 
 - router: `<BrowserRouter>`
 - route matchers: `<Routes>`, `<Route>`

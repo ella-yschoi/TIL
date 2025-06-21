@@ -2,40 +2,40 @@
 
 ## 1. IP/IP Packet
 
-### IP(Internet Protocol)
+### IP (Internet Protocol)
 
-지정한 IP 주소에 패킷이라는 통신 단위로 데이터를 전달
+Transmits data in communication units called packets to specified IP addresses
 
-### IP의 한계
+### IP Limitations
 
-- 비연결성: 패킷을 받을 대상이 없거나 서비스 불능상태여도 클라이언트는 패킷을 그대로 전송
-- 비신뢰성: 중간에 있는 서버가 데이터 전달시 장애가 생겨 패킷이 소실되더라도 클라이언트는 파악 불가하며, 패킷이 순서대로 도착하지 않을 수도 있음.
+- Connectionless: Even if there's no recipient for packets or service is unavailable, client still sends packets as-is
+- Unreliable: If there's a failure in servers during data transmission and packets are lost, client cannot detect it, and packets may not arrive in order
 
 <br/>
 
 ## 2. TCP
 
-### TCP 세그먼트
+### TCP Segment
 
-IP 패킷의 출발지 IP와 목적지 IP 정보를 보완할 수 있는 출발지 PORT, 목적지 PORT, 전송 제어, 순서, 검증 정보 등을 포함
+Includes source PORT, destination PORT, transmission control, sequence, verification information, etc. that can supplement source IP and destination IP information of IP packets
 
-### TCP(Transmission Control Protocol) 특징
+### TCP (Transmission Control Protocol) Characteristics
 
-- 연결 지향: TCP 3way handshake(가상 연결)
-- 데이터 전달 보증: 응답을 돌려주기 때문
-- 순서 보장: 순서대로 도착하지 않는다면 TCP 세그먼트에 있는 정보를 토대로 다시 패킷 전송 요청 가능
-- 신뢰할 수 있는 프로토콜
+- Connection-oriented: TCP 3-way handshake (virtual connection)
+- Data transmission guarantee: Because it returns responses
+- Order guarantee: If packets don't arrive in order, can request packet retransmission based on information in TCP segment
+- Reliable protocol
 
 <br/>
 
 ## 3. UDP
 
-### UDP(User Datagram Protocol) 특징
+### UDP (User Datagram Protocol) Characteristics
 
-- IP에 PORT, 체크섬(중복검사) 필드 정보만 추가된 단순한 프로토콜
-- 기능이 거의 없으나 커스터마이징 가능
-- 비 연결지향: TCP 3way handshake X
-- 데이터 전달 보증 X
-- 순서 보장 X
-- 데이터 전달 및 순서가 보장되지 않으나 단순하고 빠름
-- 신뢰성보다는 연속성이 중요한 서비스 (ex. 실시간 스트리밍)에 자주 사용됨
+- Simple protocol with only PORT and checksum (duplicate check) field information added to IP
+- Has almost no functionality but can be customized
+- Connectionless: No TCP 3-way handshake
+- No data transmission guarantee
+- No order guarantee
+- Data transmission and order are not guaranteed but simple and fast
+- Frequently used for services where continuity is more important than reliability (ex. real-time streaming)

@@ -2,76 +2,76 @@
 
 <br/>
 
-## branch 명령어
+## branch commands
 
-### branch 확인
+### check branch
 
-  ```shell
-  # * 표시로 현재 작업중인 브랜치 확인 가능
-  git branch
-  ```
-
-### branch 생성 후 해당 브랜치로 전환
-
-  ```shell
-  git branch {생성하려는 branch명}
-  ```
-
-  ```shell
-  git checkout -b {생성하려는 branch명}
-  ```
-
-  ```shell
-  git switch -c {생성하려는 branch명}
-  ```
-
-### branch 이동
-
-  ```shell
-  git checkout {이동하려는 branch명}
-  ```
-
-  ```shell
-  git switch {이동하려는 branch명}
-  ```
-
-### branch 병합
-
-  ```shell
-    # merge를 위해 main 브랜치로 전환
-    git switch main
-
-    # main 브랜치로 feat/todo 브랜치를 병합
-    git merge feat/todo
-  ```
-
-다만, 실제 프로젝트 개발 시에는 브랜치를 로컬에서 합치기보다는 GitHub의 pull request 기능을 이용하여 변경 내역을 충분히 확인하고 난 다음에 머지하는 경우가 더 많기 때문에, 로컬에서 머지하지 않고 feature 브랜치를 push하여 PR를 요청하는 것을 권장
-  
 ```shell
-  # GitHub repository로 push
-  git push origin feat/todo
-  # GitHub에서 Pull Request 및 merge
+# You can check the currently working branch with * mark
+git branch
 ```
 
-### branch 삭제
+### create branch and switch to it
 
-  ```shell
-  # merge한 브랜치 삭제
-  git branch -d {삭제하려는 branch명}
+```shell
+git branch {branch name to create}
+```
 
-  # merge하지 않은 브랜치 삭제
-  git branch -D {삭제하려는 branch명}
-  ```
+```shell
+git checkout -b {branch name to create}
+```
+
+```shell
+git switch -c {branch name to create}
+```
+
+### move branch
+
+```shell
+git checkout {branch name to move to}
+```
+
+```shell
+git switch {branch name to move to}
+```
+
+### merge branch
+
+```shell
+  # Switch to main branch for merge
+  git switch main
+
+  # Merge feat/todo branch into main branch
+  git merge feat/todo
+```
+
+However, in actual project development, rather than merging branches locally, it's more common to use GitHub's pull request feature to thoroughly review changes before merging, so it's recommended to push the feature branch and request a PR instead of merging locally
+
+```shell
+  # Push to GitHub repository
+  git push origin feat/todo
+  # Pull Request and merge on GitHub
+```
+
+### delete branch
+
+```shell
+# Delete merged branch
+git branch -d {branch name to delete}
+
+# Delete unmerged branch
+git branch -D {branch name to delete}
+```
 
 <br/>
 
-## branch 관련 에러
+## branch related errors
 
-- 브랜치를 삭제하려고 할 때 다음과 같은 에러가 나올 수 있다. 이는 브랜치에서 수정한 내용을 **merge 하지 않아서 나오는 에러**이다. 딱히 수정 내용이 중요하지 않다면 `git branch -D`를 입력해강제로 브랜치를 삭제 하면 된다.
+- When trying to delete a branch, the following error may occur. This is an error that occurs because the **changes made in the branch are not merged**. If the changes aren't particularly important, you can force delete the branch by entering `git branch -D`.
 
   ```shell
   error: The branch 'branchname'isnot fully merged.
   If you are sure you want todelete it, run 'git branch -D branchname'.
   ```
 
-- 다만 위 강제 삭제는 어디까지나 로컬상의 브랜치를 삭제한 것이므로 리모트 서버 상의 브랜치도 삭제를 해야 한다.
+- However, the above force deletion only deletes the branch locally, so you also need to delete the branch on the remote server.

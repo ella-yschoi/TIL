@@ -1,34 +1,34 @@
 # **Virtual DOM**
 
-## 1. Virtual DOM 이란?
+## 1. What is Virtual DOM?
 
-- 가상의 DOM, 실제 DOM의 **사본** 같은 개념
-- React는 실제 DOM 객체에 접근해 조작하는 대신, 가상 DOM 객체에 접근해 **변화 전과 후를 비교해 바뀐 부분만 적용**
-- 즉, Javascript 객체로 이루어진 가상 DOM 트리를 사용해, **실제 DOM 조작을 최소화하고 성능을 최적화하는 기술**
-
-<br/>
-
-## 2. Virtual DOM의 형태
-
-- 실제 DOM과 마찬가지로 **가상 DOM 또한 HTML 문서 객체 기반**
-- 추상화만 되었을 뿐 평범한 자바스크립트 객체
-- 따라서 실제 DOM을 건드리지 않고도 필요한 만큼 자유롭게 조작 가능
-- 리액트에서 **컴포넌트의 상태나 속성이 변경될 때마다** 새로 생성
-- 리액트는 이전 가상 DOM과 새로운 가상 DOM을 비교하여 변경된 부분만 실제 DOM에 반영
+- Virtual DOM, a concept like a **copy** of the actual DOM
+- Instead of accessing and manipulating actual DOM objects, React accesses virtual DOM objects and **compares before and after changes to apply only the changed parts**
+- In other words, it's a technology that uses virtual DOM trees made of JavaScript objects to **minimize actual DOM manipulation and optimize performance**
 
 <br/>
 
-## 3. Virtual DOM의 동작 과정
+## 2. Form of Virtual DOM
 
-- 비교 과정에서 React는 **Diffing 알고리즘을 사용**하여 변경된 부분을 감지
-- Diffing 알고리즘에서 이를 감지할 수 있도록 직접 할당이 아닌 **setState와 같은 method를 활용**해 상태를 변경
-- 가상 DOM과 변경된 새로운 가상 DOM을 비교하여 변경이 필요한 부분만 실제 DOM에 반영하여 업데이트 → 재조정 (Reconciliation)
-- 여러 개의 상태 변화가 있을 경우 일괄적으로 한 번에 업데이트(Batch Update)
-- 이를 통해 성능을 최적화하고 불필요한 리렌더링을 최소화함.
+- Like actual DOM, **virtual DOM is also based on HTML document objects**
+- Just abstracted, ordinary JavaScript objects
+- Therefore, can freely manipulate as needed without touching the actual DOM
+- **Created newly whenever component state or props change** in React
+- React compares previous virtual DOM with new virtual DOM and reflects only changed parts to actual DOM
 
 <br/>
 
-## 4. Virtual DOM은 빠르다?
+## 3. Virtual DOM Operation Process
 
-- 가상 DOM은 일반적으로 실제 DOM을 직접 조작하는 것보다 빠르지만, 모든 경우에 그렇지는 않음.
-- 때로는 직접 DOM을 조작하는 것이 더 빠를 수 있음.
+- During comparison process, React uses **Diffing algorithm** to detect changed parts
+- In Diffing algorithm, to detect this, uses methods like **setState instead of direct assignment** to change state
+- Compares virtual DOM with changed new virtual DOM and reflects only parts that need changes to actual DOM for update → Reconciliation
+- When there are multiple state changes, updates them all at once (Batch Update)
+- Through this, optimizes performance and minimizes unnecessary re-rendering
+
+<br/>
+
+## 4. Is Virtual DOM Fast?
+
+- Virtual DOM is generally faster than directly manipulating actual DOM, but not in all cases
+- Sometimes directly manipulating DOM can be faster

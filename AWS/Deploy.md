@@ -1,45 +1,48 @@
 # Deploy
 
-## 빌드
+## Build
 
-- 불필요한 데이터를 없애고, 여러 갈래로 퍼져있는 데이터들을 통합/압축하여 **배포하기에 최적화된 상태를 만드는 것**
-- 빌드 과정을 진행하기 전과 비교했을 때 데이터의 **용량이 줄어들고**, 웹 사이트의 **로딩 속도가 빨라진다**는 장점이 있음
-- 일반적인 의미의 빌드는, **소스코드를 실행 가능한 번들로 변환하는 컴파일 과정**을 의미
-- 웹 앱에서와 같이 HTML, CSS, JS의 형태로 배포하는 경우는 조금 다르며, 웹 앱은 배포 가능한 **정적 파일(static files)의 형태**로 만들어 주어야 함.
+- Creating a state optimized for deployment by removing unnecessary data and integrating/compressing data spread across multiple branches
+- Compared to before the build process, there are advantages of **reduced data capacity** and **faster website loading speed**
+- Build in the general sense means the **compilation process of converting source code into executable bundles**
+- It's slightly different for web apps deployed in HTML, CSS, JS format, and web apps must be made into **static files** that can be deployed
 
 <br/>
 
-## 배포
+## Deployment
 
-- 개발한 서비스를 사용자들이 이용 가능하게 하는 일련의 과정
-- 배포에서는 환경의 차이를 이해하고 **환경 설정을 코드와 분리하는 것이 중요**
+- A series of processes to make developed services available to users
+- In deployment, it's important to understand environmental differences and **separate environment configuration from code**
 
-### 배포의 4단계
+### 4 Stages of Deployment
 
 - **Development**
-  - 각자의 컴퓨터에서 코드를 작성하고 테스트하는 과정
-  - 개발 단계이기 때문에 실제 데이터를 이용하지 않고 더미 데이터를 이용해서 테스트
+
+  - Process of writing and testing code on each person's computer
+  - Since it's the development stage, testing is done with dummy data instead of real data
 
 - **Integration**
-  - 각자의 컴퓨터에서 작성한 코드를 합치는 과정
-  - 내가 작성한 코드가 다른 코드를 침범해서 오류를 일으키지 않는지, 코드 간에 conflict 여부 확인
+
+  - Process of combining code written on each person's computer
+  - Checking whether my written code doesn't interfere with other code causing errors, and checking for conflicts between codes
 
 - **Staging**
-  - 실제 출시 단계인 Production 단계와 가장 유사한 환경에서 테스트를 진행
-  - 실제 데이터를 복사해 문제가 있지 않은지 등 다양한 환경에서 테스트를 진행
-  - 서비스와 관련된 부서 혹은 인원의 확인 과정을 거치기도 함.
+
+  - Testing in an environment most similar to the Production stage, which is the actual release stage
+  - Testing in various environments by copying real data to check for problems
+  - May also go through verification processes by relevant departments or personnel
 
 - **Production**
-  - 개발된 서비스를 출시하는 단계
-  - 사용자가 접속할 수 있는 Production 환경에서 코드를 구동하고 서비스를 제공
-  - 실제 데이터를 가지고 서비스가 운영되기 때문에 문제가 생기면 안 되는 단계
+  - Stage of releasing the developed service
+  - Running code in the Production environment where users can access and providing the service
+  - Since the service operates with real data, this is a stage where problems should not occur
 
 <br/>
 
-## 작성한 코드가 다른 환경에서 정상 작동 하게 하려면?
+## How to Make Written Code Work Properly in Different Environments?
 
-- 절대 경로 대신 상대 경로를 사용
-- 환경에 따라 포트를 분기할 수 있도록 환경변수(env) 설정
-  - 환경 변수는 코드 변경 없이 배포 때마다 쉽게 변경할 수 있음.
-  - 설정 파일과 달리, 잘못해서 코드 저장소에 올라갈 가능성도 낮음.
-- Docker와 같은 개발 환경 자체를 통일시키는 솔루션 사용
+- Use relative paths instead of absolute paths
+- Set environment variables (env) to branch ports according to environment
+  - Environment variables can be easily changed for each deployment without code changes
+  - Unlike configuration files, there's also a lower possibility of accidentally uploading to the code repository
+- Use solutions like Docker to unify the development environment itself

@@ -1,21 +1,21 @@
 # Cloud Computing
 
-## Cloud Computing의 등장
+## Emergence of Cloud Computing
 
-> 현대의 클라우드 컴퓨팅은 과거의 데이터 센터와 비슷한 역할을 하지만, 물리적인 컴퓨터가 아닌, **가상 컴퓨터를 대여**한다는 점이 다름. 이는 가상화(Virtualization) 기술의 발전으로부터 비롯됨.
-
-<br/>
-
-## Cloud Computing의 장점
-
-- 서버의 자원과 공간 및 네트워크 환경 제공
-- 필요할 때마다 컴퓨팅 능력을 유연하게 조절
-- 고정적인 비용이 들어가는 온프레미스와는 달리, **사용한 만큼**의 요금만 지급
-- 다른 컴퓨터로 **즉시 migration** 가능
+> Modern cloud computing serves a similar role to traditional data centers, but differs in that it **rents virtual computers** rather than physical computers. This stems from the development of virtualization technology.
 
 <br/>
 
-## Cloud Computing의 단점
+## Advantages of Cloud Computing
 
-- 운영 환경 자체가 클라우드 제공자에게 종속
-- 클라우드 서비스에 문제 발생 시 서비스 환경에도 영향
+- Provides server resources, space, and network environment
+- Flexibly adjust computing power as needed
+- Unlike on-premises with fixed costs, only pay for **what you use**
+- **Immediate migration** to other computers possible
+
+<br/>
+
+## Disadvantages of Cloud Computing
+
+- Operating environment itself becomes dependent on cloud provider
+- When cloud services have problems, it affects the service environment

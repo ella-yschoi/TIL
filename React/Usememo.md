@@ -1,50 +1,50 @@
 # UseMemo
 
-## 1. useMemo의 역할
+## 1. Role of useMemo
 
-- 컴포넌트는 상태가 변경되거나 부모 컴포넌트가 렌더링이 될 때마다 리렌더링을 하는 구조로 이루어졌음
-- 하지만 너무 잦은 리렌더링은 앱에 좋지 않은 성능을 끼침
-- React Hook은 함수 컴포넌트가 상태를 조작하고 및 최적화 기능을 사용할 수 있게끔 하는 메소드
-- 그중 **렌더링 최적화를 위한 Hook**도 존재 → useCallback과 useMemo가 바로 그 역할을 하는 Hook
+- Components are structured to re-render whenever state changes or parent components render
+- However, too frequent re-rendering causes poor performance in apps
+- React Hooks are methods that allow function components to manipulate state and use optimization features
+- Among them, there are also **Hooks for rendering optimization** → useCallback and useMemo are Hooks that perform that role
 
 <br/>
 
-## 2. useMemo란?
+## 2. What is useMemo?
 
-- useMemo은 특정 값(value)을 재사용하고자 할 때 사용하는 Hook임.
-- 예를 들어, 아래 컴포넌트는 props로 넘어온 value값을 calculate라는 함수에 인자로 넘겨서 result 값을 구한 후, `<div>` 엘리먼트로 출력하는 코드가 있다면,
-  
+- useMemo is a Hook used when you want to reuse specific values
+- For example, if there's code in the component below that passes the value prop to a function called calculate to get the result value, then outputs it as a `<div>` element:
+
   ```javascript
-  function Calculator({value}) {
+  function Calculator({ value }) {
     const result = calculate(value);
-    return <>
-      <div>
-        {result}
-      </div>
-    </>;
+    return (
+      <>
+        <div>{result}</div>
+      </>
+    );
   }
   ```
 
-- 만약 위 calculate가 return에 오랜 시간이 걸린다면, **컴포넌트는 렌더링을 할 때마다 이 함수를 계속해서 호출**하면서 로딩시간이 늘어날 것이고, 결국 사용자에게 좋지 않은 경험을 줄 수 있음
-  
+- If the above calculate function takes a long time to return, **the component will continuously call this function every time it renders**, increasing loading time and ultimately giving users a poor experience
+
   ```javascript
-  import { useMemo } from "react";
+  import { useMemo } from 'react';
   const result = useMemo(() => calculate(value), [value]);
-    return <>
-      <div>
-        {result}
-      </div>
-    </>;
+  return (
+    <>
+      <div>{result}</div>
+    </>
+  );
   ```
 
-- 위 Calculator 컴포넌트의 value는 일종의 값으로서, 렌더링을 할 때마다 이 value값이 계속 바뀌는 게 아니라면 & 값을 어딘가에 저장을 해뒀다가 다시 꺼내서 쓸 수만 있다면 굳이 calculate 함수를 호출할 필요도 없을 것임
-- 여기서 useMemo Hook을 사용할 수 있음.
-- useMemo를 호출하여 calculate를 감싸주면, **이전에 구축된 렌더링과 새로이 구축되는 렌더링을 비교해 value값이 동일할 경우 → 이전 렌더링의 value값 재활용 가능(Memoization)**
+- The value of the above Calculator component is a kind of value, and if this value doesn't keep changing every time it renders & if the value can be stored somewhere and retrieved for reuse, there's no need to call the calculate function
+- Here you can use the useMemo Hook
+- By calling useMemo to wrap calculate, **when comparing previous rendering with newly constructed rendering, if the value is the same → previous rendering's value can be reused (Memoization)**
 
 <br/>
 
-## 3. Memoization 이란?
+## 3. What is Memoization?
 
-- **기존에 수행한 연산의 결과값을 메모리에 저장**을 해두고, **동일한 입력이 들어오면 재활용**하는 프로그래밍 기법
-- 이 메모이제이션을 적절히 사용한다면 굳이 중복 연산 할 필요가 없으므로 앱 성능 최적화 가능 → useMemo가 활용
-- 직접 메모이제이션 개념을 이용해 로직 구현이 가능하나, useMemo Hook 호출 시 로직 구현을 대신해 주기에 훨씬 간편함.
+- Programming technique that **stores the result value of previously performed operations in memory** and **reuses them when the same input comes in**
+- If you use this memoization appropriately, there's no need for duplicate operations, so app performance can be optimized → useMemo utilizes this
+- You can implement logic using memoization concept directly, but it's much more convenient because useMemo Hook call handles logic implementation for you

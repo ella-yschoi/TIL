@@ -1,14 +1,14 @@
 # Object
 
-## 1. 객체란?
+## 1. What is an Object?
 
-- JavaScript에서의 객체는 게임 캐릭터와 비슷하다고 할 수 있다. 사용자들의 캐릭터는 동일하게 직업과 능력을 가지고 있지만, 각각 세부적인 내용은 다르다.
-- 누군가는 Ella라는 ID와 마법사라는 직업을 가지고 있지만, 다른 누군가는 Chloe라는 ID와 전사라는 직업을 가지고 있다.
-- 마찬가지로 사용자가 웹사이트에 가입할 때 입력할 항목은 모두 같지만, 입력하는 정보는 사용자마다 다르다. 이렇게 각기 다른 값을 가질 수 있지만, 입력해야 하는 데이터의 종류가 동일한 경우 객체를 사용하면 손쉽게 데이터를 관리할 수 있다.
-- 이렇듯, 공통적인 속성을 가지는 경우 객체를 사용해야 한다. 웹사이트에 가입한 회원 주소록을 만든다고 가정해 보자.
+- Objects in JavaScript can be compared to game characters. User characters have the same job and abilities, but each has different detailed content.
+- Someone has an ID of Ella and a job as a wizard, while someone else has an ID of Chloe and a job as a warrior.
+- Similarly, when users register on a website, the items they need to enter are all the same, but the information they enter is different for each user. In cases like this where each can have different values but the types of data that need to be entered are the same, using objects makes it easy to manage data.
+- In such cases where there are common properties, you should use objects. Let's assume you're creating an address book of members who registered on a website.
 
   ```jsx
-  // 위와 같이 매번 여러 개의 변수를 선언해 주어야 할까?
+  // Do you need to declare multiple variables like this every time?
   let userFirstName = 'Ella';
   let userLastName = 'Choi';
   let userEmail = 'ella@gmail.com';
@@ -21,121 +21,121 @@
   ```
 
   ```jsx
-  let user = { // 중괄호로 객체 만듬
-    firstName: 'Ella', // 한 쌍의 이름과 값은 ',' 로 구분, 이름과 값은 ':' 으로 분리
-    lastName: 'Choi', // 여기서 lastName는 키(key), 'Choi'는 값(value)
-    email:'ella@gmail.com',
-    city: 'Seoul'
-    }
+  let user = {
+    // create object with curly braces
+    firstName: 'Ella', // separate pairs of names and values with ',', separate names and values with ':'
+    lastName: 'Choi', // here lastName is the key, 'Choi' is the value
+    email: 'ella@gmail.com',
+    city: 'Seoul',
+  };
   ```
 
 <br/>
 
-## 2. 객체의 값을 조회하는 방법 두 가지
+## 2. Two Ways to Access Object Values
 
-### Dot notation: 객체 + .(점) + 키 값
+### Dot notation: object + .(dot) + key value
 
- ```jsx
- let user = { 
-  firstName: 'Ella', 
-  lastName: 'Choi', 
-  email:'ella@gmail.com',
-  city: 'Seoul'
- };
+```jsx
+let user = {
+  firstName: 'Ella',
+  lastName: 'Choi',
+  email: 'ella@gmail.com',
+  city: 'Seoul',
+};
 
- // 형식: 객체 + .(점) + 키 값
- user.firstName; // 'Ella'
- user.city; // 'Seoul'
- ```
+// format: object + .(dot) + key value
+user.firstName; // 'Ella'
+user.city; // 'Seoul'
+```
 
-### Bracket notation: 키 값이 대괄호 안에 '문자열'
+### Bracket notation: key value as 'string' inside square brackets
 
- ```jsx
- let user = {
-  firstName: 'Ella', 
-  lastName: 'Choi', 
-  email:'ella@gmail.com',
-  city: 'Seoul'
- };
- 
- // 형식: 키 값이 대괄호 안에 '문자열'로 들어감
- user['firstName']; // 'Ella'
- user['city']; // 'Seoul'
- ```
+```jsx
+let user = {
+  firstName: 'Ella',
+  lastName: 'Choi',
+  email: 'ella@gmail.com',
+  city: 'Seoul',
+};
+
+// format: key value goes inside square brackets as a 'string'
+user['firstName']; // 'Ella'
+user['city']; // 'Seoul'
+```
 
 <br/>
 
-## 3. 객체를 다루는 다양한 방법
+## 3. Various Ways to Handle Objects
 
-### Bracket notation: 키 값이 동적으로 변할 때 반드시 사용
+### Bracket notation: must be used when key values change dynamically
 
 ```jsx
 let person = {
-name: 'Ella',
-age: 16 
-}; // 키 값이 계속 변하는 상황
+  name: 'Ella',
+  age: 16,
+}; // situation where key values keep changing
 
-// name 값 조회
+// get name value
 let output = getProperty(person, 'name');
 console.log(output); // -> 'Ella'
 
-// name 값 조회 방법
+// method to get name value
 function getProperty(obj, propertyName) {
-  return obj[propertyName]; // obj['name']   
+  return obj[propertyName]; // obj['name']
 }
 
-// 주의1: return person.name (X) Ella만 나오기에 -> obj[propertyName]를 넣어야 함
-// 주의2: return.propertyName (X) -> propertyName 라는 키 이름이 별도로 있어야 넣을 수 있음
+// Note1: return person.name (X) only outputs Ella -> must use obj[propertyName]
+// Note2: return.propertyName (X) -> need a separate key name called propertyName to use it
 
-
-// age 값 조회
+// get age value
 let output = getProperty(person, 'age');
 console.log(output2); // -> 16
 
-// age 값 조회 방법
+// method to get age value
 function getProperty(obj, propertyName) {
-  return obj[propertyName]; // obj['age']   
+  return obj[propertyName]; // obj['age']
 }
- ```
-
-### dot/bracket notation으로 값을 추가할 수도 있음
-
-```jsx
-let tweet = {
-writer: 'Ella Choi',
-createdAt: '2022-02-28 12:03:33',
-content: '코딩은 재밌어'
-};
-
-// 다양한 값을 넣을 수 있음
-tweet['category'] = '이야기'; // Bracket notation으로 이야기 라는 문자열을 추가
-tweet.isPublic = true; // Dot notation으로 Boolean값을 추가
-tweet.tags = ['#코딩', '#개발자'] // Dot notation으로 배열을 추가
 ```
 
-### delete 키워드로 속성 삭제도 가능
+### You can also add values using dot/bracket notation
 
 ```jsx
 let tweet = {
   writer: 'Ella Choi',
   createdAt: '2022-02-28 12:03:33',
-  content: '코딩은 재밌어'
+  content: 'Coding is fun',
 };
 
-delete tweet.createdAt; // createAt 키-값 쌍을 지움
-tweet.createdAt // 지워졌으니 콘솔에 찍으면 undefined로 나옴
-
-// tweet은 다음과 같게 됨
-// {writer: 'Ella Choi', content: '코딩은 재밌어'}
+// You can add various values
+tweet['category'] = 'story'; // Add string 'story' using Bracket notation
+tweet.isPublic = true; // Add Boolean value using Dot notation
+tweet.tags = ['#coding', '#developer']; // Add array using Dot notation
 ```
 
-### in 연산자로 해당하는 키가 있는지 확인 가능
+### You can also delete properties using the delete keyword
 
 ```jsx
 let tweet = {
-writer: 'Stevelee',
-createdAt: '2022-02-28 12:03:33',
-content: '코딩은 재밌어'
+  writer: 'Ella Choi',
+  createdAt: '2022-02-28 12:03:33',
+  content: 'Coding is fun',
+};
+
+delete tweet.createdAt; // delete the createAt key-value pair
+tweet.createdAt; // since it's deleted, it will output undefined in console
+
+// tweet becomes like this
+// {writer: 'Ella Choi', content: 'Coding is fun'}
+```
+
+### You can check if a key exists using the in operator
+
+```jsx
+let tweet = {
+  writer: 'Stevelee',
+  createdAt: '2022-02-28 12:03:33',
+  content: 'Coding is fun',
 };
 
 'content' in tweet; // true
@@ -144,29 +144,29 @@ content: '코딩은 재밌어'
 
 <br/>
 
-## 4. 문자열 작성 시 흔히 하는 실수
+## 4. Common Mistakes When Writing Strings
 
-Bracket notation 사용 시 대괄호를 빼먹는다거나, 변수 선언을 하지 않았다거나 등등 사소한 실수를 막기 위해 아래 내용을 하나씩 이해하며 눈에 익혀보자!
+To prevent minor mistakes like forgetting square brackets when using bracket notation, or not declaring variables, etc., let's understand and familiarize ourselves with the content below one by one!
 
 ```jsx
 let user = {
-firstName: 'Ella',
-lastName: 'Choi',
-email:'ella@gmail.com',
-city: 'Seoul'
+  firstName: 'Ella',
+  lastName: 'Choi',
+  email: 'ella@gmail.com',
+  city: 'Seoul',
 };
-user['firstName']; // 'Ella' : Bracket notation으로 객체의 값 조회
-user[firstName]; // ReferenceError: firstName is not defined : firstName이 변수취급 되고 있는 것임
+user['firstName']; // 'Ella': access object value using Bracket notation
+user[firstName]; // ReferenceError: firstName is not defined: firstName is being treated as a variable
 
-let keyname = 'firstName'; // keyname에 'firstName'라는 문자열을 담아봄
-user[keyname] // 'Ella' : 'firstName' 문자열 값이 keyname로 들어갔기 때문에
-user[keyname] === user['firstName'] // true : 사실상 Bracket notation으로 객체 값 조회한 결과와 같음
+let keyname = 'firstName'; // store 'firstName' string in keyname
+user[keyname]; // 'Ella': because the string value 'firstName' went into keyname
+user[keyname] === user['firstName']; // true: essentially the same as accessing object value using Bracket notation
 
-let firstName = 'Ella'
-user[firstName] === user['firstName'] // false : Bracket notation 사용 시 대괄호 안에 문자열이 들어가야 함
-user[keyname] === user['firstName'] // true
+let firstName = 'Ella';
+user[firstName] === user['firstName']; // false: when using Bracket notation, a string must go inside the square brackets
+user[keyname] === user['firstName']; // true
 
-user['firstName'] === user.firstName // true :Dot notation === Bracket notation
-user[firstName] === user.firstName // false : Bracket notation 사용 시 대괄호 안에 문자열이 들어가야 함
-user[firstName] === user['firstName'] // false
+user['firstName'] === user.firstName; // true: Dot notation === Bracket notation
+user[firstName] === user.firstName; // false: when using Bracket notation, a string must go inside the square brackets
+user[firstName] === user['firstName']; // false
 ```

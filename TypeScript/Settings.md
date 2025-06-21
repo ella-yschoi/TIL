@@ -1,31 +1,31 @@
 # TypeScript Settings
 
-## 1. TypeScript 프로젝트 환경 구성
+## 1. TypeScript Project Environment Setup
 
-### 1. 프로젝트 폴더 생성
+### 1. Create Project Folder
 
 ```shell
-mkdir (폴더명)
-cd (폴더명)
+mkdir (folder_name)
+cd (folder_name)
 ```
 
-### 2. 프로젝트 폴더 안에서 초기화
+### 2. Initialize Inside Project Folder
 
 ```shell
 npm init -y
 ```
 
-### 3. TypeScript 설치
+### 3. Install TypeScript
 
 ```shell
 npm install typescript --save-dev
 ```
 
-### 4. 프로젝트 루트 디렉토리에 .json 파일 생성 후 붙여넣기
+### 4. Create .json File in Project Root Directory and Paste
 
 ```json
 //tsconfig.json
-//compilerOptions 내의 속성은 커스텀 가능
+//Properties within compilerOptions can be customized
 {
   "compilerOptions": {
     "target": "es6",
@@ -33,47 +33,39 @@ npm install typescript --save-dev
     "sourceMap": true,
     "outDir": "./dist"
   },
-  "include": [
-    "src/**/*"
-  ]
+  "include": ["src/**/*"]
 }
 ```
 
-### 5. src 폴더 안에 .ts 파일을 만들어 TypeScript 코드 작성
+### 5. Create .ts File Inside src Folder and Write TypeScript Code
 
 <br/>
 
-## 2. TypeScript ESLint와 Prettier 설정하기
+## 2. Setting Up TypeScript ESLint and Prettier
 
-### 1. ESLint 설치 후, settings.json에 아래 설정 적용
+### 1. Install ESLint, Then Apply Settings Below to settings.json
 
 ```json
 {
-  // ... 
+  // ...
   "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+    "source.fixAll.eslint": true
   },
   "eslint.alwaysShowStatus": true,
-  "eslint.workingDirectories": [
-      {"mode": "auto"}
-  ],
-  "eslint.validate": [
-      "javascript",
-      "typescript"
-  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.validate": ["javascript", "typescript"]
 }
-
 ```
 
-### 2. VSCode 에디터 설정 중 'format on save' 설정 해제
+### 2. Disable 'format on save' Setting in VSCode Editor Settings
 
-### 3. Prettier 설치 후, 프리셋과 라이브러리 설치
+### 3. Install Prettier, Then Install Presets and Libraries
 
 ```shell
 npm i -D @babel/core @babel/preset-env @babel/preset-typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint prettier eslint-plugin-prettier
 ```
 
-### 4. 프로젝트 폴더 밑에 .eslintrc.js 파일을 만들어 아래 내용 붙여 넣기
+### 4. Create .eslintrc.js File Under Project Folder and Paste Content Below
 
 ```javascript
 module.exports = {
@@ -107,5 +99,4 @@ module.exports = {
     parser: '@typescript-eslint/parser',
   },
 };
-
 ```

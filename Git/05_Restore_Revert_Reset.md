@@ -2,57 +2,57 @@
 
 <br/>
 
-## git restore : 파일 하나를 되돌리기
+## git restore : Revert a single file
 
-최근 commit된 상태로 현재 파일의 수정내역을 되돌리기
+Revert current file modifications to the most recently committed state
 
 ```shell
-git restore 파일명
+git restore filename
 ```
 
-입력한 파일을 특정 커밋아이디 시점으로 복구하기
+Restore the entered file to a specific commit ID point
 
 ```shell
-git restore --source 커밋아이디 파일명
+git restore --source commit_id filename
 ```
 
-특정 파일을 staging 취소
+Unstage a specific file
 
 ```shell
-git restore --staged 파일명
+git restore --staged filename
 ```
 
 <br/>
 
-## git revert : commit을 되돌리기
+## git revert : Revert a commit
 
-과거의 커밋 내역을 취소하고자 한다면, commit 하나를 취소한 commit을 추가 생성. 즉, 특정 커밋에서 있던 일을 지워버릴 수 있는 명령어임.
+If you want to cancel past commit history, it creates an additional commit that cancels one commit. In other words, it's a command that can erase what was done in a specific commit.
 
 ```shell
-git revert 커밋아이디
+git revert commit_id
 ```
 
 ![git_revert](/Images/git_revert.png)
 
-- vim 에디터가 뜬다면 commit message 수정 후 닫기
-- revert 시, 동시에 여러개의 commit id 입력 가능
-- 최근 했던 commit 1개만 revert : git revert HEAD 입력
-- merge 명령으로 인해 새로 만들어진 commit도 revert 가능
+- If vim editor appears, modify the commit message and close it
+- When reverting, you can enter multiple commit IDs simultaneously
+- To revert only the most recent commit: enter git revert HEAD
+- Commits newly created by merge commands can also be reverted
 
 <br/>
 
-## git reset : 전부 되돌리고 싶다면
+## git reset : If you want to revert everything
 
-특정 commit 때로 아예 모든 것을 되돌릴 수 있음 (작업 폴더 내 파일 포함)
+You can completely revert everything to a specific commit (including files in working directory)
 
 ```shell
-git reset --hard 커밋아이디
+git reset --hard commit_id
 ```
 
 ![git_reset](/Images/git_reset.png)
 
-- 다만, **협업 프로젝트 시에는 사용을 매우 주의**해야 함
-- untracked 파일들은 (git add 안 해놓은 파일들은) 사라지지 않고 유지됨
-- git clean 명령어는 untracked 파일들도 다 지울 수 있음 (더 위험..)
-- reset하면서 파일을 아예 지워버리는게 아니라, (staging을 취소하면서) 검토하고 다시 commit 하고 싶다면 `--hard`가 아닌, `--soft`나 `--mixed`을 사용
-- 물론 `git reset` 입력 시, `--mixed` 옵션이 기본으로 작동되며, 인덱스(Staging Area)만 초기화됨.
+- However, **you must be very careful when using it in collaborative projects**
+- Untracked files (files not added with git add) are not deleted and remain
+- git clean command can delete all untracked files (more dangerous..)
+- If you want to review and commit again (while unstaging) instead of completely deleting files during reset, use `--soft` or `--mixed` instead of `--hard`
+- Of course, when you enter `git reset`, the `--mixed` option works by default, and only the index (Staging Area) is reset.

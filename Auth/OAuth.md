@@ -1,39 +1,39 @@
 # OAuth
 
-## 1. OAuth란?
+## 1. What is OAuth?
 
-- 전통적으로 직접 작성한 서버에서 인증을 처리해 주는 것과 달리, OAuth는 **인증을 중개해주는 매커니즘**
-- 보안된 리소스에 액세스하기 위해 클라이언트에게 권한을 제공하는 프로세스를 단순화하는 프로토콜
-- 즉, 이미 사용자 정보를 가지고 있는 웹 서비스에서 사용자의 인증을 대신해 주고, 접근 권한에 대한 토큰을 발급한 후, 이를 이용해 내 서버에서 인증이 가능
+- Unlike traditional servers that handle authentication directly, OAuth is **a mechanism that mediates authentication**
+- A protocol that simplifies the process of providing clients with permissions to access secured resources
+- In other words, web services that already have user information can handle user authentication on your behalf, issue tokens for access permissions, and use them for authentication on your server
 
 <br/>
 
-## 2. OAuth의 작동 매커니즘
+## 2. OAuth Operation Mechanism
 
 - Resource Owner
-  - OAuth 인증으로 소셜 로그인을 하고자 하는 사용자
+  - The user who wants to perform social login through OAuth authentication
 - Resource Server
-  - 사용자의 정보를 저장하고 있는 서버
+  - The server that stores user information
 - Authorization Server
-  - 사용자의 정보를 저장하고 있는 서버 중 인증을 담당하는 서버
+  - Among servers that store user information, the server responsible for authentication
 - Application
-  - 사용자가 소셜 로그인을 활용해 이용하고자 하는 환경
+  - The environment where users want to use social login
 
 <br/>
 
-## 3. OAuth 인증 방식의 종류와 흐름
+## 3. Types and Flow of OAuth Authentication Methods
 
 - **Implicit Grant Type**
-  - 기존 서비스에 로그인만 되어 있다면 새로운 서비스에 바로 액세스 토큰을 내어주기 때문에 보안성이 떨어짐
+  - If already logged into an existing service, immediately provides access token to new service, making it less secure
 - **Authorization Code Grant Type**
-  - Implicit Grant Type에서 Authorization Code를 사용한 인증 단계가 추가로 있기 때문에 비교적 더 안전
-  - 또한, 토큰을 Application의 Client에 노출시키지 않고 Server에서만 관리하도록 만들 수도 있기 때문에 소셜 로그인을 구현하는 방식의 선택지가 늘어남
+  - More secure than Implicit Grant Type because it has an additional authentication step using Authorization Code
+  - Also, tokens can be managed only on the server without exposing them to the Application's Client, increasing options for implementing social login
 - **Refresh Token Grant Type**
-  - 액세스 토큰이 만료되었을 때, 매번 이 과정을 거쳐서 액세스 토큰을 다시 발급받아야 한다면 사용자 편의성에 있어서는 좋지 않음 → 리프레시 토큰 같이 발급
+  - If access tokens expire, having to go through this process every time to reissue access tokens is not good for user convenience → issue refresh tokens as well
 
 <br/>
 
-## 4. OAuth의 장점
+## 4. OAuth Advantages
 
-- 쉽고 안전하게 새로운 서비스 이용 가능
-- 권한 영역 설정 가능
+- Easy and safe to use new services
+- Can set permission scopes

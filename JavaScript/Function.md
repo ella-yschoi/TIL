@@ -1,42 +1,42 @@
 # Function
 
-- 함수는 유사한 동작을 하는 코드가 여러 곳에서 필요할 때가 많다. 예를 들어 사용자가 로그인이나 로그아웃을 할 때 안내 메시지를 보여주는 동작 등. 더불어, 함수는 프로그램을 구성하는 주요 '구성 요소'이며, 중복 없이 유사한 동작을 하는 코드를 여러 번 호출할 수 있다.
+- Functions are often needed when similar code actions are required in multiple places. For example, actions like showing notification messages when users log in or log out. Additionally, functions are major 'building blocks' that make up programs, and you can call code that performs similar actions multiple times without duplication.
 
 <br/>
 
-## 1. 함수 선언문
+## 1. Function Declaration
 
-- function 키워드, 함수 이름, 괄호로 둘러싼 매개변수를 차례로 써주면 된다. 만약 매개변수가 여러 개라면 콤마로 구분해 준다.
-- 이어서 함수를 구성하는 코드의 모임인 함수의 본문(body)을 중괄호로 감싼다.
+- Write the function keyword, function name, and parameters surrounded by parentheses in order. If there are multiple parameters, separate them with commas.
+- Then wrap the function body, which is the collection of code that makes up the function, in curly braces.
 
   ```javascript
   function name(parameter1, parameter2) {
-    // 함수 본문
+    // function body
   }
   ```
 
 <br/>
 
-## 2. 지역 변수
+## 2. Local Variables
 
-- 함수 내에서 선언한 변수인 지역 변수(local variable)는 함수 안에서만 접근할 수 있다.
-  
+- Local variables declared within a function can only be accessed inside the function.
+
   ```javascript
   function showMessage() {
-    let message = 'hello'; // 지역변수
+    let message = 'hello'; // local variable
     console.log(message);
   }
 
   showMessage(); // 'hello'
-  console.log(message); // ReferenceError: message is not defined (message는 함수 내 지역 변수이기 때문)
+  console.log(message); // ReferenceError: message is not defined (because message is a local variable within the function)
   ```
 
 <br/>
 
-## 3. 외부 변수
+## 3. Outer Variables
 
-- 함수 내부에서 함수 외부 변수인 외부 변수(outer variable)에 접근할 수 있음
-  
+- You can access outer variables (variables outside the function) from within the function
+
   ```javascript
   let userName = 'Ella';
 
@@ -48,189 +48,191 @@
   showMessage(); // Hello, Ella
   ```
 
-- 외부 변수 접근 뿐만 아니라 수정도 가능
+- You can not only access outer variables but also modify them
 
-  ```javascript
-  let userName = 'Ella'
-
-  function showMessage() {
-    userName = 'Chloe'; // 외부 변수 수정
-    let message = 'Hello, ' + userName;
-    console.log(message);
-  }
-
-  console.log(userName); // 함수 호출 전이므로 Ella 출력
-
-  showMessage(); // Hello, Chloe: 함수 호출
-  console.log(userName); // 함수에 의해 Chloe 출력
-  ```
-
-- 외부 변수는 지역 변수가 없는 경우에만 사용 가능. 함수 내부에 외부 변수와 동일한 이름을 가진 변수가 선언되었다면, 내부 변수는 외부 변수를 가림.
-  
   ```javascript
   let userName = 'Ella';
 
   function showMessage() {
-    let userName = 'Chloe'; // 같은 이름을 가진 지역 변수 선언
-
-    let message = 'Hello, ' + userName; // Hello, Chloe: 외부 변수인 Ella는 내부 변수인 Chloe에 가려짐
+    userName = 'Chloe'; // modify outer variable
+    let message = 'Hello, ' + userName;
     console.log(message);
   }
-  
-  showMessage(); // 함수는 내부 변수인 userName만 사용
-  console.log(userName); // Ella : 함수는 외부변수에 접근하지 않으므로 값이 변경되지 않고 Ella 출력
+
+  console.log(userName); // outputs Ella because function hasn't been called yet
+
+  showMessage(); // Hello, Chloe: function call
+  console.log(userName); // outputs Chloe due to function
   ```
 
-    cf. userName처럼 함수 외부에 선언된 변수는 전역변수(global variable)이라고 하며, 지역변수에 의해 가려지지만 않는다면 모든 함수에서 접근 가능. 하지만 변수는 연관되는 함수 내에서만 선언하고, 되도록 사용을 권하지 않음.
+- Outer variables can only be used when there are no local variables. If a variable with the same name as an outer variable is declared inside the function, the inner variable shadows the outer variable.
 
-<br/>
-
-## 4. 매개 변수
-
-- 매개변수(parameter, 인자)를 사용하면 임의의 데이터를 함수 안에 전달할 수 있음.
-- 아래 코드에서 (*), (**) 로 표시한 줄에서 함수 호출 시, 함수에 전달된 인자는 지역변수 from과 text에 각각 복사됨. 이후 함수는 지역변수에 복사된 값을 사용
-  
   ```javascript
-  function showMessage(from, text) { // 인자: from, text
-    console.log(from + ': ' + text);
-  } 
+  let userName = 'Ella';
 
-  showMessage ('Ella', 'Hello'); // Ella: Hello! (*)
-  showMessage ('Chloe', 'Hello'); // Chloe: Hello! (**)
-  ````
+  function showMessage() {
+    let userName = 'Chloe'; // declare local variable with same name
 
-- 정리하자면, **매개변수, 인자(parameter)** 는 함수 선언 방식 괄호 사이에 있는 변수의 값으로, 선언 시 사용되는 용어다. **인수(argument)** 는 함수의 매개변수에 전달된 값을 말하며, 함수를 호출할 때 사용된다. 즉, 함수 선언 시 **매개변수를 나열**하고, 함수 호출 시 **인자를 전달**해 호출한다.
-  
+    let message = 'Hello, ' + userName; // Hello, Chloe: outer variable Ella is shadowed by inner variable Chloe
+    console.log(message);
+  }
+
+  showMessage(); // function only uses inner variable userName
+  console.log(userName); // Ella: function doesn't access outer variable, so value remains unchanged and outputs Ella
+  ```
+
+  cf. Variables declared outside functions like userName are called global variables, and can be accessed from all functions unless shadowed by local variables. However, it's recommended to declare variables only within related functions and avoid using them when possible.
+
 <br/>
 
-## 5. 기본값
+## 4. Parameters
 
-- 매개변수에 값을 전달하지 않아도 그 값이 undefined가 되지 않게 하려면 함수 선언시 = 를 사용해 기본값(default value)을 설정해 주면 된다.
-  
+- Using parameters allows you to pass arbitrary data into a function.
+- In the code below, at the lines marked (\*), (\*\*), when the function is called, the arguments passed to the function are copied to local variables from and text respectively. The function then uses the values copied to the local variables
+
+  ```javascript
+  function showMessage(from, text) {
+    // parameters: from, text
+    console.log(from + ': ' + text);
+  }
+
+  showMessage('Ella', 'Hello'); // Ella: Hello! (*)
+  showMessage('Chloe', 'Hello'); // Chloe: Hello! (**)
+  ```
+
+- To summarize, **parameters** are the variable values between parentheses in function declaration syntax, and are terms used during declaration. **Arguments** refer to values passed to function parameters, and are used when calling functions. In other words, you **list parameters** when declaring functions, and **pass arguments** when calling functions.
+
+<br/>
+
+## 5. Default Values
+
+- To prevent a parameter from becoming undefined when no value is passed, you can set a default value using = during function declaration.
+
   ```javascript
   function showMessage(from, text = 'please enter your last name') {
-    console.log(from + " " + text);
+    console.log(from + ' ' + text);
   }
 
-  showMessage("Ella"); // Ella: please enter your last name: text가 값을 전달받지 못해도 기본값이 할당
+  showMessage('Ella'); // Ella: please enter your last name: default value is assigned even if text doesn't receive a value
   ```
 
-- 아래와 같이 복잡한 표현식도 기본값으로 설정 가능하다.
-  
+- You can also set complex expressions as default values like below.
+
   ```javascript
   function showMessage(from, text = anotherFunction()) {
-    // anotherFunction()은 text값이 없을 때만 호출됨
-    // anotherFunction()의 반환 값이 text의 값이 됨
+    // anotherFunction() is only called when text has no value
+    // the return value of anotherFunction() becomes the value of text
   }
   ```
 
 <br/>
 
-## 6. 매개변수 기본값을 설정할 수 있는 또다른 방법
+## 6. Another Way to Set Parameter Default Values
 
-- 가끔은 함수 선언 시가 아닌, **함수 선언 후**에 매개변수 기본값을 설정할 때가 있음. 이때는 함수 호출 시 **매개변수를 undefined와 비교**해 매개변수가 잘 전달되었는지를 확인
+- Sometimes you need to set parameter default values **after function declaration** rather than during declaration. In this case, you check if parameters are properly passed by **comparing parameters with undefined** during function call
 
   ```javascript
   function showMessage(text) {
     // ...
 
-    if (text === undefined) { // 매개변수 생략 시
-        text = '빈 문자열';
+    if (text === undefined) {
+      // when parameter is omitted
+      text = 'empty string';
     }
     console.log(text);
   }
-  showMessage(); // 빈 문자열
+  showMessage(); // empty string
   ```
 
-- if문 대신 논리 연산자 || 사용 가능하며, 아래 예시는 매개변수 생략 혹은 빈 문자열이 넘어오면 변수에 '빈 문자열'이 할당되도록 했다.
-  
+- You can use the logical OR operator || instead of if statements, and the example below assigns 'empty string' to the variable when the parameter is omitted or an empty string is passed.
+
   ```javascript
   function showMessage(text) {
-      text = text || '빈 문자열';
+    text = text || 'empty string';
   }
   ```
 
 <br/>
 
-## 7. 반환값
+## 7. Return Values
 
-- 함수 호출 시, 함수를 호출한 자리에 특정 값을 반환하게 할 수 있다. 이때 이 특정 값을 반환 값(return value)라고 한다.
-- 지시자 return은 함수 내 어디서든 사용 가능하며, 이 return을 만나면 함수 실행은 즉시 중단되고, 함수를 호출한 곳에 값을 반환한다. 아래 예시에서는 반환 값을 result에 할당했다.
+- When calling a function, you can make it return a specific value to the place where the function was called. This specific value is called the return value.
+- The return directive can be used anywhere within a function, and when it's encountered, function execution immediately stops and returns a value to where the function was called. In the example below, the return value is assigned to result.
 
   ```javascript
   function sum(a, b) {
     return a + b;
   }
 
-  let result = sum(1, 2); // return에서 반환한 값을 result에 할당
+  let result = sum(1, 2); // assign the value returned from return to result
   console.log(result); // 3
   ```
 
-- 아래와 같이 함수 하나에 여러 개의 return문이 올 수도 있다.
+- A function can have multiple return statements like below.
 
   ```javascript
-    function checkAge(age) {
-        if (age >= 18) {
-            return true;
-        } else {
-            return confirm('보호자의 동의를 받으셨나요?');
-        }
-    }
-
-    let age = prompt('나이를 입력해 주세요', 18);
-
-    if (checkAge(age)) {
-        alert('접속 허용');
+  function checkAge(age) {
+    if (age >= 18) {
+      return true;
     } else {
-        alert('접속 차단');
+      return confirm('Did you get parental consent?');
     }
-    ```
+  }
 
-- cf. return문이 없는 함수는 undefined를 반환한다.
+  let age = prompt('Please enter your age', 18);
 
-    ```javascript
-    function doNothing() { /*empty */ }
-    console.log(doNothing() === undefined); // true
-    ```
+  if (checkAge(age)) {
+    alert('Access allowed');
+  } else {
+    alert('Access denied');
+  }
+  ```
 
-- cf. return 지시자만 있는 경우도 undefined를 반환한다. return은 return undefined와 동일하게 동작한다.
+- cf. Functions without return statements return undefined.
 
-    ```javascript
-    function donNothin() {
-        return;
-    }
-    console.log(doNothing() === undefined); // true
-    ```
+  ```javascript
+  function doNothing() {
+    /*empty */
+  }
+  console.log(doNothing() === undefined); // true
+  ```
 
-- caution) return과 값 사이에는 절대 새 줄을 넣어 코드를 작성하면 안된다. 자바스크립트는 return문 끝에 자동으로 세미콜론을 넣기 때문에 반환하고자 했던 표현식을 반환하지 못한다.
+- cf. Functions with only the return directive also return undefined. return works the same as return undefined.
 
-    ```javascript
-    // 예를 들면 이런 코드를
+  ```javascript
+  function doNothing() {
     return;
-    (1 + 2 + 3 + 4 + 5 + 6)
-    
-    // 표현식을 여러 줄에 걸쳐 작성하고자 한다면, 아래와 같이 여는 괄호를 return과 같은 줄에 쓰거나, return이 있는 줄에서 표현식을 작성해야 한다.
-    return (
-      1 + 2 + 3
-      + 4 + 5 + 6
-    );
+  }
+  console.log(doNothing() === undefined); // true
+  ```
+
+- caution) You should never write code with a new line between return and the value. JavaScript automatically adds a semicolon at the end of return statements, so it cannot return the expression you intended to return.
+
+  ```javascript
+  // For example, code like this
+  return;
+  1 + 2 + 3 + 4 + 5 + 6;
+
+  // If you want to write expressions across multiple lines, you should either write the opening parenthesis on the same line as return, or write the expression on the line with return.
+  return 1 + 2 + 3 + 4 + 5 + 6;
+  ```
 
 <br/>
 
-## 8. 함수 이름 짓기
+## 8. Naming Functions
 
-- 함수는 어떤 **동작**을 수행하기 위해 코드를 모아 놓은 것이므로, 이름은 대개 동사이며, 가능한 어떤 동작을 하는지 간결하고 명확하게 작성해야 한다.
-- 더불어, 함수는 **동작 하나만 담당**하며, 해당 동작을 정확히 수행해야 하는 것이 목적이다.
-- 함수가 어떤 동작을 하는지 축약해 설명하는 동사를 접두어로 붙여 함수 이름을 만드는 것이 관습이다. 예를 들면,
+- Functions are collections of code to perform some **action**, so names are usually verbs and should be written concisely and clearly to indicate what action they perform.
+- Additionally, functions should **handle only one action** and their purpose is to perform that action accurately.
+- It's conventional to create function names by adding verbs that describe what action the function performs as prefixes. For example,
 
-  - "show…" - 무언가를 보여줌
-  - "get…" – 값을 반환함
-  - "calc…" – 무언가를 계산함
-  - "create…" – 무언가를 생성함
-  - "check…" – 무언가를 확인하고 불린값을 반환함
+  - "show…" - shows something
+  - "get…" – returns a value
+  - "calc…" – calculates something
+  - "create…" – creates something
+  - "check…" – checks something and returns a boolean value
 
 <br/>
 
-## 9. 함수 == 주석
+## 9. Function == Comment
 
-- 함수를 간결하게 만들면 테스트와 디버깅이 쉬워지며, 함수 그 자체로 주석의 역할까지 해낸다. 이를 '자기 설명적 (self-describing) 코드' 라고 한다.
+- Making functions concise makes testing and debugging easier, and the function itself serves as a comment. This is called 'self-describing code'.

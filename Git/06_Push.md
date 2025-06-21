@@ -2,71 +2,71 @@
 
 <br/>
 
-## 1. VScode에서 Github Repository로 올리기
+## 1. Push to Github Repository from VScode
 
-### (1) Github에서 새로운 Repository 생성하기
+### (1) Create a new Repository on Github
 
-- 본인 Github 프로필 화면 좌측 상단의 Repositories 클릭 → 우측 상단의 [New] 버튼 클릭
-- Owner, Repository name, Description, README 여부 등을 설정 후 [Create Repository] 클릭
+- Click Repositories in the top left of your Github profile screen → Click [New] button in the top right
+- Set Owner, Repository name, Description, README, etc., then click [Create Repository]
 
-### (2) VScode를 열어 새로운 파일을 생성하기
+### (2) Open VScode and create a new file
 
-- 폴더(Github에 올릴 Repository)를 만들기
-- 해당 폴더 안에 새로운 파일을 생성하기
+- Create a folder (Repository to upload to Github)
+- Create a new file inside that folder
 
-### (3) git 초기화
+### (3) Initialize git
 
 ```shell
 git init
 ```
 
-- 혹은 VScode 좌측 브랜치 모양의 아이콘인 Source Control 창에서 [Initialize Repository] 버튼 클릭해 초기화
-- 로컬에서 Repository를 생성하면서 초기화하는 것
-- 이제 이 폴더에 있는 파일들을 git 명령어들을 이용해 관리하겠다는 의미
+- Or click [Initialize Repository] button in the Source Control window (branch-shaped icon on the left side of VScode) to initialize
+- This creates and initializes a Repository locally
+- This means you'll now manage files in this folder using git commands
 
-### (4) push할 목록에 올려두기
+### (4) Add to push list
 
 ```shell
 git add
 git commit
 ```
 
-### (5) Github에서 만든 Repository에 올리기
+### (5) Push to Repository created on Github
 
 ```shell
-git push -u Repository 주소 branch명
+git push -u Repository address branch_name
 
-# 예시
+# Example
 git push -u https://github.com/ella-yschoi/TIL.git main
 ```
 
-- main 브랜치를 Repository에 올린다는 의미
-- github 로그인 하라고 하면 로그인하면 됨
-- `-u` 옵션은 방금 입력한 주소를 기억해 두라는 뜻이며, 다음부터는 주소를 길게 입력하지 않아도 git push만 입력해도 됨.
+- This means pushing the main branch to the Repository
+- If it asks you to log into github, just log in
+- The `-u` option means remember the address you just entered, so from now on you don't need to enter the long address, just enter git push
 
 <br/>
 
-## 2. Repository 주소를 길게 입력하는 것이 귀찮다면
+## 2. If entering the Repository address is tedious
 
-### (1) Repository 주소를 변수로 저장하기
+### (1) Store Repository address as a variable
 
 ```shell
-# Repository 주소를 변수로 저장
-git remote add origin Repository 주소 branch명
+# Store Repository address as a variable
+git remote add origin Repository address branch_name
 
-# 예시
+# Example
 git remote add origin https://github.com/ella-yschoi/TIL.git main
 ```
 
 ```shell
-# Repository 주소를 변수로 저장한 이후 push
-git push origin branch명
+# Push after storing Repository address as a variable
+git push origin branch_name
 
-# 예시
+# Example
 git push origin main
 ```
 
-### (2) 변수 목록을 살펴보고 싶다면
+### (2) If you want to see the variable list
 
 ```shell
 git remote -v

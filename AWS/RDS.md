@@ -1,15 +1,15 @@
 # RDS
 
-## RDS란?
+## What is RDS?
 
-> Relational Database Service: AWS에서 제공하는 관계형 데이터 베이스 서비스
+> Relational Database Service: A relational database service provided by AWS
 
 <br/>
 
-## RDS를 사용하는 이유
+## Why use RDS?
 
-- EC2 인스턴스를 사용하면 DB와 관련해 자동으로 관리를 담당하는 부분이 매우 적기 때문에, 사용자가 일일이 시간을 투자하여 **DB 엔진의 설치와 버전 관리 및 데이터 백업을 직접** 해야 함.
-- 게다가 **가용성과 내구성이 확보되지 않기에** DB에 저장된 데이터가 유실되거나 정상적으로 사용하지 못할 확률이 커지며, 후에 필요에 따라 DB의 규모를 확장하기 어려움.
-- RDS를 이용하면 **DB 유지 보수와 관련된 일**을 RDS에서 전적으로 자동으로 관리함. **사용자가 해야 할 일은 초기 설정을 제외하고 DB에 저장된 데이터를 관리하는 일 밖에** 없기에 큰 편의성을 느낄 수 있음.
-- 이외의 장점으로는 **다양한 DB 엔진 선택지를 제공한다는 점**을 들 수 있음.
-- DB 엔진마다 제공하는 기능이 조금씩 다르기에 필요와 목적에 맞게 DB 엔진을 선택하여 효율성을 높일 수 있음.
+- If you use an EC2 instance, there is very little automatic management for the DB, so the user must spend time **installing the DB engine, managing versions, and backing up data manually**.
+- In addition, **availability and durability are not guaranteed**, so there is a higher chance that data stored in the DB will be lost or not used properly, and it is difficult to scale the DB as needed later.
+- If you use RDS, **all DB maintenance tasks are automatically managed by RDS**. **Except for the initial setup, the only thing the user has to do is manage the data stored in the DB**, which provides great convenience.
+- Another advantage is that **it offers a variety of DB engine choices**.
+- Since each DB engine provides slightly different features, you can choose the DB engine that fits your needs and purpose to increase efficiency.

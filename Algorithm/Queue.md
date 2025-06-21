@@ -1,21 +1,21 @@
 # Queue
 
-## 1. Queue의 구조
+## 1. Queue Structure
 
-- 먼저 들어간 데이터가 먼저 나오는 FIFO(First In First Out) 혹은 LILO(Last In Last Out)
-- 입력과 출력의 방향이 각각 고정되어 있으며 데이터 입력시 큐의 끝에서, 데이터 출력시 큐의 맨 앞에서 진행
-
-<br/>
-
-## 2. Queue의 특징
-
-- **FIFO(First In First Out)**: 선입선출
-- **두 개의 입출력 방향**
-- 데이터는 **하나씩** 넣고 뺄 수 있음
+- FIFO (First In First Out) or LILO (Last In Last Out) where data that enters first comes out first
+- Input and output directions are each fixed, with data input occurring at the end of the queue and data output occurring at the front of the queue
 
 <br/>
 
-## 3. Queue의 실사용 예제
+## 2. Queue Characteristics
 
-- 컴퓨터와 연결된 프린터에서 여러 문서를 순서대로 인쇄
-- 속도와 시간 차이를 극복하기 위해 임시 기억 장치의 자료구조로 Queue를 사용(=버퍼)
+- **FIFO (First In First Out)**: First in, first out
+- **Two input/output directions**
+- Data can be added and removed **one at a time**
+
+<br/>
+
+## 3. Real-world Queue Examples
+
+- Printing multiple documents in order from a printer connected to a computer
+- Using Queue as a data structure for temporary memory storage to overcome speed and time differences (=buffer)

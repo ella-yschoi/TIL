@@ -1,78 +1,81 @@
 # Token 🎫
 
-## 1. Token 이란?
+## 1. What is Token?
 
-- 토큰이란
-  - 인증과 권한 정보를 담고 있는 암호화된 문자열
-  - 특정 애플리케이션에 대한 사용자의 접근 권한 부여 가능
-  - 토큰을 사용하면 사용자의 인증 정보를 서버가 아닌, **클라이언트 측에 저장 가능**
+- Token
 
-- 토큰 인증 방식의 흐름
-  1. 사용자가 인증 정보를 담아 서버에 로그인 요청
-  2. 서버는 DB에 저장된 사용자의 인증 정보 확인
-  3. 인증에 성공했다면 해당 사용자의 인증 및 권한 정보를 서버의 비밀 키와 함께 토큰으로 암호화
-  4. 생성된 토큰을 클라이언트로 전달
-     - HTTP 상에서 인증 토큰을 보내기 위해 Authorization 헤더 사용 or 쿠키로 전달
-  5. 클라이언트는 전달받은 토큰 저장
-  6. 클라이언트가 서버로 리소스 요청 시 토큰을 함께 전달
-     - 토큰을 보낼 때에도 Authorization 헤더를 사용 or 쿠키로 전달
-  7. 서버는 전달받은 토큰을 서버의 비밀 키를 통해 검증 (토큰 위조 여부와 유효기간 등 확인 가능)
-  8. 토큰이 유효하다면 클라이언트의 요청에 대한 응답 데이터 전송
+  - An encrypted string containing authentication and authorization information
+  - Can grant user access permissions to specific applications
+  - Using tokens allows storing user authentication information on the **client side** rather than the server
+
+- Token authentication flow
+  1. User sends login request to server with authentication information
+  2. Server verifies user's authentication information stored in DB
+  3. If authentication succeeds, encrypt the user's authentication and authorization information with the server's secret key into a token
+  4. Send the generated token to the client
+     - Use Authorization header to send authentication token over HTTP or deliver via cookies
+  5. Client stores the received token
+  6. When client requests resources from server, send token along
+     - Also use Authorization header when sending token or deliver via cookies
+  7. Server verifies the received token using the server's secret key (can check token forgery and expiration, etc.)
+  8. If token is valid, send response data for client's request
 
 <br/>
 
-## 2. Token의 특징
+## 2. Token Characteristics
 
-- 토큰 인증 방식의 장점
-  - 무상태성
-    - 서버가 유저의 인증 상태 관리 X
-    - 서버는 비밀키로 클라이언트가 보낸 토큰의 유효성만 검증하면 되기에 무상태적인 아키텍처 구축 가능
-  - 확장성
-    - 여러 개의 서버가 공통된 세션 데이터를 보유하지 않아도 됨
-    - 따라서 서버 확장 용이
-  - 어디서나 토큰 생성 가능
-    - 토큰 생성과 검증이 하나의 서버에서 이루어지지 않아도 됨
-    - 따라서 토큰 생성만을 담당하는 서버 구축 가능
-  - 권한 부여에 용이
-    - 인증 상태, 접근 권한 등 다양한 정보를 담을 수 있기에 사용자 권한 부여에 용이
-    - 어드민 권한 부여 및 정보 접근 범위도 설정 가능
+- Advantages of token authentication method
 
-- 토큰 인증 방식의 한계
-  - 무상태성
-    - 토큰이 탈취되어도 해당 토큰을 강제로 만료시킬 수 없음
-  - 유효기간
-    - 유효기간을 짧게 설정하면 만료될 때마다 사용자가 로그인해야 하는 번거로움
-    - 유효기간을 길게 설정하면 토큰 탈취 시 위험
-  - 토큰의 크기
-    - 많은 데이터를 담으면 토큰 크기가 커지므로 네트워크 비용 문제 생김
+  - Statelessness
+    - Server doesn't manage user authentication state
+    - Server only needs to verify the validity of tokens sent by clients using the secret key, enabling stateless architecture
+  - Scalability
+    - Multiple servers don't need to share common session data
+    - Therefore, server scaling is easy
+  - Can generate tokens anywhere
+    - Token generation and verification don't have to happen on one server
+    - Therefore, can build servers dedicated to token generation
+  - Easy to grant permissions
+    - Can contain various information like authentication status and access permissions, making it easy to grant user permissions
+    - Can set admin permissions and information access scope
+
+- Limitations of token authentication method
+  - Statelessness
+    - Even if a token is stolen, that token cannot be forcibly expired
+  - Expiration period
+    - Setting short expiration periods causes inconvenience as users must log in every time it expires
+    - Setting long expiration periods is dangerous when tokens are stolen
+  - Token size
+    - Carrying a lot of data increases token size, causing network cost issues
 
 <br/>
 
 ## 3. JWT (JSON Web Token)
 
-- JWT란
-  - JSON 객체에 정보를 담고, 이를 토큰으로 암호화하여 전송하는 기술
-  - 클라이언트가 서버에 요청을 보낼 때, 인증정보를 암호화된 JWT 토큰으로 제공하고, 서버는 이 토큰을 검증해 인증정보 확인
+- What is JWT
 
-- JWT의 구성
+  - Technology that carries information in JSON objects and encrypts them into tokens for transmission
+  - When a client sends a request to a server, it provides authentication information as an encrypted JWT token, and the server verifies this token to confirm authentication information
+
+- JWT Structure
   - Header
-    - 토큰 자체를 설명하는 데이터가 담겨 있음
+    - Contains data describing the token itself
   - Payload
-    - 어떤 정보에 접근 가능한지 권한, 유저의 개인정보, 토큰의 발급 시간 및 만료 시간 등
+    - Permissions for what information can be accessed, user's personal information, token issuance time and expiration time, etc.
   - Signature
-    - 토큰의 무결성 확인 가능
-    - Header와 Payload가 완성되었다면, 서버의 비밀 키(암호화에 추가할 salt)와 Header에서 지정한 알고리즘을 사용하여 해싱
-  
+    - Can verify token integrity
+    - Once Header and Payload are complete, use the server's secret key (salt to add to encryption) and the algorithm specified in Header to hash
+
 <br/>
 
-## 4. Access Token과 Refresh Token
+## 4. Access Token and Refresh Token
 
-- 액세스 토큰(Access Token)
-  - **서버에 접근**하기 위한 토큰
-  - 보안을 위해 **24시간 정도의 짧은 유효기간**
-- 리프레시 토큰(Refresh Token)
-  - 서버 접근이 아닌 액세스 토큰 만료시 **새로운 액세스 토큰을 발급받기 위해 사용되는 토큰**
-- 정리
-  - 액세스 토큰이 만료되더라도 리프레시 토큰의 유효기간이 남아있다면 사용자는 다시 로그인을 할 필요 없이 지속해서 인증 상태를 유지 가능
-  - 다만, 토큰의 긴 유효 기간 동안 해킹의 위험성도 있음
-  - 이를 대비하기 위해 **리프레시 토큰을 세션처럼 서버에 저장**하고 이에 대한 상태를 관리하기도 함
+- Access Token
+  - Token for **accessing the server**
+  - **Short expiration period of about 24 hours** for security
+- Refresh Token
+  - Token used to **obtain a new access token** when the access token expires, not for server access
+- Summary
+  - Even if the access token expires, if the refresh token's expiration period remains, users can maintain continuous authentication without logging in again
+  - However, there's a risk of hacking during the token's long expiration period
+  - To counter this, **refresh tokens are stored on the server like sessions** and their state is managed

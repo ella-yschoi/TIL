@@ -1,78 +1,78 @@
 # Tree
 
-## 1. Tree의 정의
+## 1. Tree Definition
 
-- **단방향 그래프의 한 구조**로, 하나의 뿌리로부터 가지가 사방으로 뻗은 형태가 나무와 닮음
-- 데이터가 바로 아래에 있는 하나 이상의 데이터에 한 개의 경로와 하나의 방향으로만 연결된 **계층적 자료구조**
-- 데이터를 순차적으로 나열시킨 선형구조가 아닌, 하나의 데이터 아래에 여러 개의 데이터가 존재할 수 있는 **비선형 구조**
-- 트리 구조는 계층적으로 표현이 되고, 아래로만 뻗어나가기 때문에 **사이클이 없음**
-- 즉, **사이클이 없는 하나의 연결 그래프**라고 할 수 있음
+- A structure of **unidirectional graph** that resembles a tree with branches extending in all directions from a single root
+- A **hierarchical data structure** where data is connected to one or more data directly below it with only one path and one direction
+- A **non-linear structure** where multiple data can exist below one piece of data, unlike linear structures that arrange data sequentially
+- Tree structures are expressed hierarchically and only branch downward, so there are **no cycles**
+- In other words, it can be said to be **a connected graph without cycles**
 
 <br/>
 
-## 2. Tree의 구조
+## 2. Tree Structure
 
-- 루트(Root)라는 하나의 꼭짓점 데이터로 시작해 여러 개의 데이터를 **간선(Edge)**로 연결
-- 각 데이터를 **노드(Node)**라고 하며, 두 개의 노드가 상하 계층으로 연결되면 부모/자식 관계를 맺음
-- 자식이 없는 노드는 나무의 잎과 같다고 하여 **리프 노드(leaf node)**라고 함
-- 깊이
-  - 루트로부터 하위 계층의 특정 노드까지의 깊이
-  - 루트 깊이는 0
-- 레벨
-  - 같은 깊이를 가진 노드를 묶어 레벨로 표현 가능
-  - 깊이가 0인 루트의 레벨은 1
-  - 같은 레벨에 나란히 있는 노드를 형제 노드(Sibling Node)라고 함
-- 높이
-  - 트리 구조에서 리프 노드를 기준으로 루트까지의 높이를 표현 가능
-  - 각 리프 노드의 높이를 0으로 놓고, 부모 노드는 자식 노드의 가장 높은 높이값에 +1한 값을 가짐
-- 서브 트리
-  - 트리 구조의 루트에서 뻗어나오는 큰 트리의 내부에 트리구조를 갖춘 작은 트리
-- Tree의 실사용 예제
-- 컴퓨터의 디렉토리 구조, 조직도 등
+- Starts with one vertex data called Root and connects multiple data with **edges**
+- Each piece of data is called a **node**, and when two nodes are connected in a parent-child hierarchy, they form a parent/child relationship
+- Nodes without children are called **leaf nodes** because they are like leaves on a tree
+- Depth
+  - The depth from the root to a specific node in a lower hierarchy
+  - Root depth is 0
+- Level
+  - Nodes with the same depth can be grouped and expressed as levels
+  - The level of the root with depth 0 is 1
+  - Nodes at the same level side by side are called sibling nodes
+- Height
+  - The height from leaf nodes to the root can be expressed in tree structures
+  - Each leaf node's height is set to 0, and parent nodes have a value of +1 to the highest height value of their child nodes
+- Subtree
+  - A small tree with a tree structure inside a large tree branching from the root of the tree structure
+- Real-world Tree Examples
+- Computer directory structures, organizational charts, etc.
 
 <br/>
 
 ## 2. Binary Tree
 
-- 이진 트리의 특징
-  - 자식 노드가 최대 두 개인 노드로 구성된 트리
-- 자료의 삽입/삭제 방법에 따른 분류
-  - 정 이진트리(Full binary tree)
-    - 각 노드가 0개 혹은 2개의 자식 노드를 가짐
-  - 포화 이진트리(Perfect binary tree)
-    - 정 이진트리이면서도 완전 이진트리인 경우. 모든 리프 노드의 레벨이 동일하고 모든 레벨이 가득 채워져 있음
-  - 완전 이진트리(Complete binary tree)
-    - 마지막 레벨을 제외한 모든 노드가 가득차 있어야 하며, 마지막 레벨의 노드는 전부 차있지 않아도 되나 왼쪽이 채워져 있어야 함
+- Binary tree characteristics
+  - A tree composed of nodes with a maximum of two child nodes
+- Classification by data insertion/deletion methods
+  - Full binary tree
+    - Each node has 0 or 2 child nodes
+  - Perfect binary tree
+    - A full binary tree that is also a complete binary tree. All leaf nodes have the same level and all levels are completely filled
+  - Complete binary tree
+    - All nodes except the last level must be completely filled, and nodes in the last level don't need to be completely filled but must be filled from the left
 
 <br/>
 
 ## 3. Binary Search Tree
 
-- 이진 탐색 이란?
-  - 정렬된 데이터 중에서 특정한 값을 찾기 위한 알고리즘 중 하나
-  - 오름차순으로 정렬된 정수의 배열을 같은 크기의 두 부분 배열로 나눈 후, 두 부분 중 탐색이 필요한 부분에서만 탐색하도록 탐색 범위를 제한하여 원하는 값을 찾는 알고리즘
-- 이진 탐색 트리
-  - 모든 왼쪽 자식의 값이 루트나 부모보다 작고, 모든 오른쪽 자식의 값이 루트나 부모보다 큰 값을 가짐
-  - 기존 이진트리보다 탐색이 빠름
-  - 트리 안에 찾고자 하는 값이 없더라도 최대 h번(트리 높이)만큼의 연산 및 탐색이 진행됨
+- What is binary search?
+  - One of the algorithms for finding a specific value in sorted data
+  - An algorithm that divides an array of integers sorted in ascending order into two parts of equal size, then limits the search range to only search in the part where search is needed to find the desired value
+- Binary search tree
+  - All left child values are smaller than the root or parent, and all right child values are larger than the root or parent
+  - Faster search than regular binary trees
+  - Even if the value being searched for is not in the tree, the operation and search proceed only up to h times (tree height)
 
 <br/>
 
 ## 4. Tree Traversal
 
-- 트리 순회 방법의 공통점
-  - 모두 노드를 순회할 때 왼쪽부터 오른쪽으로 조회
-- 트리 순회 방법
-  - 전위 순회 (preorder traverse)
-    - 루트에서 시작해 왼쪽의 노드들을 순차적으로 둘러본 뒤, 왼쪽의 노드 탐색이 끝나면 오른쪽 노드를 탐색
-    - 전위 순회는 주로 트리를 복사할 때 사용
-  - 중위 순회 (inorder traverse)
-    - 제일 왼쪽 끝에 있는 노드부터 순회하기 시작하여, 루트를 기준으로 왼쪽에 있는 노드의 순회가 끝나면 루트를 거쳐 오른쪽에 있는 노드로 이동하여 마저 탐색
-    - 중위 순회는 이진 탐색 트리의 오름차순으로 값을 가져올 때 사용
-  - 후위 순회 (postorder traverse)
-    - 제일 왼쪽 끝에 있는 노드부터 순회하기 시작하여, 루트를 거치지 않고 오른쪽으로 이동해 순회한 뒤, 제일 마지막에 루트를 방문
-    - 후위 순회는 트리를 삭제할 때 사용. 자식 노드가 먼저 삭제되어야 상위 노드를 삭제할 수 있기 때문
-  - 레벨 순회 (levelorder traverse)
-    - 루트를 방문하는 기준으로 순회를 하는 것이 아닌 트리의 레벨 기준으로 노드들을 방문
-    - 루트 노드의 레벨이 1이라고 했을 때 아래로 내려갈수록 레벨은 증가하는 특징
-    - 동일한 레벨에 여러 노드가 존재할 경우 왼쪽에서 오른쪽 순서로 노드를 방문
+- Common characteristics of tree traversal methods
+  - All traverse nodes from left to right when visiting
+- Tree traversal methods
+  - Preorder traversal
+    - Starts from the root and sequentially visits left nodes, then moves to right nodes after left node exploration is complete
+    - Preorder traversal is mainly used when copying trees
+  - Inorder traversal
+    - Starts traversal from the leftmost node, and after the traversal of nodes on the left side of the root is complete, moves to nodes on the right through the root to continue exploration
+    - Inorder traversal is used to get values in ascending order from binary search trees
+  - Postorder traversal
+    - Starts traversal from the leftmost node, moves to the right without passing through the root to traverse, then visits the root at the very end
+    - Postorder traversal is used when deleting trees. Child nodes must be deleted first before parent nodes can be deleted
+  - Level-order traversal
+    - Visits nodes based on tree levels rather than based on visiting the root
+    - When the root node's level is 1, the level increases as you go down
+    - When multiple nodes exist at the same level, nodes are visited in order from left to right

@@ -1,8 +1,8 @@
 # TypeScript Type
 
-## 1. Boolean(불리언) 타입
+## 1. Boolean Type
 
-- JavaScript와 같은 boolean 값이라고 불리는 참(true), 거짓(false) 값
+- Boolean values called true and false, same as JavaScript
 
   ```typescript
   let isShow: boolean = true;
@@ -11,10 +11,10 @@
 
 <br/>
 
-## 2. Number(숫자) 타입
+## 2. Number Type
 
-- JavaScript와 같이 TypeScript 또한 정수와 실수의 구분 없이 Number 타입 하나로 표기
-- TypeScript는 이 외에도 추가로 bigint를 지원
+- Like JavaScript, TypeScript also uses one Number type to represent integers and decimals without distinction
+- TypeScript additionally supports bigint
 
   ```typescript
   let number1: number = 5;
@@ -23,31 +23,31 @@
 
 <br/>
 
-## 3. String(문자열) 타입
+## 3. String Type
 
-- JavaScript와 같이 큰따옴표나 작은따옴표를 사용해 문자열 데이터를 표현
-- 또한 백틱을 사용한 문자열인 템플릿 리터럴을 사용하면 여러 줄에 걸쳐 문자열을 작성 가능
+- Like JavaScript, uses double quotes or single quotes to represent string data
+- Also, using template literals with backticks allows writing strings across multiple lines
 
   ```typescript
-  let firstName: string = "coding";
+  let firstName: string = 'coding';
   let lastName: string = 'kim';
   let longString: string = `Ella is a developer.
-  He is 20 years old.`
+  He is 20 years old.`;
   ```
 
 <br/>
 
-## 4. Array(배열) 타입
+## 4. Array Type
 
-- JavaScript와 같이 값들을 배열로 다룰 수 있으며, 두 가지 방법으로 배열 타입을 선언해 사용 가능
-- 첫 번째 방법: 배열의 요소들을 나타내는 타입 뒤에 배열을 나타내는 `[]`을 쓰는 것
+- Like JavaScript, can handle values as arrays, and can declare and use array types in two ways
+- First method: Write `[]` representing array after the type representing array elements
 
   ```typescript
-  let items: string[] = ["apple", "banana", "grape"];
+  let items: string[] = ['apple', 'banana', 'grape'];
   ```
 
-- 두 번째 방법: 제네릭 배열 타입, 즉 Array를 먼저 작성한 뒤, `<>` 안에 배열의 요소들을 나타내는 타입 작성
-- 배열 타입은 기본적으로 하나의 타입만 작성, 타입 혼용 작성은 불가
+- Second method: Generic array type, write Array first, then write type representing array elements inside `<>`
+- Array type basically writes only one type, mixing types is not allowed
 
   ```typescript
   let numberList: Array<number> = [4, 6, 10];
@@ -55,76 +55,76 @@
 
 <br/>
 
-## 5. Tuple(튜플) 타입
+## 5. Tuple Type
 
-- TypeScript에서 튜플 타입을 사용하면 요소의 타입과 개수가 고정된 배열 표현 가능
-- 배열의 index마다 타입이 정해져 있기 때문에 정확한 index에 접근 필요
+- Using tuple type in TypeScript allows expressing arrays with fixed element types and count
+- Since each array index has a defined type, need to access exact index
 
   ```typescript
-  let user: [string, number, boolean] = ["Ella",  20, true];
+  let user: [string, number, boolean] = ['Ella', 20, true];
   ```
 
 <br/>
 
-## 6. Object(객체) 타입
+## 6. Object Type
 
-- TypeScript에서 객체는 JavaScript와 마찬가지로 원시 타입이 아닌 타입을 나타냄
-- JavaScript에서 Object 타입은 프로퍼티를 가지는 JavaScript의 값을 말하며 typeof 연산자를 사용했을 때 “object”을 반환하는 모든 타입을 의미함.
+- In TypeScript, objects represent non-primitive types like JavaScript
+- In JavaScript, Object type refers to JavaScript values with properties, and means all types that return "object" when using typeof operator
 
   ```typescript
   let obj: object = {};
   ```
 
-- TypeScript에서 object 타입은 모든 객체를 수용하는 타입으로, 객체의 프로퍼티 타입들이 any로 지정되기 때문에 어떠한 프로퍼티라도 추가할 수 있음
-- 하지만 **객체의 프로퍼티 타입들을 각기 명시해 주는 것이 훨씬 좋음**
-- 객체는 아래 방식으로 key-value에 구체적인 타입까지도 지정
+- In TypeScript, object type is a type that accepts all objects, and since object property types are specified as any, any property can be added
+- However, **it's much better to explicitly specify each object property type**
+- Objects can specify specific types for key-value pairs in the way below
 
   ```typescript
-  let user: {name: string, age: number} = {
-    name: "Ella",
-    age: 20
-  }
+  let user: { name: string; age: number } = {
+    name: 'Ella',
+    age: 20,
+  };
   ```
 
 <br/>
 
-## 7. Any 타입
+## 7. Any Type
 
-- 알지 못하는 타입 표현이 필요하고 타입 검사를 하지 않고자 할 때 any 타입 사용 가능
+- Can use any type when you need to express unknown types and don't want to do type checking
 
   ```typescript
   let maybe: any = 4;
   ```
 
-- any 타입 사용 시, 변수에 값을 재할당하는 경우 타입을 명시한 변수와 달리 **타입에 구애받지 않고 값을 재할당 가능**
+- When using any type, unlike variables with explicit types, **can reassign values without being constrained by type**
 
   ```typescript
   let obj: object = {};
 
-  // error 발생
-  obj = "hello";
+  // error occurs
+  obj = 'hello';
 
   let maybe: any = 4;
 
-  // 정상 작동
+  // works normally
   maybe = true;
   ```
 
-- 또한 엄격한 타입 검사를 진행하지 않기에 실제 할당된 값이 가지지 않는 메서드 및 프로퍼티로 접근해도 에러가 나지 않음.
-- 대신, 실제 할당된 값이 가지지 않는 메서드 및 프로퍼티이기 때문에 반환되는 값은 undefined
+- Also, since strict type checking is not performed, no error occurs even when accessing methods and properties that the actually assigned value doesn't have
+- Instead, since it's a method and property that the actually assigned value doesn't have, the returned value is undefined
 
   ```typescript
   let maybe: any = 4;
 
-  console.log(maybe.length) // undefined
+  console.log(maybe.length); // undefined
   ```
 
-- 또한 any 타입은 타입의 일부만 알고, 전체는 알지 못할 때 유용함.
-- 예를 들어 여러 타입이 섞인 배열을 받고자 할 때 유용
+- Also, any type is useful when you know only part of the type, not the whole
+- For example, useful when you want to receive arrays mixed with multiple types
 
   ```typescript
-  let list: any[] = [1, true, "free"];
+  let list: any[] = [1, true, 'free'];
 
-  // any로 다루고 있기에 index 1번째 요소가 boolean 타입이나, number 타입으로 재할당 가능
+  // Since handling with any, index 1st element can be reassigned as number type even though it's boolean type
   list[1] = 100;
   ```

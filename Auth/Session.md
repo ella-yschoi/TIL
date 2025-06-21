@@ -1,25 +1,25 @@
 # Session 🪪
 
-## 1. 세션이란?
+## 1. What is Session?
 
-- 서버가 클라이언트에 유일하고 암호화된 ID를 부여
+- Server assigns a unique and encrypted ID to the client
 
 <br/>
 
-## 2. 세션 기반 인증 (Session-based Authentication)
+## 2. Session-based Authentication
 
-- 로그인
-  - 서버가 '해당 유저는 인증에 성공했음'을 알고 있다면, 유저가 매번 로그인할 필요가 없음
-  - 서버와 클라이언트의 역할
-    - 서버: 사용자가 인증에 성공했음을 알고 있어야 함
-    - 클라이언트: 인증 성공을 증명할 수단을 갖고 있어야 함
-  - 세션: '사용자가 인증에 성공한 상태'
-    - 중요 데이터는 서버에서 저장하고 관리 또는 세션 스토어에 저장
-    - 세션이 만들어지면, 각 세션을 구분할 수 있는 session_id가 만들어짐
-    - 보통 클라이언트에 세션 성공을 증명할 수단으로 session_id를 전달
-- 로그아웃
-  - 서버와 클라이언트의 역할
-    - 서버: 세션 정보를 삭제
-    - 클라이언트: 쿠키 변경/삭제
-  - 클라이언트에서 세션 정보를 없애기 위해서는 `res.cookie`로 쿠키의 값을 무효한 값으로 변경
-  - 혹은 `res.clearCookie`로 쿠키를 삭제해 버리면 됨
+- Login
+  - If the server knows 'this user has successfully authenticated', the user doesn't need to log in every time
+  - Roles of server and client
+    - Server: Must know that the user has successfully authenticated
+    - Client: Must have a means to prove successful authentication
+  - Session: 'State where user has successfully authenticated'
+    - Important data is stored and managed on the server or stored in session store
+    - When a session is created, a session_id is created to distinguish each session
+    - Usually session_id is passed to the client as a means to prove session success
+- Logout
+  - Roles of server and client
+    - Server: Delete session information
+    - Client: Modify/delete cookies
+  - To remove session information from client, change the cookie value to an invalid value using `res.cookie`
+  - Or you can delete the cookie using `res.clearCookie`

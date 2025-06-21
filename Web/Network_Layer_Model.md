@@ -1,93 +1,93 @@
-# 네트워크 계층  
+# Network Layer
 
-## 1. OSI 7계층 모델
+## 1. OSI 7-Layer Model
 
-### 모델의 특징
+### Model Characteristics
 
-- ISO에서 제정한 네트워크 표준 규격
-- 컴퓨터 제조사에 상관 없이 공통으로 네트워크를 사용할 수 있도록 함
-- 각 계층은 독립적이므로 데이터 전달 과정 상에서 다른 계층의 영향을 받지 않음
+- Network standard specification established by ISO
+- Enables common network usage regardless of computer manufacturer
+- Each layer is independent, so it's not affected by other layers during data transmission process
 
-### 각 계층의 특징
+### Characteristics of Each Layer
 
-#### 1계층(물리 계층)
+#### Layer 1 (Physical Layer)
 
-- 시스템 간의 물리적인 연결과 전기 신호를 변환 및 제어
-- e.g. 디지털 또는 아날로그로 신호 변경
+- Controls physical connections between systems and converts electrical signals
+- e.g. Convert signals to digital or analog
 
-#### 2계층(데이터 링크 계층)
+#### Layer 2 (Data Link Layer)
 
-- 네트워크 기기 간의 데이터 전송 및 물리주소를 결정
-- e.g. 브리지/스위치, MAC 주소
+- Determines data transmission between network devices and physical addresses
+- e.g. Bridge/switch, MAC address
 
-#### 3계층(네트워크 계층)
+#### Layer 3 (Network Layer)
 
-- 실제 네트워크 간의 데이터 라우팅 담당하여 최적의 경로 선택
-- e.g. IP 패킷 전송
+- Responsible for data routing between actual networks and selects optimal paths
+- e.g. IP packet transmission
 
-#### 4계층(전송 계층)
+#### Layer 4 (Transport Layer)
 
-- 컴퓨터 간 신뢰성 있는 데이터를 서로 주고받을 수 있도록 하는 서비스 제공
-- e.g. TCP/UDP 연결
+- Provides services to enable reliable data exchange between computers
+- e.g. TCP/UDP connections
 
-#### 5계층(세션 계층)
+#### Layer 5 (Session Layer)
 
-- 세션 연결의 설정과 해제, 세션 메시지 전송 등의 기능.
-- 즉, 컴퓨터 간의 통신 방식에 대해 결정
+- Functions such as setting and releasing session connections, transmitting session messages
+- In other words, determines communication methods between computers
 
-#### 6계층(표현 계층)
+#### Layer 6 (Presentation Layer)
 
-- 응용 계층으로 전달하거나 전달 받는 데이터를 인코딩 또는 디코딩
-- e.g. 문자 코드, 압축, 암호화 등의 데이터 변환
+- Encodes or decodes data passed to or received from application layer
+- e.g. Data conversion such as character codes, compression, encryption
 
-#### 7계층(응용 계층)
+#### Layer 7 (Application Layer)
 
-- 최종적으로 사용자와의 인터페이스를 제공하는 계층
-- 사용자가 실행하는 응용 프로그램
-- e.g. 파일 전송, 웹사이트 조회 등
+- Layer that ultimately provides interface with users
+- Application programs executed by users
+- e.g. File transfer, website viewing, etc.
 
-#### 데이터 전송하는 쪽
+#### Data Transmission Side
 
-- 데이터 전송 측은 상위 계층에서 하위 계층으로 데이터를 전달
-- 각 계층에서 필요한 정보를 데이터에 추가하는데, 이 정보를 '헤더' 또는 '트레일러' 라고 함
-- 헤더를 붙여나가는 것을 '캡슐화' 라고 함
+- Data transmission side passes data from upper layers to lower layers
+- Each layer adds necessary information to data, and this information is called 'header' or 'trailer'
+- Adding headers is called 'encapsulation'
 
-#### 데이터 받는 쪽
+#### Data Receiving Side
 
-- 하위 계층에서 상위 계층으로 각 계층을 통해 전달된 데이터를 받음
-- 상위 계층으로 데이터를 전달하며 각 계층에서 헤더를 제거해 나가는 것을 '역캡슐화' 라고 함
-- 역캡슐화를 거쳐 마지막 응용 계층에 도달시, 전달하고자 했던 원본 데이터만 남음
+- Receives data passed through each layer from lower layers to upper layers
+- Passing data to upper layers and removing headers at each layer is called 'de-encapsulation'
+- After de-encapsulation, when reaching the final application layer, only the original data intended to be transmitted remains
 
 <br/>
 
-## 2. TCP/IP 4계층 모델
+## 2. TCP/IP 4-Layer Model
 
-### 모델의 특징
+### Model Characteristics
 
-- OSI 모델을 기반으로 실무적으로 이용할 수 있도록 현실에 맞춰 단순화/실용화된 모델
+- Model simplified and made practical for real-world use based on OSI model
 
-### 각 계층의 특징
+### Characteristics of Each Layer
 
-#### 1계층(네트워크 인터페이스 계층)
+#### Layer 1 (Network Interface Layer)
 
-- OSI 계층의 물리 계층과 데이터 링크 계층에 해당
-- 물리적인 주소로 MAC을 사용
-- LAN, 패킷망 등
+- Corresponds to physical layer and data link layer of OSI layers
+- Uses MAC as physical address
+- LAN, packet network, etc.
 
-#### 2계층(인터넷 계층)
+#### Layer 2 (Internet Layer)
 
-- OSI 계층의 네트워크 계층에 해당
-- 통신 노드 간의 IP 패킷을 전송하는 기능 및 라우팅 담당
+- Corresponds to network layer of OSI layers
+- Responsible for transmitting IP packets between communication nodes and routing
 - e.g. IP, ARP, RARP
 
-#### 3계층(전송 계층)
+#### Layer 3 (Transport Layer)
 
-- OSI 계층의 전송 계층에 해당
-- 통신 노드 간의 연결을 제어하고, 신뢰성 있는 데이터 전송을 담당
+- Corresponds to transport layer of OSI layers
+- Controls connections between communication nodes and is responsible for reliable data transmission
 - e.g. TCP, UDP
 
-#### 4계층(애플리케이션 계층)
+#### Layer 4 (Application Layer)
 
-- OSI 계층의 세션, 표현, 응용 계층에 해당
-- TCP/UDP 기반의 응용 프로그램 구현시 사용
+- Corresponds to session, presentation, and application layers of OSI layers
+- Used when implementing applications based on TCP/UDP
 - e.g. FTP, HTTP, SSH

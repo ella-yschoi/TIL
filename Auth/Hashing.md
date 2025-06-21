@@ -1,23 +1,24 @@
 # Hashing
 
-## 1. Hashing 이란?
+## 1. What is Hashing?
 
-- 가장 많이 쓰이는 암호화 방식
-- 복호화가 가능한 다른 암호화 방식과는 달리, **해싱은 암호화만 가능**
-- 해시 함수를 사용해 암호화를 진행
-  
-- 해시 함수의 특징
-  - **항상 같은 길이의 문자열 리턴**
-  - 서로 다른 문자열에 동일한 해시 함수 사용시 반드시 다른 결과값이 나옴
-  - 동일한 문자열에 동일한 해시 함수 사용시 항상 같은 결과값 나옴
+- The most commonly used encryption method
+- Unlike other encryption methods that can be decrypted, **hashing can only encrypt**
+- Encryption is performed using hash functions
+- Hash function characteristics
 
-- 레인보우 테이블
-  - 항상 같은 결과값이 나온다는 특성을 이용해 해시 함수를 거치기 이전의 값을 알아내도록 기록한 표
-  - 보안상 위협이 될수도 있음
-- 솔트
-  - 해싱 이전 값에 임의의 값을 더해 값을 알아내기 어렵게 만듦
+  - **Always returns a string of the same length**
+  - When the same hash function is used on different strings, different results are guaranteed
+  - When the same hash function is used on identical strings, the same result is always produced
 
-- 해싱의 목적
-  - 데이터 그 자체를 사용하는 것이 아니라, 동일한 값의 데이터를 사용하는지 여부만 확인
-  - 정확한 값을 몰라도 해싱한 값이 일치한다면, 해싱 값으로만 로그인 요청 처리해도 됨
-  - 즉, **민감한 데이터를 다루어야 하는 상황에서 데이터 유출의 위험은 줄이면서 유효성을 검증하는 단방향 암호화 방식**
+- Rainbow table
+  - A table created to find out values before they go through hash functions, using the characteristic that the same result always comes out
+  - Can be a security threat
+- Salt
+
+  - Adds random values to values before hashing to make them difficult to figure out
+
+- Purpose of hashing
+  - Not to use the data itself, but to verify whether the same value data is being used
+  - Even without knowing the exact value, if the hashed values match, login requests can be processed using only the hashed value
+  - In other words, **a one-way encryption method that reduces the risk of data leakage while verifying validity in situations where sensitive data must be handled**
