@@ -1,0 +1,251 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+# Translation Guidelines for TIL Project
+
+## 🎯 Translation Project Overview
+This project involves translating all Korean TIL content to English while maintaining the educational quality, technical accuracy, and learning structure of the original content.
+
+## 📝 Translation Standards
+
+### MUST FOLLOW:
+- **Maintain technical accuracy**: Preserve exact technical terms and concepts
+- **Keep learning structure**: Retain the definition → syntax → examples → practice flow
+- **Preserve code examples**: Translate comments and explanations, keep code unchanged
+- **Maintain visual hierarchy**: Keep the same heading structure and formatting
+- **Use consistent terminology**: Create and follow a technical glossary
+
+### PROHIBITED:
+- ❌ **NEVER** change code syntax or logic
+- ❌ **NEVER** lose the educational progression
+- ❌ **NEVER** skip technical terms without proper translation
+- ❌ **NEVER** change file names or directory structure
+- ❌ **NEVER** remove or modify images and their references
+
+## 🌐 Language Translation Rules
+
+### Technical Terminology:
+- **Create glossary**: Maintain consistent technical term translations
+- **Preserve brand names**: Keep JavaScript, TypeScript, React, Git, AWS as-is
+- **Translate concepts**: Convert Korean explanations to clear English
+- **Maintain context**: Ensure technical context is preserved
+
+### Code Comments Translation:
+```javascript
+// Before: 배열의 길이를 구하는 방법
+// After: Method to get the length of an array
+
+// Before: 반복문을 이용한 배열 순회
+// After: Iterating through array using loops
+```
+
+### PROHIBITED:
+- ❌ **NEVER** translate programming language keywords
+- ❌ **NEVER** change variable names in examples
+- ❌ **NEVER** modify function names or API calls
+- ❌ **NEVER** translate error messages without context
+
+## 📚 Content Structure Preservation
+
+### MUST FOLLOW:
+- **Keep section order**: Maintain the exact sequence of sections
+- **Preserve examples**: Translate explanations but keep code intact
+- **Maintain formatting**: Keep bold, italic, and code formatting
+- **Retain emojis**: Keep the tree theme (🌳, 🪵) and section emojis
+
+### Educational Flow:
+1. **Definition**: What is the concept? (한국어 → 영어)
+2. **Syntax/Grammar**: How to use it? (한국어 → 영어)
+3. **Examples**: Real-world code examples (코드 유지, 설명 번역)
+4. **Practice**: Learning progression (한국어 → 영어)
+
+### PROHIBITED:
+- ❌ **NEVER** reorder sections
+- ❌ **NEVER** remove learning steps
+- ❌ **NEVER** change the difficulty progression
+- ❌ **NEVER** modify the visual structure
+
+## 🔤 Translation Quality Standards
+
+### MUST FOLLOW:
+- **Clear and concise**: Use simple, direct English
+- **Technical precision**: Maintain exact technical meaning
+- **Consistent style**: Use uniform writing style across all files
+- **Natural flow**: Ensure English reads naturally, not like direct translation
+
+### Writing Style Guidelines:
+- **Use active voice**: "JavaScript provides..." not "JavaScript is provided..."
+- **Be direct**: "To create an array..." not "In order to create an array..."
+- **Maintain tone**: Keep the friendly, educational tone
+- **Use present tense**: For explanations and examples
+
+### PROHIBITED:
+- ❌ **NEVER** use machine translation without review
+- ❌ **NEVER** create awkward or unnatural English
+- ❌ **NEVER** lose the educational tone
+- ❌ **NEVER** use overly complex vocabulary
+
+## 📋 Technical Glossary Creation
+
+### MUST CREATE AND MAINTAIN:
+```markdown
+# Technical Terms Glossary
+
+## JavaScript/TypeScript
+- 배열 (array) → array
+- 함수 (function) → function
+- 객체 (object) → object
+- 변수 (variable) → variable
+- 반복문 (loop) → loop
+- 조건문 (conditional) → conditional
+
+## React
+- 컴포넌트 (component) → component
+- 상태 (state) → state
+- 속성 (props) → props
+- 훅 (hook) → hook
+- 렌더링 (rendering) → rendering
+
+## Git
+- 브랜치 (branch) → branch
+- 커밋 (commit) → commit
+- 병합 (merge) → merge
+- 리베이스 (rebase) → rebase
+- 저장소 (repository) → repository
+```
+
+### PROHIBITED:
+- ❌ **NEVER** translate inconsistently
+- ❌ **NEVER** create multiple terms for same concept
+- ❌ **NEVER** ignore context when translating
+
+## 🔄 File Processing Workflow
+
+### MUST FOLLOW:
+1. **Read entire file**: Understand the complete content structure
+2. **Identify technical terms**: Mark all technical concepts
+3. **Translate systematically**: Section by section, maintaining flow
+4. **Review code examples**: Ensure comments are properly translated
+5. **Verify formatting**: Check all markdown formatting is preserved
+6. **Test links**: Ensure all internal links still work
+
+### Quality Checklist:
+- [ ] All Korean text translated to English
+- [ ] Code examples remain unchanged
+- [ ] Technical terms translated consistently
+- [ ] File structure and formatting preserved
+- [ ] Images and references maintained
+- [ ] Learning progression intact
+
+### PROHIBITED:
+- ❌ **NEVER** translate files in isolation
+- ❌ **NEVER** skip the review process
+- ❌ **NEVER** ignore cross-file references
+- ❌ **NEVER** forget to update SUMMARY.md links
+
+## 🎨 Visual and Formatting Preservation
+
+### MUST FOLLOW:
+- **Keep emojis**: Maintain 🌳 tree theme and section emojis
+- **Preserve formatting**: Bold, italic, code blocks, lists
+- **Maintain spacing**: Keep `<br/>` tags and visual breaks
+- **Retain images**: All image references must remain unchanged
+
+### Image References:
+```markdown
+// Keep exactly as-is:
+![array.png](mdc:../Images/array.png)
+![git_merge.png](mdc:../Images/git_merge.png)
+```
+
+### PROHIBITED:
+- ❌ **NEVER** change image file names
+- ❌ **NEVER** modify image paths
+- ❌ **NEVER** remove visual elements
+- ❌ **NEVER** change the visual hierarchy
+
+## 📖 Content-Specific Translation Rules
+
+### Code Examples:
+```javascript
+// Before: 배열의 마지막 요소를 제거하는 방법
+let arr = [1, 2, 3];
+arr.pop(); // 마지막 요소 제거
+
+// After: Method to remove the last element of an array
+let arr = [1, 2, 3];
+arr.pop(); // Remove the last element
+```
+
+### Error Explanations:
+```javascript
+// Before: 이 경우 undefined가 반환됩니다
+// After: In this case, undefined is returned
+
+// Before: 에러가 발생하는 이유
+// After: Why the error occurs
+```
+
+### PROHIBITED:
+- ❌ **NEVER** change code logic
+- ❌ **NEVER** modify variable names
+- ❌ **NEVER** alter function calls
+- ❌ **NEVER** change error messages
+
+## 🔗 Cross-Reference Management
+
+### MUST FOLLOW:
+- **Update internal links**: Ensure all `[filename](mdc:filename)` references work
+- **Maintain navigation**: Keep README.md and SUMMARY.md synchronized
+- **Preserve structure**: Don't break the hierarchical organization
+- **Check consistency**: Ensure translated terms are consistent across files
+
+### File Reference Updates:
+```markdown
+// Update any Korean text in links while keeping the file reference:
+- [JavaScript 배열](mdc:JavaScript/Array.md) → [JavaScript Arrays](mdc:JavaScript/Array.md)
+```
+
+### PROHIBITED:
+- ❌ **NEVER** break internal navigation
+- ❌ **NEVER** create dead links
+- ❌ **NEVER** forget to update cross-references
+- ❌ **NEVER** change file paths
+
+## ⚠️ Critical Translation Reminders
+
+### ALWAYS REMEMBER:
+- **Educational focus**: This is learning material, not documentation
+- **Technical accuracy**: Preserve exact technical meaning
+- **Consistency**: Use the same terms throughout the project
+- **Natural English**: Write clear, readable English
+- **Complete translation**: Don't leave any Korean text behind
+
+### IMMEDIATE STOP CONDITIONS:
+- If you're about to change code syntax
+- If you're about to translate programming keywords
+- If you're about to modify file structure
+- If you're about to skip technical term consistency
+- If you're about to lose the educational flow
+
+## 📋 Translation Priority Order
+
+### Phase 1: Core Files
+1. [README.md](mdc:README.md) - Project overview
+2. [SUMMARY.md](mdc:SUMMARY.md) - Navigation structure
+3. [JavaScript/Array.md](mdc:JavaScript/Array.md) - Fundamental concepts
+
+### Phase 2: Learning Sequences
+1. [Git/01_Install.md](mdc:Git/01_Install.md) - Sequential learning
+2. [Git/02_Add_Commit.md](mdc:Git/02_Add_Commit.md) - Step-by-step progression
+
+### Phase 3: Advanced Topics
+1. [React/Hook.md](mdc:React/Hook.md) - Modern React concepts
+2. [TypeScript/Basics.md](mdc:TypeScript/Basics.md) - Type safety
+
+### PROHIBITED:
+- ❌ **NEVER** translate files out of logical order
+- ❌ **NEVER** skip dependency files
+- ❌ **NEVER** ignore cross-references between files
