@@ -5,273 +5,209 @@ alwaysApply: false
 ---
 # TIL Content Quality Standards
 
-## 🎯 Content Quality Overview
-This document defines the quality standards for maintaining educational content in both Korean (kor/) and English (eng/) versions of the TIL project. All content must meet these standards to ensure effective learning outcomes.
+## 🎯 Quality Overview
+This document defines the quality standards for maintaining educational content in both Korean (kor/) and English (en/) versions of the TIL project. All content must meet these standards to ensure effective learning outcomes.
 
 ## 📚 Educational Content Standards
 
 ### MUST FOLLOW:
-- **Clear learning objectives**: Each document should have clear learning goals
-- **Progressive difficulty**: Content should build from basic to advanced concepts
-- **Practical examples**: Include real-world, working code examples
+- **Clear learning objectives**: Each file should have a clear purpose and learning goal
+- **Progressive difficulty**: Start with basics and build to advanced concepts
+- **Practical examples**: Include real-world code examples and use cases
 - **Error handling**: Explain common mistakes and how to avoid them
 - **Visual aids**: Use images and diagrams to enhance understanding
 - **Consistent terminology**: Use uniform terms within each language
+- **Complete explanations**: Don't assume prior knowledge of advanced concepts
 
-### Content Structure Requirements:
-1. **Definition**: Clear explanation of what the concept is
-2. **Syntax/Grammar**: How to use the concept correctly
-3. **Examples**: Practical, working code examples
-4. **Common pitfalls**: What to avoid and why
-5. **Best practices**: Recommended approaches and patterns
-6. **Practice exercises**: Opportunities for hands-on learning
+### Content Structure:
+1. **Definition**: What is the concept?
+2. **Syntax/Grammar**: How to use it?
+3. **Examples**: Real-world code examples
+4. **Common pitfalls**: What to avoid
+5. **Best practices**: Recommended approaches
 
 ### PROHIBITED:
 - ❌ **NEVER** skip the definition section
-- ❌ **NEVER** provide code without explanations
-- ❌ **NEVER** ignore error scenarios
-- ❌ **NEVER** use outdated or deprecated practices
-- ❌ **NEVER** assume reader knowledge of advanced concepts
+- ❌ **NEVER** assume reader knowledge of advanced topics
+- ❌ **NEVER** use inconsistent terminology
+- ❌ **NEVER** skip error handling explanations
+- ❌ **NEVER** provide incomplete examples
 
 ## 💻 Code Quality Standards
 
 ### MUST FOLLOW:
 - **Working examples**: All code examples must be executable
 - **Clear comments**: Explain complex logic with inline comments
+- **Language specification**: Always specify the programming language
 - **Realistic scenarios**: Use practical, real-world examples
-- **Error handling**: Include error handling in examples where appropriate
-- **Best practices**: Follow language-specific best practices
-- **Consistent formatting**: Use consistent code style in both languages
+- **Error scenarios**: Include examples of what can go wrong
 
-### Code Example Requirements:
+### Code Example Structure:
 ```javascript
 // Korean version (kor/)
-let arr = [1, 2, 3, 4, 5];
+let arr = [1, 2, 3];
+arr.pop(); // 배열의 마지막 요소를 제거하는 방법
 
-// 배열의 마지막 요소를 제거하는 방법
-let lastElement = arr.pop();
-console.log('제거된 요소:', lastElement); // 5
-console.log('수정된 배열:', arr); // [1, 2, 3, 4]
-
-// English version (eng/)
-let arr = [1, 2, 3, 4, 5];
-
-// Method to remove the last element of an array
-let lastElement = arr.pop();
-console.log('Removed element:', lastElement); // 5
-console.log('Modified array:', arr); // [1, 2, 3, 4]
+// English version (en/)
+let arr = [1, 2, 3];
+arr.pop(); // Method to remove the last element of an array
 ```
 
 ### PROHIBITED:
 - ❌ **NEVER** include syntax errors in examples
 - ❌ **NEVER** use placeholder text like "your_code_here"
-- ❌ **NEVER** provide incomplete examples
-- ❌ **NEVER** ignore error handling
-- ❌ **NEVER** use unrealistic or contrived examples
+- ❌ **NEVER** write code without language tags
+- ❌ **NEVER** use overly complex examples for basic concepts
 
 ## 🌐 Language-Specific Quality Standards
 
 ### Korean Version (kor/):
 - **Natural Korean**: Write in clear, natural Korean
-- **Technical accuracy**: Maintain exact technical meaning
-- **Consistent terminology**: Use uniform Korean technical terms
-- **Educational tone**: Maintain friendly, educational tone
-- **Clear explanations**: Provide clear Korean explanations
+- **Korean technical terms**: Use appropriate Korean terminology
+- **Korean explanations**: Provide clear Korean explanations
+- **Korean navigation**: All navigation elements in Korean
 
-### English Version (eng/):
+### English Version (en/):
 - **Natural English**: Write in clear, natural English
-- **Technical accuracy**: Maintain exact technical meaning
-- **Consistent terminology**: Use uniform English technical terms
-- **Educational tone**: Maintain friendly, educational tone
-- **Clear explanations**: Provide clear English explanations
+- **English technical terms**: Use standard English terminology
+- **English explanations**: Provide clear English explanations
+- **English navigation**: All navigation elements in English
 
 ### PROHIBITED:
+- ❌ **NEVER** mix languages within the same file
 - ❌ **NEVER** use machine translation without review
 - ❌ **NEVER** create awkward or unnatural language
 - ❌ **NEVER** lose technical accuracy during translation
-- ❌ **NEVER** use inconsistent terminology within a language
-- ❌ **NEVER** mix languages within the same file
 
-## 🎨 Visual Design Quality Standards
+## 🎨 Visual Design Standards
 
 ### MUST FOLLOW:
-- **Consistent emojis**: Use same emojis across both languages
-- **Strategic emoji use**: Use emojis to enhance understanding (max 2-3 per section)
-- **Tree theme**: Maintain 🌳 tree theme in both versions
-- **Visual hierarchy**: Clear heading structure and spacing
-- **Consistent formatting**: Same bold, italic, and code formatting
-- **Proper spacing**: Use `<br/>` tags for visual breaks
-
-### Visual Elements:
+- **Consistent formatting**: Use same markdown formatting in both languages
+- **Strategic emoji use**: Use emojis to enhance readability (max 2-3 per section)
+- **Clear hierarchy**: Use proper heading levels (H1, H2, H3)
+- **Visual breaks**: Use `<br/>` tags for better readability
 - **Bold important terms**: Use **bold** for key concepts
-- **Inline code formatting**: Use `backticks` for technical terms
-- **Code blocks**: Use proper language specification
-- **Lists**: Use consistent list formatting
-- **Images**: Include descriptive alt text
+- **Inline code**: Use `backticks` for technical terms
 
 ### PROHIBITED:
 - ❌ **NEVER** overuse emojis
 - ❌ **NEVER** use all caps for emphasis
-- ❌ **NEVER** mix different formatting styles inconsistently
-- ❌ **NEVER** use different emojis between languages
-- ❌ **NEVER** forget to add visual breaks
-
-## 📖 Content Organization Quality Standards
-
-### MUST FOLLOW:
-- **Logical flow**: Content should follow a logical learning progression
-- **Consistent structure**: Same organization in both languages
-- **Clear sections**: Well-defined sections with clear purposes
-- **Progressive complexity**: Build from simple to complex concepts
-- **Cross-references**: Link to related content when appropriate
-
-### Content Organization:
-1. **Introduction**: What will be learned
-2. **Definition**: What the concept is
-3. **Syntax**: How to use it
-4. **Examples**: Practical demonstrations
-5. **Common mistakes**: What to avoid
-6. **Best practices**: Recommended approaches
-7. **Summary**: Key takeaways
-
-### PROHIBITED:
-- ❌ **NEVER** skip logical learning steps
-- ❌ **NEVER** have different organization between languages
-- ❌ **NEVER** create content without clear purpose
-- ❌ **NEVER** ignore learning progression
-- ❌ **NEVER** create orphaned content without context
-
-## 🔗 Navigation Quality Standards
-
-### MUST FOLLOW:
-- **Working links**: All internal links must function correctly
-- **Consistent navigation**: Same structure in both languages
-- **Clear navigation**: Easy to find and navigate content
-- **Updated navigation**: Keep navigation synchronized with content
-- **Cross-language references**: Root README.md provides language selection
-
-### Navigation Requirements:
-- **Language-specific navigation**: Each language has its own SUMMARY.md
-- **Consistent structure**: Same file organization in both languages
-- **Working links**: All internal links must work within each language
-- **Clear organization**: Logical grouping of related content
-
-### PROHIBITED:
-- ❌ **NEVER** create dead links
-- ❌ **NEVER** forget to update navigation when adding content
-- ❌ **NEVER** break internal links
-- ❌ **NEVER** create inconsistent navigation between languages
-- ❌ **NEVER** mix language references in navigation
+- ❌ **NEVER** skip visual hierarchy
+- ❌ **NEVER** use inconsistent formatting
 
 ## 🖼️ Image Quality Standards
 
 ### MUST FOLLOW:
+- **Duplicate images**: Store identical images in both kor/Images/ and en/Images/
 - **Descriptive names**: Use clear, descriptive image names
-- **Consistent naming**: Same image names across languages
-- **Proper references**: Use correct relative paths
-- **Alt text**: Include descriptive alt text for accessibility
-- **Relevant content**: Images should enhance understanding
+- **High quality**: Use clear, readable images
+- **Relevant content**: Images should directly relate to the content
+- **Proper references**: Use correct relative paths in both languages
 
-### Image Requirements:
-- **Store in Images/**: All images must be in the Images directory
-- **Duplicate images**: Store identical images in both kor/Images/ and eng/Images/
-- **Clear visuals**: Images should be clear and easy to understand
-- **Consistent style**: Maintain consistent visual style across images
+### Image Examples:
+```markdown
+// Both kor/ and en/ versions use:
+![array.png](mdc:../Images/array.png)
+![git_merge.png](mdc:../Images/git_merge.png)
+```
 
 ### PROHIBITED:
+- ❌ **NEVER** use low-quality or blurry images
 - ❌ **NEVER** use generic names like `image1.png`
 - ❌ **NEVER** reference images from external URLs
 - ❌ **NEVER** use different image names between languages
-- ❌ **NEVER** place images outside the Images/ directory
-- ❌ **NEVER** use low-quality or unclear images
 
-## 📋 Quality Assurance Process
+## 📋 Quality Checklist
 
 ### MUST VERIFY:
-- [ ] Content exists in both kor/ and eng/
-- [ ] All code examples are working and executable
-- [ ] Terminology is consistent within each language
-- [ ] Navigation works in both languages
+- [ ] Content exists in both kor/ and en/
+- [ ] All technical terms are consistent within each language
+- [ ] Code examples are identical and working
 - [ ] Images are available and properly referenced
-- [ ] Learning progression is logical and clear
-- [ ] Error scenarios are covered
-- [ ] Best practices are included
-- [ ] Visual formatting is consistent
-- [ ] Links are working and accurate
-
-### Quality Review Checklist:
-1. **Content completeness**: All sections are present in both languages
-2. **Technical accuracy**: Information is technically correct
-3. **Code functionality**: All code examples work as expected
-4. **Language quality**: Natural, clear language in both versions
-5. **Visual consistency**: Same formatting and visual elements
-6. **Navigation accuracy**: All links work correctly
-7. **Learning progression**: Logical flow from basic to advanced
+- [ ] Navigation works in both languages
+- [ ] No syntax errors in code examples
+- [ ] Clear learning progression from basic to advanced
+- [ ] Error handling and best practices included
 
 ### PROHIBITED:
 - ❌ **NEVER** skip quality checks for either language
 - ❌ **NEVER** ignore broken links or references
-- ❌ **NEVER** skip code testing
-- ❌ **NEVER** forget to verify both language versions
-- ❌ **NEVER** ignore user experience considerations
+- ❌ **NEVER** forget to test both versions
+- ❌ **NEVER** skip terminology consistency checks
 
-## 🚀 Technology-Specific Quality Standards
+## 🔄 Content Update Standards
 
-### JavaScript/TypeScript:
-- **Modern syntax**: Use current language features
-- **Best practices**: Follow language-specific conventions
-- **Error handling**: Include proper error handling
-- **Performance considerations**: Mention performance implications
+### MUST FOLLOW:
+1. **Update both languages**: Always update content in both kor/ and en/
+2. **Maintain consistency**: Keep both versions synchronized
+3. **Test functionality**: Verify all links and code examples work
+4. **Update navigation**: Keep navigation files current
+5. **Review quality**: Ensure both versions meet quality standards
 
-### React:
-- **Modern patterns**: Use current React patterns and hooks
-- **Component design**: Demonstrate good component design
-- **State management**: Show proper state management
-- **Performance optimization**: Include performance tips
-
-### Git:
-- **Real-world scenarios**: Use practical Git workflows
-- **Best practices**: Follow Git best practices
-- **Common mistakes**: Explain common Git mistakes
-- **Team collaboration**: Include collaboration scenarios
-
-### Web Technologies:
-- **Modern standards**: Use current web standards
-- **Browser compatibility**: Consider browser compatibility
-- **Security considerations**: Include security best practices
-- **Performance optimization**: Mention performance tips
+### Update Process:
+1. **Identify changes**: Determine what needs to be updated
+2. **Update Korean version**: Make changes to kor/ content
+3. **Update English version**: Make corresponding changes to en/ content
+4. **Verify consistency**: Ensure both versions remain synchronized
+5. **Test functionality**: Verify all links and code examples work
 
 ### PROHIBITED:
-- ❌ **NEVER** use deprecated or outdated practices
-- ❌ **NEVER** ignore security considerations
-- ❌ **NEVER** skip performance implications
-- ❌ **NEVER** use unrealistic examples
-- ❌ **NEVER** ignore modern best practices
+- ❌ **NEVER** update only one language version
+- ❌ **NEVER** ignore cross-language consistency
+- ❌ **NEVER** skip testing after updates
+- ❌ **NEVER** forget to update navigation
+
+## 📚 Learning Progression Standards
+
+### MUST FOLLOW:
+- **Start with fundamentals**: Begin with basic concepts
+- **Build complexity**: Gradually introduce advanced topics
+- **Provide context**: Explain why concepts are important
+- **Include prerequisites**: Mention what knowledge is needed
+- **Cross-reference**: Link to related concepts when appropriate
+
+### Learning Sequence Example:
+1. **Basic concepts**: What is the technology?
+2. **Setup/Installation**: How to get started
+3. **Core features**: Essential functionality
+4. **Advanced usage**: Complex scenarios
+5. **Best practices**: Recommended approaches
+
+### PROHIBITED:
+- ❌ **NEVER** jump to advanced topics without foundation
+- ❌ **NEVER** assume knowledge of unrelated concepts
+- ❌ **NEVER** skip important prerequisites
+- ❌ **NEVER** lose the educational flow
+
+## 📋 File Reference Examples
+
+### Core Files:
+- [README.md](mdc:README.md) - Bilingual project overview
+- [kor/README.md](mdc:kor/README.md) - Korean project overview
+- [en/README.md](mdc:en/README.md) - English project overview
+- [kor/SUMMARY.md](mdc:kor/SUMMARY.md) - Korean navigation
+- [en/SUMMARY.md](mdc:en/SUMMARY.md) - English navigation
+
+### Content Examples:
+- [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean array concepts with examples
+- [en/JavaScript/Array.md](mdc:en/JavaScript/Array.md) - English array concepts with examples
+- [kor/Git/01_Install.md](mdc:kor/Git/01_Install.md) - Korean Git installation guide
+- [en/Git/01_Install.md](mdc:en/Git/01_Install.md) - English Git installation guide
+- [kor/React/Hook.md](mdc:kor/React/Hook.md) - Korean React hooks tutorial
+- [en/React/Hook.md](mdc:en/React/Hook.md) - English React hooks tutorial
 
 ## ⚠️ Critical Quality Reminders
 
 ### ALWAYS REMEMBER:
 - **Educational focus**: This is learning material, not documentation
-- **Practical value**: Focus on real-world application
-- **User experience**: Make content easy to understand and navigate
-- **Technical accuracy**: Maintain exact technical precision
-- **Consistency**: Keep both language versions synchronized
-- **Accessibility**: Ensure content is accessible to all users
+- **Technical accuracy**: Preserve exact technical meaning in both languages
+- **User experience**: Make content easy to understand and follow
+- **Consistency**: Use the same terms throughout each language
+- **Completeness**: Don't leave important concepts unexplained
 
 ### IMMEDIATE STOP CONDITIONS:
+- If you're about to skip quality checks
 - If you're about to create content in only one language
-- If you're about to use outdated or deprecated practices
-- If you're about to skip error handling or edge cases
-- If you're about to ignore security or performance considerations
-- If you're about to create content without clear learning objectives
-- If you're about to skip quality checks for either language
-
-## 📋 File Reference Examples
-
-### Quality Content Examples:
-- [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean array concepts with examples
-- [eng/JavaScript/Array.md](mdc:eng/JavaScript/Array.md) - English array concepts with examples
-- [kor/Git/01_Install.md](mdc:kor/Git/01_Install.md) - Korean Git installation guide
-- [eng/Git/01_Install.md](mdc:eng/Git/01_Install.md) - English Git installation guide
-- [kor/React/Hook.md](mdc:kor/React/Hook.md) - Korean React hooks tutorial
-- [eng/React/Hook.md](mdc:eng/React/Hook.md) - English React hooks tutorial
+- If you're about to use inconsistent terminology
+- If you're about to skip error handling explanations
+- If you're about to assume advanced knowledge

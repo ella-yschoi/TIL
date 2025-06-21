@@ -6,7 +6,7 @@ alwaysApply: true
 # Multilingual TIL Translation Guidelines
 
 ## 🎯 Translation Project Overview
-This project maintains both Korean (kor/) and English (eng/) versions of all TIL content. The translation guidelines ensure consistency, technical accuracy, and educational quality across both language versions.
+This project maintains both Korean (kor/) and English (en/) versions of all TIL content. The translation guidelines ensure consistency, technical accuracy, and educational quality across both language versions.
 
 ## 📝 Translation Standards
 
@@ -16,7 +16,7 @@ This project maintains both Korean (kor/) and English (eng/) versions of all TIL
 - **Preserve code examples**: Translate comments and explanations, keep code unchanged
 - **Maintain visual hierarchy**: Keep the same heading structure and formatting
 - **Use consistent terminology**: Create and follow a technical glossary for each language
-- **Mirror content structure**: Both kor/ and eng/ versions must have identical organization
+- **Mirror content structure**: Both kor/ and en/ versions must have identical organization
 
 ### PROHIBITED:
 - ❌ **NEVER** change code syntax or logic
@@ -40,7 +40,7 @@ This project maintains both Korean (kor/) and English (eng/) versions of all TIL
 let arr = [1, 2, 3];
 arr.pop(); // 배열의 마지막 요소를 제거하는 방법
 
-// English version (eng/)
+// English version (en/)
 let arr = [1, 2, 3];
 arr.pop(); // Method to remove the last element of an array
 ```
@@ -59,7 +59,7 @@ arr.pop(); // Method to remove the last element of an array
 - **Preserve examples**: Translate explanations but keep code intact
 - **Maintain formatting**: Keep bold, italic, and code formatting identical
 - **Retain emojis**: Keep the tree theme (🌳, 🪵) and section emojis consistent
-- **Parallel content**: Every section must exist in both kor/ and eng/
+- **Parallel content**: Every section must exist in both kor/ and en/
 
 ### Educational Flow (Both Languages):
 1. **Definition**: What is the concept?
@@ -124,7 +124,7 @@ arr.pop(); // Method to remove the last element of an array
 - 리베이스 (rebase) → rebase
 - 저장소 (repository) → repository
 
-# English Technical Terms Glossary (eng/)
+# English Technical Terms Glossary (en/)
 
 ## JavaScript/TypeScript
 - array → array
@@ -158,7 +158,7 @@ arr.pop(); // Method to remove the last element of an array
 ## 🔄 File Processing Workflow
 
 ### MUST FOLLOW:
-1. **Create in both languages**: Always create content in both kor/ and eng/
+1. **Create in both languages**: Always create content in both kor/ and en/
 2. **Read entire file**: Understand the complete content structure
 3. **Identify technical terms**: Mark all technical concepts
 4. **Translate systematically**: Section by section, maintaining flow
@@ -167,7 +167,7 @@ arr.pop(); // Method to remove the last element of an array
 7. **Test links**: Ensure all internal links work in both languages
 
 ### Quality Checklist:
-- [ ] Content exists in both kor/ and eng/
+- [ ] Content exists in both kor/ and en/
 - [ ] All technical terms translated consistently
 - [ ] Code examples remain unchanged
 - [ ] File structure and formatting preserved
@@ -213,7 +213,7 @@ arr.pop(); // Method to remove the last element of an array
 let arr = [1, 2, 3];
 arr.pop(); // 배열의 마지막 요소를 제거하는 방법
 
-// English version (eng/)
+// English version (en/)
 let arr = [1, 2, 3];
 arr.pop(); // Method to remove the last element of an array
 ```
@@ -223,7 +223,7 @@ arr.pop(); // Method to remove the last element of an array
 // Korean version (kor/)
 // 이 경우 undefined가 반환됩니다
 
-// English version (eng/)
+// English version (en/)
 // In this case, undefined is returned
 ```
 
@@ -248,7 +248,7 @@ arr.pop(); // Method to remove the last element of an array
 // Korean version (kor/)
 - [JavaScript 배열](mdc:JavaScript/Array.md)
 
-// English version (eng/)
+// English version (en/)
 - [JavaScript Arrays](mdc:JavaScript/Array.md)
 ```
 
@@ -268,7 +268,7 @@ arr.pop(); // Method to remove the last element of an array
 - **Korean navigation**: All navigation elements in Korean
 - **Natural Korean**: Write in natural, fluent Korean
 
-### English Version (eng/):
+### English Version (en/):
 - **Use English language**: All content must be in English
 - **English technical terms**: Use standard English terminology
 - **English explanations**: Provide clear English explanations
@@ -306,21 +306,21 @@ arr.pop(); // Method to remove the last element of an array
 ### Phase 1: Core Files
 1. [README.md](mdc:README.md) - Bilingual project overview
 2. [kor/README.md](mdc:kor/README.md) - Korean project overview
-3. [eng/README.md](mdc:eng/README.md) - English project overview
+3. [en/README.md](mdc:en/README.md) - English project overview
 4. [kor/SUMMARY.md](mdc:kor/SUMMARY.md) - Korean navigation
-5. [eng/SUMMARY.md](mdc:eng/SUMMARY.md) - English navigation
+5. [en/SUMMARY.md](mdc:en/SUMMARY.md) - English navigation
 
 ### Phase 2: Learning Sequences
 1. [kor/Git/01_Install.md](mdc:kor/Git/01_Install.md) - Korean sequential learning
-2. [eng/Git/01_Install.md](mdc:eng/Git/01_Install.md) - English sequential learning
+2. [en/Git/01_Install.md](mdc:en/Git/01_Install.md) - English sequential learning
 3. [kor/Git/02_Add_Commit.md](mdc:kor/Git/02_Add_Commit.md) - Korean step-by-step progression
-4. [eng/Git/02_Add_Commit.md](mdc:eng/Git/02_Add_Commit.md) - English step-by-step progression
+4. [en/Git/02_Add_Commit.md](mdc:en/Git/02_Add_Commit.md) - English step-by-step progression
 
 ### Phase 3: Advanced Topics
 1. [kor/React/Hook.md](mdc:kor/React/Hook.md) - Korean modern React concepts
-2. [eng/React/Hook.md](mdc:eng/React/Hook.md) - English modern React concepts
+2. [en/React/Hook.md](mdc:en/React/Hook.md) - English modern React concepts
 3. [kor/TypeScript/Basics.md](mdc:kor/TypeScript/Basics.md) - Korean type safety
-4. [eng/TypeScript/Basics.md](mdc:eng/TypeScript/Basics.md) - English type safety
+4. [en/TypeScript/Basics.md](mdc:en/TypeScript/Basics.md) - English type safety
 
 ### PROHIBITED:
 - ❌ **NEVER** translate files out of logical order

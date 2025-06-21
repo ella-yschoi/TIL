@@ -6,17 +6,17 @@ alwaysApply: false
 # Multilingual TIL Project Structure Rules
 
 ## 🎯 Project Overview
-This is a **Today I Learned (TIL)** knowledge base organized as a multilingual tree structure. The project maintains both Korean (kor/) and English (eng/) versions of all learning materials across various technology domains.
+This is a **Today I Learned (TIL)** knowledge base organized as a multilingual tree structure. The project maintains both Korean (kor/) and English (en/) versions of all learning materials across various technology domains.
 
 ## 📁 Multilingual Directory Structure
 
 ### MUST FOLLOW:
 - **Maintain dual language structure**: 
   - `kor/` - Korean version of all content
-  - `eng/` - English version of all content
+  - `en/` - English version of all content
   - Root level - Bilingual navigation and overview
-- **Mirror directory structure**: Both `kor/` and `eng/` must have identical folder organization
-- **Shared images**: Images are stored in both `kor/Images/` and `eng/Images/` for consistency
+- **Mirror directory structure**: Both `kor/` and `en/` must have identical folder organization
+- **Shared images**: Images are stored in both `kor/Images/` and `en/Images/` for consistency
 - **Language-specific README**: Each language directory has its own README.md
 
 ### Directory Structure:
@@ -28,7 +28,7 @@ TIL/
 │   ├── SUMMARY.md (Korean navigation)
 │   ├── Images/
 │   └── [Technology Domains]/
-├── eng/
+├── en/
 │   ├── README.md (English overview with tree theme)
 │   ├── SUMMARY.md (English navigation)
 │   ├── Images/
@@ -36,7 +36,7 @@ TIL/
 ```
 
 ### PROHIBITED:
-- ❌ **NEVER** create content outside kor/ or eng/ directories
+- ❌ **NEVER** create content outside kor/ or en/ directories
 - ❌ **NEVER** have different folder structures between languages
 - ❌ **NEVER** mix languages within the same file
 - ❌ **NEVER** create orphaned files without corresponding versions
@@ -44,7 +44,7 @@ TIL/
 ## 📝 File Naming Conventions
 
 ### MUST FOLLOW:
-- **Identical file names**: Same naming across kor/ and eng/ directories
+- **Identical file names**: Same naming across kor/ and en/ directories
 - **Use underscores for spaces**: `Data_Types.md`, `Object_Oriented_Programming.md`
 - **Use ampersand for connected concepts**: `State&Props.md`, `SOP&CORS.md`
 - **Capitalize each word**: `Higher_Order_Function.md`
@@ -91,7 +91,7 @@ TIL/
 let arr = [1, 2, 3];
 arr.pop(); // 마지막 요소 제거
 
-// English version (eng/)
+// English version (en/)
 let arr = [1, 2, 3];
 arr.pop(); // Remove the last element
 ```
@@ -105,7 +105,7 @@ arr.pop(); // Remove the last element
 ## 🖼️ Image Usage Rules
 
 ### MUST FOLLOW:
-- **Duplicate images**: Store identical images in both `kor/Images/` and `eng/Images/`
+- **Duplicate images**: Store identical images in both `kor/Images/` and `en/Images/`
 - **Same file names**: Use identical image names across languages
 - **Relative paths**: Reference as `../Images/filename.png` in both versions
 - **Descriptive names**: `git_merge.png`, `http_message.png`
@@ -124,7 +124,7 @@ arr.pop(); // Remove the last element
 - **Korean explanations**: Provide clear Korean explanations
 - **Korean navigation**: All navigation elements in Korean
 
-### English Version (eng/):
+### English Version (en/):
 - **Use English language**: All content must be in English
 - **English technical terms**: Use standard English terminology
 - **English explanations**: Provide clear English explanations
@@ -163,8 +163,8 @@ arr.pop(); // Remove the last element
 - Root `README.md` - Bilingual overview with language selection
 - `kor/README.md` - Korean project overview with tree theme
 - `kor/SUMMARY.md` - Korean navigation
-- `eng/README.md` - English project overview with tree theme
-- `eng/SUMMARY.md` - English navigation
+- `en/README.md` - English project overview with tree theme
+- `en/SUMMARY.md` - English navigation
 
 ### PROHIBITED:
 - ❌ **NEVER** break internal links within a language
@@ -189,13 +189,13 @@ arr.pop(); // Remove the last element
 ## 📋 File Management Workflow
 
 ### MUST FOLLOW:
-1. **Create in both languages**: Always create content in both kor/ and eng/
+1. **Create in both languages**: Always create content in both kor/ and en/
 2. **Maintain synchronization**: Keep both versions updated together
 3. **Test both versions**: Verify all links and content work in both languages
 4. **Update navigation**: Keep all navigation files synchronized
 
 ### Quality Checklist:
-- [ ] Content exists in both kor/ and eng/
+- [ ] Content exists in both kor/ and en/
 - [ ] File names are identical across languages
 - [ ] Code examples are identical
 - [ ] Navigation works in both languages
@@ -253,10 +253,10 @@ arr.pop(); // Remove the last element
 ### Core Files:
 - [README.md](mdc:README.md) - Bilingual project overview
 - [kor/README.md](mdc:kor/README.md) - Korean project overview
-- [eng/README.md](mdc:eng/README.md) - English project overview
+- [en/README.md](mdc:en/README.md) - English project overview
 - [kor/JavaScript/Array.md](mdc:kor/JavaScript/Array.md) - Korean array concepts
-- [eng/JavaScript/Array.md](mdc:eng/JavaScript/Array.md) - English array concepts
+- [en/JavaScript/Array.md](mdc:en/JavaScript/Array.md) - English array concepts
 
 ### Image References:
 - [kor/Images/array.png](mdc:kor/Images/array.png) - Korean version image
-- [eng/Images/array.png](mdc:eng/Images/array.png) - English version image
+- [en/Images/array.png](mdc:en/Images/array.png) - English version image
