@@ -1,4 +1,4 @@
-# 🌳 Ella's TIL Tree (Korean)
+# 🌳 TIL Tree (Korean)
 
 > I grow tree through the records that I learned.
 
