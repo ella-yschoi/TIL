@@ -9,7 +9,7 @@
 This repository contains both Korean and English versions of Today I Learned (TIL) content:
 
 - **[🇰🇷 Korean Version](/kor/)** - 한국어 버전
-- **[🇺🇸 English Version](/eng/)** - English Version
+- **[🇺🇸 English Version](/en/)** - English Version
 
 <br/>
 
@@ -31,14 +31,14 @@ This repository contains both Korean and English versions of Today I Learned (TI
 
 ### 🇺🇸 English TIL
 
-- [📔 Algorithm](/eng/Algorithm/) - Data Structures and Algorithms
-- [📔 Authentication & Security](/eng/Auth/) - Authentication and Security
-- [📔 AWS](/eng/AWS/) - Cloud Computing
-- [📔 Design](/eng/Design/) - Design Systems
-- [📔 Docker](/eng/Docker/) - Container Technology
-- [📔 Git](/eng/Git/) - Version Control
-- [📔 Infrastructure](/eng/Infra/) - Infrastructure
-- [📔 JavaScript](/eng/JavaScript/) - JavaScript
-- [📔 React](/eng/React/) - React
-- [📔 TypeScript](/eng/TypeScript/) - TypeScript
-- [📔 Web](/eng/Web/) - Web Technologies
+- [📔 Algorithm](/en/Algorithm/) - Data Structures and Algorithms
+- [📔 Authentication & Security](/en/Auth/) - Authentication and Security
+- [📔 AWS](/en/AWS/) - Cloud Computing
+- [📔 Design](/en/Design/) - Design Systems
+- [📔 Docker](/en/Docker/) - Container Technology
+- [📔 Git](/en/Git/) - Version Control
+- [📔 Infrastructure](/en/Infra/) - Infrastructure
+- [📔 JavaScript](/en/JavaScript/) - JavaScript
+- [📔 React](/en/React/) - React
+- [📔 TypeScript](/en/TypeScript/) - TypeScript
+- [📔 Web](/en/Web/) - Web Technologies
